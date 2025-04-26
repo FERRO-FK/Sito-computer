@@ -1,0 +1,142 @@
+.cart-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items {
+  margin-bottom: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 1.5rem;
+  border-radius: 6px;
+  background: #f9f9f9;
+  padding: 10px;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.item-details h3 {
+  color: #FF6D00;
+  margin-bottom: 0.5rem;
+}
+
+.item-price {
+  color: #D84315;
+  font-weight: 600;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin: 0 1.5rem;
+}
+
+.quantity-controls button {
+  background: #FF9100;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-controls span {
+  margin: 0 1rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+.remove-item {
+  color: #FF6D00;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.cart-summary {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.total {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #FF6D00;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.checkout-btn {
+  display: block;
+  width: 100%;
+  background-color: #FF9100;
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #FF6D00;
+}
+
+.continue-shopping {
+  display: inline-block;
+  color: #FF6D00;
+  text-decoration: none;
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .quantity-controls {
+    margin: 1rem 0;
+  }
+}
