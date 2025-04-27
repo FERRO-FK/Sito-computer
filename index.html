@@ -8,6 +8,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles_navbar.css">
   <link rel="stylesheet" href="styles_index.css">
+  <style>
+    /* Stili per le immagini prodotto */
+    .product-image-container {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      overflow: hidden;
+      border-radius: 8px 8px 0 0;
+      background-color: #f5f5f5;
+    }
+    
+    .product-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
 
@@ -32,6 +51,10 @@
       <div class="products-container">
         
         <div class="product-card">
+          <div class="product-image-container">
+            <!-- SOSTITUISCI IL PERCORSO DELL'IMMAGINE QUI -->
+            <img class="product-image" src="images/notebook-ufficio.jpg" alt="Notebook da ufficio">
+          </div>
           <div class="product-info">
             <h3>Notebook da ufficio</h3>
             <span class="price">499€</span>
@@ -46,6 +69,10 @@
         </div>
 
         <div class="product-card">
+          <div class="product-image-container">
+            <!-- SOSTITUISCI IL PERCORSO DELL'IMMAGINE QUI -->
+            <img class="product-image" src="pc 3060.jpg" alt="PC Gaming">
+          </div>
           <div class="product-info">
             <h3>PC Gaming</h3>
             <span class="price">899€</span>
@@ -60,6 +87,10 @@
         </div>
 
         <div class="product-card">
+          <div class="product-image-container">
+            <!-- SOSTITUISCI IL PERCORSO DELL'IMMAGINE QUI -->
+            <img class="product-image" src="images/workstation.jpg" alt="Workstation">
+          </div>
           <div class="product-info">
             <h3>Workstation</h3>
             <span class="price">1.299€</span>
@@ -74,6 +105,10 @@
         </div>
 
         <div class="product-card">
+          <div class="product-image-container">
+            <!-- SOSTITUISCI IL PERCORSO DELL'IMMAGINE QUI -->
+            <img class="product-image" src="images/ultrabook.jpg" alt="Ultrabook">
+          </div>
           <div class="product-info">
             <h3>Ultrabook</h3>
             <span class="price">799€</span>
@@ -88,6 +123,10 @@
         </div>
 
         <div class="product-card">
+          <div class="product-image-container">
+            <!-- SOSTITUISCI IL PERCORSO DELL'IMMAGINE QUI -->
+            <img class="product-image" src="images/all-in-one.jpg" alt="All-in-One">
+          </div>
           <div class="product-info">
             <h3>All-in-One</h3>
             <span class="price">1.099€</span>
