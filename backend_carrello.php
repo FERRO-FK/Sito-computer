@@ -24,6 +24,10 @@ if (!isset($_SESSION['carrello'])) {
 $action = $_GET['action'] ?? '';
 
 switch ($action) {
+    case 'addToCart':
+        addToCart();
+        break;
+        
     case 'getCart':
         getCart();
         break;
@@ -40,11 +44,33 @@ switch ($action) {
         echo json_encode(['success' => false, 'message' => 'Azione non valida']);
 }
 
+function addToCart() {
+    global $prodotti;
+    
+    $id = (int)($_GET['id'] ?? 0);
+    
+    if (!isset($prodotti[$id])) {
+        echo json_encode(['success' => false, 'message' => 'Prodotto non trovato']);
+        return;
+    }
+    
+    // Aggiungi il prodotto al carrello o incrementa la quantità
+    if (!isset($_SESSION['carrello'][$id])) {
+        $_SESSION['carrello'][$id] = 1;
+    } else {
+        $_SESSION['carrello'][$id]++;
+    }
+    
+    // Restituisci anche i dati aggiornati del carrello
+    getCart();
+}
+
 function getCart() {
     global $prodotti;
     
     $cartItems = [];
     $totale = 0.0;
+    $count = 0;
     
     foreach ($_SESSION['carrello'] as $id => $quantita) {
         if (isset($prodotti[$id])) {
@@ -60,13 +86,15 @@ function getCart() {
             ];
             
             $totale += $subtotale;
+            $count += $quantita;
         }
     }
     
     echo json_encode([
         'success' => true,
         'cartItems' => $cartItems,
-        'totale' => $totale
+        'totale' => $totale,
+        'count' => $count // Nuovo campo per il contatore totale
     ]);
 }
 
@@ -92,7 +120,8 @@ function updateQuantity() {
         }
     }
     
-    echo json_encode(['success' => true]);
+    // Restituisci i dati aggiornati del carrello
+    getCart();
 }
 
 function removeItem() {
@@ -102,6 +131,7 @@ function removeItem() {
         unset($_SESSION['carrello'][$id]);
     }
     
-    echo json_encode(['success' => true]);
+    // Restituisci i dati aggiornati del carrello
+    getCart();
 }
 ?>
