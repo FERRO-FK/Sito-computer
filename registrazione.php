@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id_indirizzo = $pdo->lastInsertId();
 
     // Inseriamo l'utente
-    $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, IDIndirizzo) VALUES (?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, IDIndirizzoc:\Users\Tansi.ene\Desktop\sql.sql) VALUES (?, ?, ?)");
     $stmt->execute([$nome, $mail, $id_indirizzo]);
 
     echo "Registrazione avvenuta con successo!";
