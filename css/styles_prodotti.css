@@ -176,3 +176,45 @@
         align-items: center;
       }
     }
+
+
+    /* Stile per le notifiche */
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      border-radius: 5px;
+      color: white;
+      font-weight: 600;
+      animation: slideIn 0.3s ease-out;
+      z-index: 1000;
+    }
+
+    .success {
+      background-color: #4CAF50;
+    }
+
+    .error {
+      background-color: #F44336;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Stile per il contatore del carrello */
+    .cart-counter {
+      background-color: white;
+      color: #FF6D00;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      margin-left: 5px;
+    }
+ 

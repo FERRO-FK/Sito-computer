@@ -6,11 +6,10 @@
   <title>Prodotti - Tecno shop</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="styles_navbar.css">
-  <link rel="stylesheet" href="styles_prodotti.css">
+  <link rel="stylesheet" href="css/styles_navbar.css">
+  <link rel="stylesheet" href="css/styles_prodotti.css">
 </head>
 <body>
-
   <div class="top-bar">
     <div class="logo">Tecno shop</div>
     <div class="nav-links">
@@ -28,7 +27,6 @@
       <h1>I Nostri Prodotti</h1>
       <p>Scopri la nostra selezione di computer e accessori</p>
     </header>
-
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
@@ -44,7 +42,9 @@
             </div>
           </div>
           <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(1)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+            <a href="#" class="add-to-cart" onclick="addToCart(1); return false;">
+              <i class="fas fa-cart-plus"></i> Aggiungi
+            </a>
             <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
           </div>
         </div>
@@ -61,7 +61,7 @@
             </div>
           </div>
           <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(2)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+            <a href="#" class="add-to-cart" onclick="addToCart(2); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
             <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
           </div>
         </div>
@@ -78,7 +78,7 @@
             </div>
           </div>
           <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(3)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+            <a href="#" class="add-to-cart" onclick="addToCart(3); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
             <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
           </div>
         </div>
@@ -95,7 +95,7 @@
             </div>
           </div>
           <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(4)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+            <a href="#" class="add-to-cart" onclick="addToCart(4); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
             <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
           </div>
         </div>
@@ -112,14 +112,13 @@
             </div>
           </div>
           <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(5)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+            <a href="#" class="add-to-cart" onclick="addToCart(5); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
             <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
           </div>
         </div>
       </div>
     </section>
   </div>
-
   <footer>
     © 2025 Tecno shop - Tutti i diritti riservati
   </footer>
@@ -130,11 +129,11 @@
       try {
         const response = await fetch('backend_carrello.php?action=addToCart&id=' + productId);
         const data = await response.json();
-        
+
         if(data.success) {
           // Mostra notifica
           showNotification('Prodotto aggiunto al carrello!');
-          
+
           // Aggiorna il contatore del carrello (se presente)
           updateCartCounter();
         } else {
@@ -152,7 +151,7 @@
       notification.className = `notification ${type}`;
       notification.textContent = message;
       document.body.appendChild(notification);
-      
+
       setTimeout(() => {
         notification.remove();
       }, 3000);
@@ -165,12 +164,12 @@
         try {
           const response = await fetch('backend_carrello.php?action=getCount');
           const data = await response.json();
-          
+
           if(data.success) {
             // Rimuovi il contatore esistente se presente
             const existingCounter = cartCounter.querySelector('.cart-counter');
             if(existingCounter) existingCounter.remove();
-            
+
             // Aggiungi il nuovo contatore se ci sono articoli
             if(data.count > 0) {
               const counter = document.createElement('span');
@@ -189,6 +188,9 @@
     document.addEventListener('DOMContentLoaded', updateCartCounter);
   </script>
 
+<<<<<<< HEAD
+
+=======
   <style>
     /* Stile per le notifiche */
     .notification {
@@ -202,15 +204,12 @@
       animation: slideIn 0.3s ease-out;
       z-index: 1000;
     }
-
     .success {
       background-color: #4CAF50;
     }
-
     .error {
       background-color: #F44336;
     }
-
     @keyframes slideIn {
       from { transform: translateY(100px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -230,5 +229,6 @@
       margin-left: 5px;
     }
   </style>
+>>>>>>> origin/T2
 </body>
 </html>
