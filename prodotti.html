@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="css/styles_prodotti.css">
 </head>
 <body>
-
   <div class="top-bar">
     <div class="logo">Tecno shop</div>
     <div class="nav-links">
@@ -28,7 +27,6 @@
       <h1>I Nostri Prodotti</h1>
       <p>Scopri la nostra selezione di computer e accessori</p>
     </header>
-
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
@@ -121,7 +119,6 @@
       </div>
     </section>
   </div>
-
   <footer>
     © 2025 Tecno shop - Tutti i diritti riservati
   </footer>
@@ -132,11 +129,11 @@
       try {
         const response = await fetch('backend_carrello.php?action=addToCart&id=' + productId);
         const data = await response.json();
-        
+
         if(data.success) {
           // Mostra notifica
           showNotification('Prodotto aggiunto al carrello!');
-          
+
           // Aggiorna il contatore del carrello (se presente)
           updateCartCounter();
         } else {
@@ -154,7 +151,7 @@
       notification.className = `notification ${type}`;
       notification.textContent = message;
       document.body.appendChild(notification);
-      
+
       setTimeout(() => {
         notification.remove();
       }, 3000);
@@ -167,12 +164,12 @@
         try {
           const response = await fetch('backend_carrello.php?action=getCount');
           const data = await response.json();
-          
+
           if(data.success) {
             // Rimuovi il contatore esistente se presente
             const existingCounter = cartCounter.querySelector('.cart-counter');
             if(existingCounter) existingCounter.remove();
-            
+
             // Aggiungi il nuovo contatore se ci sono articoli
             if(data.count > 0) {
               const counter = document.createElement('span');
@@ -191,6 +188,47 @@
     document.addEventListener('DOMContentLoaded', updateCartCounter);
   </script>
 
+<<<<<<< HEAD
 
+=======
+  <style>
+    /* Stile per le notifiche */
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      border-radius: 5px;
+      color: white;
+      font-weight: 600;
+      animation: slideIn 0.3s ease-out;
+      z-index: 1000;
+    }
+    .success {
+      background-color: #4CAF50;
+    }
+    .error {
+      background-color: #F44336;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Stile per il contatore del carrello */
+    .cart-counter {
+      background-color: white;
+      color: #FF6D00;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      margin-left: 5px;
+    }
+  </style>
+>>>>>>> origin/T2
 </body>
 </html>
