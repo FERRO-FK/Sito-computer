@@ -19,7 +19,6 @@
       <a href="carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="contatti.html"><i class="fas fa-envelope"></i> Contatti</a>
       <a href="login.html"><i class="fas fa-user"></i> Login</a>
-
     </div>
   </div>
 
@@ -32,90 +31,132 @@
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
+
+        <!-- PRODOTTO 1 -->
         <div class="product-card" data-id="1">
-          <div class="product-info">
-            <h3>Notebook da ufficio</h3>
-            <span class="price">499€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Core i5</p>
-              <p><i class="fas fa-memory"></i> 8GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 256GB</p>
-              <p><i class="fas fa-tv"></i> 15.6" Full HD</p>
+          <div style="display: flex;">
+            <div class="product-content">
+              <div class="product-info">
+                <h3>Notebook da ufficio</h3>
+                <span class="price">499€</span>
+                <div class="specs">
+                  <p><i class="fas fa-microchip"></i> Intel Core i5</p>
+                  <p><i class="fas fa-memory"></i> 8GB RAM</p>
+                  <p><i class="fas fa-hdd"></i> SSD 256GB</p>
+                  <p><i class="fas fa-tv"></i> 15.6" Full HD</p>
+                </div>
+              </div>
+              <div class="product-actions">
+                <a href="#" class="add-to-cart" onclick="addToCart(1)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+                <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+              </div>
             </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(1)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+            <div class="product-image-container">
+              <img src="img/notebook.jpg" alt="Notebook da ufficio" class="product-image" />
+            </div>
           </div>
         </div>
 
+        <!-- PRODOTTO 2 -->
         <div class="product-card" data-id="2">
-          <div class="product-info">
-            <h3>PC Gaming</h3>
-            <span class="price">899€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> AMD Ryzen 7</p>
-              <p><i class="fas fa-memory"></i> 16GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-              <p><i class="fas fa-fan"></i> NVIDIA RTX 3060</p>
+          <div style="display: flex;">
+            <div class="product-content">
+              <div class="product-info">
+                <h3>PC Gaming</h3>
+                <span class="price">899€</span>
+                <div class="specs">
+                  <p><i class="fas fa-microchip"></i> AMD Ryzen 7</p>
+                  <p><i class="fas fa-memory"></i> 16GB RAM</p>
+                  <p><i class="fas fa-hdd"></i> SSD 512GB</p>
+                  <p><i class="fas fa-fan"></i> NVIDIA RTX 3060</p>
+                </div>
+              </div>
+              <div class="product-actions">
+                <a href="#" class="add-to-cart" onclick="addToCart(2)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+                <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+              </div>
             </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(2)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+            <div class="product-image-container">
+              <img src="img/gaming.jpg" alt="PC Gaming" class="product-image" />
+            </div>
           </div>
         </div>
 
+        <!-- PRODOTTO 3 -->
         <div class="product-card" data-id="3">
-          <div class="product-info">
-            <h3>Workstation</h3>
-            <span class="price">1.299€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Xeon</p>
-              <p><i class="fas fa-memory"></i> 32GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 1TB</p>
-              <p><i class="fas fa-certificate"></i> Quadro RTX 4000</p>
+          <div style="display: flex;">
+            <div class="product-content">
+              <div class="product-info">
+                <h3>Workstation</h3>
+                <span class="price">1.299€</span>
+                <div class="specs">
+                  <p><i class="fas fa-microchip"></i> Intel Xeon</p>
+                  <p><i class="fas fa-memory"></i> 32GB RAM</p>
+                  <p><i class="fas fa-hdd"></i> SSD 1TB</p>
+                  <p><i class="fas fa-certificate"></i> Quadro RTX 4000</p>
+                </div>
+              </div>
+              <div class="product-actions">
+                <a href="#" class="add-to-cart" onclick="addToCart(3)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+                <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+              </div>
             </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(3)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+            <div class="product-image-container">
+              <img src="img/workstation.jpg" alt="Workstation" class="product-image" />
+            </div>
           </div>
         </div>
 
+        <!-- PRODOTTO 4 -->
         <div class="product-card" data-id="4">
-          <div class="product-info">
-            <h3>Ultrabook</h3>
-            <span class="price">799€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Core i7</p>
-              <p><i class="fas fa-memory"></i> 16GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-              <p><i class="fas fa-weight"></i> Solo 1.2kg</p>
+          <div style="display: flex;">
+            <div class="product-content">
+              <div class="product-info">
+                <h3>Ultrabook</h3>
+                <span class="price">799€</span>
+                <div class="specs">
+                  <p><i class="fas fa-microchip"></i> Intel Core i7</p>
+                  <p><i class="fas fa-memory"></i> 16GB RAM</p>
+                  <p><i class="fas fa-hdd"></i> SSD 512GB</p>
+                  <p><i class="fas fa-weight"></i> Solo 1.2kg</p>
+                </div>
+              </div>
+              <div class="product-actions">
+                <a href="#" class="add-to-cart" onclick="addToCart(4)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+                <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+              </div>
             </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(4)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+            <div class="product-image-container">
+              <img src="img/ultrabook.jpg" alt="Ultrabook" class="product-image" />
+            </div>
           </div>
         </div>
 
+        <!-- PRODOTTO 5 -->
         <div class="product-card" data-id="5">
-          <div class="product-info">
-            <h3>All-in-One</h3>
-            <span class="price">1.099€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Core i5</p>
-              <p><i class="fas fa-memory"></i> 12GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-              <p><i class="fas fa-tv"></i> 24" 4K Touch</p>
+          <div style="display: flex;">
+            <div class="product-content">
+              <div class="product-info">
+                <h3>All-in-One</h3>
+                <span class="price">1.099€</span>
+                <div class="specs">
+                  <p><i class="fas fa-microchip"></i> Intel Core i5</p>
+                  <p><i class="fas fa-memory"></i> 12GB RAM</p>
+                  <p><i class="fas fa-hdd"></i> SSD 512GB</p>
+                  <p><i class="fas fa-tv"></i> 24" 4K Touch</p>
+                </div>
+              </div>
+              <div class="product-actions">
+                <a href="#" class="add-to-cart" onclick="addToCart(5)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+                <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+              </div>
+            </div>
+            <div class="product-image-container">
+              <img src="img/allinone.jpg" alt="All-in-One" class="product-image" />
             </div>
           </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(5)"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-          </div>
         </div>
+
       </div>
     </section>
   </div>
@@ -124,18 +165,14 @@
     © 2025 Tecno shop - Tutti i diritti riservati
   </footer>
 
+  <!-- Script JS (identico all’originale, mantenuto per funzionamento carrello) -->
   <script>
-    // Funzione per aggiungere al carrello
     async function addToCart(productId) {
       try {
         const response = await fetch('backend_carrello.php?action=addToCart&id=' + productId);
         const data = await response.json();
-        
         if(data.success) {
-          // Mostra notifica
           showNotification('Prodotto aggiunto al carrello!');
-          
-          // Aggiorna il contatore del carrello (se presente)
           updateCartCounter();
         } else {
           showNotification('Errore: ' + data.message, 'error');
@@ -144,34 +181,25 @@
         console.error('Errore:', error);
         showNotification('Errore di connessione', 'error');
       }
-    } 
+    }
 
-    // Mostra una notifica temporanea
     function showNotification(message, type = 'success') {
       const notification = document.createElement('div');
       notification.className = `notification ${type}`;
       notification.textContent = message;
       document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        notification.remove();
-      }, 3000);
+      setTimeout(() => notification.remove(), 3000);
     }
 
-    // Aggiorna il contatore del carrello
     async function updateCartCounter() {
       const cartCounter = document.querySelector('.nav-links a[href="carrello.html"]');
       if(cartCounter) {
         try {
           const response = await fetch('backend_carrello.php?action=getCount');
           const data = await response.json();
-          
           if(data.success) {
-            // Rimuovi il contatore esistente se presente
             const existingCounter = cartCounter.querySelector('.cart-counter');
             if(existingCounter) existingCounter.remove();
-            
-            // Aggiungi il nuovo contatore se ci sono articoli
             if(data.count > 0) {
               const counter = document.createElement('span');
               counter.className = 'cart-counter';
@@ -185,12 +213,10 @@
       }
     }
 
-    // Inizializza il contatore del carrello al caricamento
     document.addEventListener('DOMContentLoaded', updateCartCounter);
   </script>
 
   <style>
-    /* Stile per le notifiche */
     .notification {
       position: fixed;
       bottom: 20px;
@@ -216,7 +242,6 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Stile per il contatore del carrello */
     .cart-counter {
       background-color: white;
       color: #FF6D00;
@@ -228,6 +253,24 @@
       justify-content: center;
       font-size: 0.8rem;
       margin-left: 5px;
+    }
+
+    .product-image-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 20px;
+    }
+
+    .product-image {
+      max-width: 200px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .product-content {
+      flex: 2;
     }
   </style>
 </body>
