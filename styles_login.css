@@ -1,0 +1,80 @@
+/* Reset base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #fff8f1, #ffefe0);
+    color: #333;
+  }
+  
+  /* Contenitore del login */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px); /* sottrae altezza top-bar */
+    padding: 1rem;
+  }
+  
+  /* Box login centrale */
+  .login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-top: 4px solid #FF9100;
+  }
+  
+  /* Titolo login */
+  .login-box h2 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    color: #FF6D00;
+  }
+  
+  /* Gruppi di input */
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  /* Bottone login */
+  .login-button {
+    background-color: #FF9100;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #FF6D00;
+  }
+  
