@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db.php';
+require '../php/db.php';
 
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
     die("Accesso negato.");
@@ -12,7 +12,7 @@ if (isset($_GET['ban']) && isset($_GET['id'])) {
     $id = intval($_GET['id']);
     $stmt = $pdo->prepare("UPDATE utente SET bannato = ? WHERE id = ?");
     $stmt->execute([$ban, $id]);
-    header("Location: admin.php");
+    header("Location: ../php/admin.php");
     exit;
 }
 
@@ -33,9 +33,9 @@ $utenti = $pdo->query("SELECT * FROM utente")->fetchAll();
             <td><?= $u['bannato'] ? 'Sì' : 'No' ?></td>
             <td>
                 <?php if ($u['bannato']): ?>
-                    <a href="admin.php?ban=0&id=<?= $u['id'] ?>">Sblocca</a>
+                    <a href="../php/admin.php?ban=0&id=<?= $u['id'] ?>">Sblocca</a>
                 <?php else: ?>
-                    <a href="admin.php?ban=1&id=<?= $u['id'] ?>">Banna</a>
+                    <a href="../php/admin.php?ban=1&id=<?= $u['id'] ?>">Banna</a>
                 <?php endif; ?>
             </td>
         </tr>

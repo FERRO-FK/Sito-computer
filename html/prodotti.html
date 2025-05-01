@@ -6,18 +6,18 @@
   <title>Prodotti - Tecno shop</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="css/styles_navbar.css">
-  <link rel="stylesheet" href="css/styles_prodotti.css">
+  <link rel="stylesheet" href="../css/styles_navbar.css">
+  <link rel="stylesheet" href="../css/styles_prodotti.css">
 </head>
 <body>
   <div class="top-bar">
     <div class="logo">Tecno shop</div>
     <div class="nav-links">
-      <a href="index.html"><i class="fas fa-home"></i> Home</a>
-      <a href="prodotti.html"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
-      <a href="contatti.html"><i class="fas fa-envelope"></i> Contatti</a>
-      <a href="login.html"><i class="fas fa-user"></i> Login</a>
+      <a href="../html/index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="../html/prodotti.html"><i class="fas fa-laptop"></i> Prodotti</a>
+      <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <a href="../html/contatti.html"><i class="fas fa-envelope"></i> Contatti</a>
+      <a href="../html/login.html"><i class="fas fa-user"></i> Login</a>
     </div>
   </div>
 
@@ -168,7 +168,7 @@
     // Funzione per aggiungere al carrello
     async function addToCart(productId) {
       try {
-        const response = await fetch('backend_carrello.php?action=addToCart&id=' + productId);
+        const response = await fetch('../php/backend_carrello.php?action=addToCart&id=' + productId);
         const data = await response.json();
 
         if(data.success) {
@@ -197,10 +197,10 @@
 
     // Aggiorna il contatore del carrello
     async function updateCartCounter() {
-      const cartCounter = document.querySelector('.nav-links a[href="carrello.html"]');
+      const cartCounter = document.querySelector('.nav-links a[href="../html/carrello.html"]');
       if(cartCounter) {
         try {
-          const response = await fetch('backend_carrello.php?action=getCount');
+          const response = await fetch('../php/backend_carrello.php?action=getCount');
           const data = await response.json();
 
           if(data.success) {

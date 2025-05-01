@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require '../php/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
@@ -37,4 +37,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </form>
 
 
-<a href="login.html">Clicca qui se sei già registrato</a>
+<a href="../html/login.html">Clicca qui se sei già registrato</a>

@@ -6,19 +6,19 @@
   <title>Carrello - Tecno shop</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="css/styles_navbar.css">
-  <link rel="stylesheet" href="css/styles_carrello.css">
+  <link rel="stylesheet" href="../css/styles_navbar.css">
+  <link rel="stylesheet" href="../css/styles_carrello.css">
 </head>
 <body>
 
   <div class="top-bar">
     <div class="logo">Tecno shop</div>
     <div class="nav-links">
-      <a href="index.html"><i class="fas fa-home"></i> Home</a>
-      <a href="prodotti.html"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
-      <a href="contatti.html"><i class="fas fa-envelope"></i> Contatti</a>
-      <a href="login.html"><i class="fas fa-user"></i> Login</a>
+      <a href="../html/index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="../html/prodotti.html"><i class="fas fa-laptop"></i> Prodotti</a>
+      <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <a href="../html/contatti.html"><i class="fas fa-envelope"></i> Contatti</a>
+      <a href="../html/login.html"><i class="fas fa-user"></i> Login</a>
 
     </div>
   </div>
@@ -76,7 +76,7 @@
         </div>
 
         <a href="#" class="checkout-btn">Procedi all'acquisto</a>
-        <a href="index.html" class="continue-shopping"><i class="fas fa-arrow-left"></i> Continua lo shopping</a>
+        <a href="../html/index.html" class="continue-shopping"><i class="fas fa-arrow-left"></i> Continua lo shopping</a>
       </div>
     </div>
   </div>
@@ -98,7 +98,7 @@
     // Carica il carrello dal server PHP
     async function loadCartFromServer() {
       try {
-        const response = await fetch('backend_carrello.php?action=getCart');
+        const response = await fetch('../php/backend_carrello.php?action=getCart');
         const data = await response.json();
         
         if(data.success) {
@@ -126,7 +126,7 @@
         itemElement.className = 'cart-item';
         itemElement.dataset.id = item.id;
         itemElement.innerHTML = `
-          <img src= "${item.nome}.jpg" alt="${item.nome}">
+          <img src= "../${item.nome}.jpg" alt="${item.nome}">
           <div class="item-details">
             <h3>${item.nome}</h3>
             <span class="item-price">${item.prezzo.toFixed(2)}€</span>
@@ -151,7 +151,7 @@
     // Aggiorna la quantità di un articolo
     async function updateQuantity(productId, change) {
       try {
-        const response = await fetch(`backend_carrello.php?action=updateQuantity&id=${productId}&change=${change}`);
+        const response = await fetch(`../php/backend_carrello.php?action=updateQuantity&id=${productId}&change=${change}`);
         const data = await response.json();
         
         if(data.success) {
@@ -168,7 +168,7 @@
     // Rimuove un articolo dal carrello
     async function removeItem(productId) {
       try {
-        const response = await fetch(`backend_carrello.php?action=removeItem&id=${productId}`);
+        const response = await fetch(`../php/backend_carrello.php?action=removeItem&id=${productId}`);
         const data = await response.json();
         
         if(data.success) {
@@ -183,7 +183,7 @@
     }
     async function addToCart(productId) {
     try {
-        const response = await fetch(`backend_carrello.php?action=addToCart&id=${productId}`);
+        const response = await fetch(`../php/backend_carrello.php?action=addToCart&id=${productId}`);
         const data = await response.json();
         
         if(data.success) {
