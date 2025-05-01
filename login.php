@@ -1,28 +1,29 @@
 <?php
-require 'connessionedb.php';
+session_start();
+require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mail = $_POST['mail'];
+    $password = $_POST['pass'];
 
-    $stmt = $pdo->prepare("SELECT utente.nome, indirizzo.citta, indirizzo.via, indirizzo.numerocivico 
-                           FROM utente 
-                           JOIN indirizzo ON utente.id_indirizzo = indirizzo.id
-                           WHERE utente.mail = ?");
+    $stmt = $pdo->prepare("SELECT * FROM utente WHERE mail = ?");
     $stmt->execute([$mail]);
     $user = $stmt->fetch();
 
-    if ($user) {
-        echo "Benvenuto, " . htmlspecialchars($user['nome']) . "!<br>";
-        echo "Abiti a " . htmlspecialchars($user['via']) . " " . htmlspecialchars($user['numerocivico']) . ", " . htmlspecialchars($user['citta']) . ".";
+    if ($user && password_verify($password, $user['pass'])) {
+        $_SESSION['utente_id'] = $user['ID'];
+        $_SESSION['nome'] = $user['Nome'];
+        header("Location: dashboard.php");
+        exit;
     } else {
-        echo "Email non trovata!";
+        echo "Email o password errati.";
     }
 }
 ?>
 
+<h2>Login</h2>
 <form method="post">
     Email: <input type="email" name="mail" required><br>
-    <input type="submit" value="Login">
+    Password: <input type="password" name="password" required><br>
+    <input type="submit" value="Accedi">
 </form>
-
-<a href="registrazione.php">Clicca qui se non hai ancora un account</a>
