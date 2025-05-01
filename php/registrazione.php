@@ -37,4 +37,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </form>
 
 
-<a href="../html/login.html">Clicca qui se sei già registrato</a>
+<a href="../php/login.php">Clicca qui se sei già registrato</a>
