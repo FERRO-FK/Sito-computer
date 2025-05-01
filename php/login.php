@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'db.php';
+require '../db.php';
 
 if (isset($_SESSION['utente_id'])) {
-    header("Location: dashboard.php");
+    header("Location: ../dashboard.php");
     exit;
 }
 
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['utente_id'] = $user['ID'];
         $_SESSION['nome'] = $user['Nome'];
 
-        header("Location: dashboard.php");
+        header("Location: ../dashboard.php");
         
     } else {
         echo "Email o password errati.";

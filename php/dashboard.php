@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'db.php';
+require '../php/db.php';
 
 if (!isset($_SESSION['utente_id'])) {
-    header("Location: login.php");
+    header("Location: ../php/login.php");
     exit;
 }
 
@@ -21,4 +21,4 @@ echo "<p>La tua email è: " . htmlspecialchars($user['mail']) . "</p>";
 echo "<p>Indirizzo: " . htmlspecialchars($user['via']) . " " . htmlspecialchars($user['numerocivico']) . ", " . htmlspecialchars($user['citta']) . "</p>";
 ?>
 
-<a href="logout.php">Logout</a> <a href="index.html">home</a> 
+<a href="../php/logout.php">Logout</a> <a href="../html/index.html">home</a> 
