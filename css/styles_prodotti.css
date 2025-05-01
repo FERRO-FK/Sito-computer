@@ -80,7 +80,74 @@
       margin-bottom: 1.5rem;
       text-align: center;
     }
-
+    .filters-container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .filters-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+    
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .filter-group label {
+      color: #FF6D00;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .filter-select {
+      padding: 0.5rem 1rem;
+      border: 2px solid #FFD6B3;
+      border-radius: 6px;
+      background-color: white;
+      color: #555;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-select:hover {
+      border-color: #FF9100;
+    }
+    
+    .filter-select:focus {
+      outline: none;
+      border-color: #FF6D00;
+      box-shadow: 0 0 0 2px rgba(255, 109, 0, 0.2);
+    }
+    
+    .filter-reset {
+      background-color: #FFD6B3;
+      color: #D84315;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-reset:hover {
+      background-color: #FFB380;
+      color: #BF360C;
+    }
     .products-container {
       display: flex;
       flex-wrap: wrap;
@@ -171,12 +238,25 @@
     }
 
     @media (max-width: 768px) {
-      .products-container {
+      .filters-bar {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+      }
+      
+      .filter-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .filter-select {
+        width: 100%;
+      }
+      
+      .filter-reset {
+        width: 100%;
+        justify-content: center;
       }
     }
-
 
     /* Stile per le notifiche */
     .notification {
