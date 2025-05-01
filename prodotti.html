@@ -18,7 +18,6 @@
       <a href="carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="contatti.html"><i class="fas fa-envelope"></i> Contatti</a>
       <a href="login.html"><i class="fas fa-user"></i> Login</a>
-
     </div>
   </div>
 
@@ -27,10 +26,52 @@
       <h1>I Nostri Prodotti</h1>
       <p>Scopri la nostra selezione di computer e accessori</p>
     </header>
+    
+    <!-- Sezione Filtri -->
+    <div class="filters-container">
+      <div class="filters-bar">
+        <div class="filter-group">
+          <label for="category-filter"><i class="fas fa-filter"></i> Categoria:</label>
+          <select id="category-filter" class="filter-select">
+            <option value="all">Tutte le categorie</option>
+            <option value="notebook">Gaming</option>
+            <option value="gaming">Laptop</option>
+            <option value="workstation">PC da casa</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="price-filter"><i class="fas fa-euro-sign"></i> Prezzo:</label>
+          <select id="price-filter" class="filter-select">
+            <option value="all">Tutti i prezzi</option>
+            <option value="0-500">Fino a 500€</option>
+            <option value="500-1000">500€ - 1000€</option>
+            <option value="1000-1500">1000€ - 1500€</option>
+            <option value="1500+">Oltre 1500€</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="sort-by"><i class="fas fa-sort"></i> Ordina per:</label>
+          <select id="sort-by" class="filter-select">
+            <option value="default">Predefinito</option>
+            <option value="price-asc">Prezzo: crescente</option>
+            <option value="price-desc">Prezzo: decrescente</option>
+            <option value="name-asc">Nome: A-Z</option>
+            <option value="name-desc">Nome: Z-A</option>
+          </select>
+        </div>
+        
+        <button class="filter-reset">
+          <i class="fas fa-sync-alt"></i> Resetta
+        </button>
+      </div>
+    </div>
+    
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
-        <div class="product-card" data-id="1">
+        <div class="product-card" data-id="1" data-category="notebook" data-price="499">
           <div class="product-info">
             <h3>Notebook da ufficio</h3>
             <span class="price">499€</span>
@@ -49,7 +90,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-id="2">
+        <div class="product-card" data-id="2" data-category="gaming" data-price="899">
           <div class="product-info">
             <h3>PC Gaming</h3>
             <span class="price">899€</span>
@@ -66,7 +107,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-id="3">
+        <div class="product-card" data-id="3" data-category="workstation" data-price="1299">
           <div class="product-info">
             <h3>Workstation</h3>
             <span class="price">1.299€</span>
@@ -83,7 +124,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-id="4">
+        <div class="product-card" data-id="4" data-category="ultrabook" data-price="799">
           <div class="product-info">
             <h3>Ultrabook</h3>
             <span class="price">799€</span>
@@ -100,7 +141,7 @@
           </div>
         </div>
 
-        <div class="product-card" data-id="5">
+        <div class="product-card" data-id="5" data-category="all-in-one" data-price="1099">
           <div class="product-info">
             <h3>All-in-One</h3>
             <span class="price">1.099€</span>
@@ -131,10 +172,7 @@
         const data = await response.json();
 
         if(data.success) {
-          // Mostra notifica
           showNotification('Prodotto aggiunto al carrello!');
-
-          // Aggiorna il contatore del carrello (se presente)
           updateCartCounter();
         } else {
           showNotification('Errore: ' + data.message, 'error');
@@ -166,11 +204,9 @@
           const data = await response.json();
 
           if(data.success) {
-            // Rimuovi il contatore esistente se presente
             const existingCounter = cartCounter.querySelector('.cart-counter');
             if(existingCounter) existingCounter.remove();
 
-            // Aggiungi il nuovo contatore se ci sono articoli
             if(data.count > 0) {
               const counter = document.createElement('span');
               counter.className = 'cart-counter';
@@ -187,48 +223,5 @@
     // Inizializza il contatore del carrello al caricamento
     document.addEventListener('DOMContentLoaded', updateCartCounter);
   </script>
-
-<<<<<<< HEAD
-
-=======
-  <style>
-    /* Stile per le notifiche */
-    .notification {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 15px 25px;
-      border-radius: 5px;
-      color: white;
-      font-weight: 600;
-      animation: slideIn 0.3s ease-out;
-      z-index: 1000;
-    }
-    .success {
-      background-color: #4CAF50;
-    }
-    .error {
-      background-color: #F44336;
-    }
-    @keyframes slideIn {
-      from { transform: translateY(100px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Stile per il contatore del carrello */
-    .cart-counter {
-      background-color: white;
-      color: #FF6D00;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      margin-left: 5px;
-    }
-  </style>
->>>>>>> origin/T2
 </body>
 </html>
