@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versione server:              11.6.2-MariaDB - mariadb.org binary distribution
+-- Versione server:              10.4.32-MariaDB - mariadb.org binary distribution
 -- S.O. server:                  Win64
--- HeidiSQL Versione:            12.8.0.6908
+-- HeidiSQL Versione:            12.10.0.7000
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,7 +16,7 @@
 
 
 -- Dump della struttura del database sito
-CREATE DATABASE IF NOT EXISTS `sito` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci */;
+CREATE DATABASE IF NOT EXISTS `sito` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `sito`;
 
 -- Dump della struttura di tabella sito.computer
@@ -25,27 +25,20 @@ CREATE TABLE IF NOT EXISTS `computer` (
   `Descrizione` text DEFAULT NULL,
   `Prezzo` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`IDProdotto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.computer: ~0 rows (circa)
-DELETE FROM `computer`;
+-- L’esportazione dei dati non era selezionata.
 
 -- Dump della struttura di tabella sito.indirizzo
 CREATE TABLE IF NOT EXISTS `indirizzo` (
-  `IDIndirizzo` int(11) NOT NULL AUTO_INCREMENT,
+  `IDIndirizzo` int(11) NOT NULL,
   `Via` varchar(255) DEFAULT NULL,
   `NumeroCivico` varchar(10) DEFAULT NULL,
   `Citta` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`IDIndirizzo`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.indirizzo: ~4 rows (circa)
-DELETE FROM `indirizzo`;
-INSERT INTO `indirizzo` (`IDIndirizzo`, `Via`, `NumeroCivico`, `Citta`) VALUES
-	(1, 'via ferretti ', '89', 'ugotown'),
-	(2, 'via ferretti ', '89', 'ugotown'),
-	(3, 'via ferretti ', '89', 'ugotown'),
-	(4, 'via ferretti ', '89', 'ugotown');
+-- L’esportazione dei dati non era selezionata.
 
 -- Dump della struttura di tabella sito.ordine
 CREATE TABLE IF NOT EXISTS `ordine` (
@@ -57,24 +50,9 @@ CREATE TABLE IF NOT EXISTS `ordine` (
   PRIMARY KEY (`ID`),
   KEY `IDSpedizione` (`IDSpedizione`),
   CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`IDSpedizione`) REFERENCES `indirizzo` (`IDIndirizzo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.ordine: ~0 rows (circa)
-DELETE FROM `ordine`;
-
--- Dump della struttura di tabella sito.preferenze
-CREATE TABLE IF NOT EXISTS `preferenze` (
-  `IDUtente` int(11) NOT NULL,
-  `IDTag` int(11) NOT NULL,
-  `Punteggio` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDUtente`,`IDTag`),
-  KEY `IDTag` (`IDTag`),
-  CONSTRAINT `preferenze_ibfk_1` FOREIGN KEY (`IDUtente`) REFERENCES `utente` (`ID`),
-  CONSTRAINT `preferenze_ibfk_2` FOREIGN KEY (`IDTag`) REFERENCES `tag` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
--- Dump dei dati della tabella sito.preferenze: ~0 rows (circa)
-DELETE FROM `preferenze`;
+-- L’esportazione dei dati non era selezionata.
 
 -- Dump della struttura di tabella sito.recensione
 CREATE TABLE IF NOT EXISTS `recensione` (
@@ -85,36 +63,24 @@ CREATE TABLE IF NOT EXISTS `recensione` (
   PRIMARY KEY (`IDRecensione`),
   KEY `IDUtente` (`IDUtente`),
   CONSTRAINT `recensione_ibfk_1` FOREIGN KEY (`IDUtente`) REFERENCES `utente` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.recensione: ~0 rows (circa)
-DELETE FROM `recensione`;
-
--- Dump della struttura di tabella sito.tag
-CREATE TABLE IF NOT EXISTS `tag` (
-  `ID` int(11) NOT NULL,
-  `Nome` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
--- Dump dei dati della tabella sito.tag: ~0 rows (circa)
-DELETE FROM `tag`;
+-- L’esportazione dei dati non era selezionata.
 
 -- Dump della struttura di tabella sito.utente
 CREATE TABLE IF NOT EXISTS `utente` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL,
   `Nome` varchar(100) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
   `IDIndirizzo` int(11) DEFAULT NULL,
+  `pass` varchar(100) DEFAULT NULL,
+  `banned` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`ID`),
   KEY `IDIndirizzo` (`IDIndirizzo`),
   CONSTRAINT `utente_ibfk_1` FOREIGN KEY (`IDIndirizzo`) REFERENCES `indirizzo` (`IDIndirizzo`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.utente: ~1 rows (circa)
-DELETE FROM `utente`;
-INSERT INTO `utente` (`ID`, `Nome`, `mail`, `IDIndirizzo`) VALUES
-	(1, 'puzzone', 'zucca@gmail.com', 4);
+-- L’esportazione dei dati non era selezionata.
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
