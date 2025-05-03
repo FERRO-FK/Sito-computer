@@ -1,3 +1,13 @@
+<?php
+session_start();
+require '../php/db.php';
+
+if (isset($_SESSION['utente_id'])) {
+    header("Location: ../php/dashboard.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -34,23 +44,21 @@
           <input type="password" id="pass" name="pass" required placeholder="Inserisci password">
         </div>
         <button type="submit" class="login-button">Login</button>
+        
       </form>
+      <a href="../php/registrazione.php">
+      
+   <button class="login-button" >Clicca qui se non sei ancora registrato</button>
+    </a>
     </div>
   </div>
 </body>
 </html>
-<a href="../php/registrazione.php">Clicca qui per registrarti</a>
+
+
+
 
 <?php
-session_start();
-require '../php/db.php';
-
-if (isset($_SESSION['utente_id'])) {
-    header("Location: ../dashboard.php");
-    exit;
-}
-
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mail = $_POST['mail'];
@@ -64,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['utente_id'] = $user['ID'];
         $_SESSION['nome'] = $user['Nome'];
 
-        header("Location: ../dashboard.php");
+        header("Location: ../php/dashboard.php");
         
     } else {
         echo "Email o password errati.";
@@ -72,9 +80,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<h2>Login</h2>
-<form method="post">
-    Email: <input type="email" name="mail" required><br>
-    Password: <input type="password" name="pass" required><br>
-    <input type="submit" value="Accedi">
-</form>
+

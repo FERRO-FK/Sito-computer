@@ -2,7 +2,7 @@
 $host = 'localhost';
 $db   = 'sito';
 $user = 'root';
-$pass = 'vc-mob2-12';
+$pass = 'vc-mob2-21';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

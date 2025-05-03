@@ -1,3 +1,28 @@
+<?php
+session_start();
+require '../php/db.php';
+$username = "Login";
+
+if (isset($_SESSION['utente_id'])) {
+  $utente_id = $_SESSION['utente_id'];
+$stmt = $pdo->prepare("SELECT utente.nome, mail, indirizzo.via, indirizzo.numerocivico, indirizzo.citta
+                       FROM utente 
+                       JOIN indirizzo ON utente.IDindirizzo = indirizzo.IDindirizzo
+                       WHERE utente.id = ?");
+$stmt->execute([$utente_id]);
+$user = $stmt->fetch();
+$username = $user['nome'];
+
+}
+
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -21,7 +46,7 @@
       <a href="../html/prodotti.html"><i class="fas fa-laptop"></i> Prodotti</a>
       <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="#"><i class="fas fa-envelope"></i> Contatti</a>
-      <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
+      <a href="../php/login.php"><i class="fas fa-user"></i> <?php echo $username ; ?></a>
     </div>
   </div>
 
@@ -145,3 +170,4 @@
 
 </body>
 </html>
+

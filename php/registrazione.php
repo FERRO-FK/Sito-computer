@@ -24,7 +24,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Registrazione completata!";
 }
 ?>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tecno Shop - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles_navbar.css">
+  <link rel="stylesheet" href="../css/styles_login.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="logo" onclick="window.location.href='html/index.php'">Tecno Shop</div>
+    <div class="nav-links">
+      <a href="../html/index.php"><i class="fas fa-home"></i> Home</a>
+      <a href="../html/prodotti.html"><i class="fas fa-laptop"></i> Prodotti</a>
+      <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <a href="#"><i class="fas fa-envelope"></i> Contatti</a>
+      <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
+    </div>
+  </div>
 
+
+    </div>
+  </div>
+</body>
+</html>ò
 <h2>Registrazione</h2>
 <form method="post">
     Nome: <input type="text" name="nome" required><br>
