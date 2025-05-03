@@ -21,33 +21,31 @@ USE `sito`;
 
 -- Dump della struttura di tabella sito.computer
 CREATE TABLE IF NOT EXISTS `computer` (
-  `IDProdotto` int(11) NOT NULL,
+  `IDProdotto` INT AUTO_INCREMENT PRIMARY KEY,
+  `Nome` varchar(100) DEFAULT NULL,
   `Descrizione` text DEFAULT NULL,
-  `Prezzo` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`IDProdotto`)
+  `Prezzo` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- L’esportazione dei dati non era selezionata.
 
 -- Dump della struttura di tabella sito.indirizzo
 CREATE TABLE IF NOT EXISTS `indirizzo` (
-  `IDIndirizzo` int(11) NOT NULL,
+  `IDIndirizzo` INT AUTO_INCREMENT PRIMARY KEY,
   `Via` varchar(255) DEFAULT NULL,
   `NumeroCivico` varchar(10) DEFAULT NULL,
-  `Citta` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`IDIndirizzo`)
+  `Citta` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- L’esportazione dei dati non era selezionata.
 
 -- Dump della struttura di tabella sito.ordine
 CREATE TABLE IF NOT EXISTS `ordine` (
-  `ID` int(11) NOT NULL,
+  `ID` INT AUTO_INCREMENT PRIMARY KEY,
   `Stato` varchar(50) DEFAULT NULL,
   `Totale` decimal(10,2) DEFAULT NULL,
   `Data` date DEFAULT NULL,
   `IDSpedizione` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
   KEY `IDSpedizione` (`IDSpedizione`),
   CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`IDSpedizione`) REFERENCES `indirizzo` (`IDIndirizzo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -56,11 +54,10 @@ CREATE TABLE IF NOT EXISTS `ordine` (
 
 -- Dump della struttura di tabella sito.recensione
 CREATE TABLE IF NOT EXISTS `recensione` (
-  `IDRecensione` int(11) NOT NULL,
+  `IDRecensione` INT AUTO_INCREMENT PRIMARY KEY,
   `Punteggio` int(11) DEFAULT NULL CHECK (`Punteggio` between 1 and 5),
   `Descrizione` text DEFAULT NULL,
   `IDUtente` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IDRecensione`),
   KEY `IDUtente` (`IDUtente`),
   CONSTRAINT `recensione_ibfk_1` FOREIGN KEY (`IDUtente`) REFERENCES `utente` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -69,18 +66,43 @@ CREATE TABLE IF NOT EXISTS `recensione` (
 
 -- Dump della struttura di tabella sito.utente
 CREATE TABLE IF NOT EXISTS `utente` (
-  `ID` int(11) NOT NULL,
+  `ID` INT AUTO_INCREMENT PRIMARY KEY,
   `Nome` varchar(100) DEFAULT NULL,
+  `Cognome` varchar(100) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
   `IDIndirizzo` int(11) DEFAULT NULL,
   `pass` varchar(100) DEFAULT NULL,
   `banned` tinyint(4) DEFAULT 0,
-  PRIMARY KEY (`ID`),
   KEY `IDIndirizzo` (`IDIndirizzo`),
   CONSTRAINT `utente_ibfk_1` FOREIGN KEY (`IDIndirizzo`) REFERENCES `indirizzo` (`IDIndirizzo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- L’esportazione dei dati non era selezionata.
+
+-- Dump della struttura di tabella sito.tag
+CREATE TABLE IF NOT EXISTS `tag` (
+  `IdTag` INT AUTO_INCREMENT PRIMARY KEY,
+  `Nome` VARCHAR(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dump della struttura di tabella sito.interessiUtente
+CREATE TABLE IF NOT EXISTS `interessiUtente` (
+  `IdUtente` INT NOT NULL,
+  `IdTag` INT NOT NULL,
+  `Punteggio` INT DEFAULT 0,
+  PRIMARY KEY (`IdUtente`, `IdTag`),
+  CONSTRAINT `fk_interessiutente_utente` FOREIGN KEY (`IdUtente`) REFERENCES `utente` (`ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_interessiutente_tag` FOREIGN KEY (`IdTag`) REFERENCES `Tag` (`IdTag`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Dump della struttura di tabella sito.tagComputer
+CREATE TABLE IF NOT EXISTS `tagComputer` (
+  `IDProdotto` INT NOT NULL,
+  `IdTag` INT NOT NULL,
+  PRIMARY KEY (`IDProdotto`, `IdTag`),
+  CONSTRAINT `fk_tagcomputer_computer` FOREIGN KEY (`IDProdotto`) REFERENCES `computer` (`IDProdotto`) ON DELETE CASCADE,
+  CONSTRAINT `fk_tagcomputer_tag` FOREIGN KEY (`IdTag`) REFERENCES `Tag` (`IdTag`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
