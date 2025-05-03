@@ -31,6 +31,43 @@
       <p>I migliori computer a prezzi imbattibili</p>
     </header>
 
+    <?php
+      $conn = mysqli_connect("localhost", "root", "root", "sito");
+
+      $idUtente = 1; // <-- Cambia questo con l'ID utente reale
+
+      $sql = "
+          SELECT c.Nome, c.Descrizione, c.Prezzo
+          FROM computer c, tagComputer tc, interessiUtente iu
+          WHERE c.IDProdotto = tc.IDProdotto
+          AND tc.IdTag = iu.IdTag
+          AND iu.IdUtente = ?
+          ORDER BY iu.Punteggio DESC
+          LIMIT 1;
+      ";
+
+      $stmt = mysqli_prepare($conn, $sql);
+      mysqli_stmt_bind_param($stmt, "i", $idUtente);
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      // Inizializza l'array dei risultati
+      $prodotti = [];
+
+      while ($row = mysqli_fetch_assoc($result)) {
+          $prodotti[] = $row;
+      }
+
+      // Stampa l'array risultante
+      echo "<pre>";
+      print_r($prodotti);
+      echo "</pre>";
+
+      // Cleanup
+      mysqli_stmt_close($stmt);
+      mysqli_close($conn);
+    ?>
+
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
