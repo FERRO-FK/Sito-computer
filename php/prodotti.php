@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="../css/styles_navbar.css">
   <link rel="stylesheet" href="../css/styles_prodotti.css">
-  <link rel = "stylesheet" href="../css/styles_footer.css"
+  <link rel = "stylesheet" href="../css/styles_footer.css">
 </head>
 <body>
   <div class="top-bar">
     <div class="logo">Tecno shop</div>
     <div class="nav-links">
       <a href="../html/index.html"><i class="fas fa-home"></i> Home</a>
-      <a href="../html/prodotti.html"><i class="fas fa-laptop"></i> Prodotti</a>
+      <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
       <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
-      <a href="../html/contatti.html"><i class="fas fa-envelope"></i> Contatti</a>
+      <a href="#"><i class="fas fa-envelope"></i> Contatti</a>
       <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
     </div>
   </div>
@@ -27,22 +27,20 @@
       <p>Scopri la nostra selezione di computer e accessori</p>
     </header>
     <?php
-    // Definiamo l'array di tag/categorie
-    $test=0;
-    if ($test=1){
+// Definiamo l'array di tag/categorie         
     $tags = [
         'Gaming' => 'gaming',
-        'Nvdia' => 'Nvdia'
-        'AMD' => 'AMD'
-        'Intel' => 'Intel'
+        'Nvdia' => 'Nvdia',
+        'AMD' => 'AMD',
+        'Intel' => 'Intel',
         'Laptop' => 'laptop',
         'PC da casa' => 'pc-casa',
         'Leggerissimo' => 'leggero',
         'Video editing' => 'video editing',
-        'All-in-Inclusive' => 'all-in-inclusive'
+        'All-in-Inclusive' => 'all-in-inclusive',
         'Professionele' => 'professionale'
-    ];};
-    ?>
+    ];
+?>
     <!-- Sezione Filtri -->
     <div class="filters-container">
       <div class="filters-bar">
@@ -89,92 +87,108 @@
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
-        <div class="product-card" data-id="1" data-category="laptop" data-price="499">
-          <div class="product-info">
-            <h3>Laptop HP</h3>
-            <span class="price">549€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Core i5-1235U</p>
-              <p><i class="fas fa-memory"></i> 8GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 256GB</p>
-              <p><i class="fas fa-tv"></i> 17,3" Full HD IPS Antiriflesso</p>
-            </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(1); return false;">
-              <i class="fas fa-cart-plus"></i> Aggiungi
-            </a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-          </div>
+      <div class="product-card" data-id="1" data-category="laptop" data-price="499">
+    <div class="product-image-container">
+        <img class="product-image" src="" alt="Laptop HP">
+    </div>
+    <div class="product-info">
+        <h3>Laptop HP</h3>
+        <span class="price">549€</span>
+        <div class="specs">
+            <p><i class="fas fa-microchip"></i> Intel Core i5-1235U</p>
+            <p><i class="fas fa-memory"></i> 8GB RAM</p>
+            <p><i class="fas fa-hdd"></i> SSD 256GB</p>
+            <p><i class="fas fa-tv"></i> 17,3" Full HD IPS Antiriflesso</p>
         </div>
+    </div>
+    <div class="product-actions">
+        <a href="#" class="add-to-cart" onclick="addToCart(1); return false;">
+            <i class="fas fa-cart-plus"></i> Aggiungi
+        </a>
+        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+    </div>
+</div>
 
-        <div class="product-card" data-id="2" data-category="gaming" data-price="899">
-          <div class="product-info">
-            <h3>PC Gaming</h3>
-            <span class="price">899€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> AMD Ryzen 7</p>
-              <p><i class="fas fa-memory"></i> 16GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-              <p><i class="fas fa-fan"></i> NVIDIA RTX 3060</p>
-            </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(2); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-          </div>
+<div class="product-card" data-id="2" data-category="gaming" data-price="899">
+    <div class="product-image-container">
+        <img class="product-image" src="../PC Gaming.jpg" alt="PC Gaming">
+    </div>
+    <div class="product-info">
+        <h3>PC Gaming</h3>
+        <span class="price">899€</span>
+        <div class="specs">
+            <p><i class="fas fa-microchip"></i> AMD Ryzen 7</p>
+            <p><i class="fas fa-memory"></i> 16GB RAM</p>
+            <p><i class="fas fa-hdd"></i> SSD 512GB</p>
+            <p><i class="fas fa-fan"></i> NVIDIA RTX 3060</p>
         </div>
+    </div>
+    <div class="product-actions">
+        <a href="#" class="add-to-cart" onclick="addToCart(2); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+    </div>
+</div>
 
-        <div class="product-card" data-id="3" data-category="workstation" data-price="1299">
-          <div class="product-info">
-            <h3>Workstation</h3>
-            <span class="price">1.299€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Xeon</p>
-              <p><i class="fas fa-memory"></i> 32GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 1TB</p>
-              <p><i class="fas fa-certificate"></i> Quadro RTX 4000</p>
-            </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(3); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-          </div>
+<div class="product-card" data-id="3" data-category="workstation" data-price="1299">
+    <div class="product-image-container">
+        <img class="product-image" src="" alt="Workstation">
+    </div>
+    <div class="product-info">
+        <h3>Workstation</h3>
+        <span class="price">1.299€</span>
+        <div class="specs">
+            <p><i class="fas fa-microchip"></i> Intel Xeon</p>
+            <p><i class="fas fa-memory"></i> 32GB RAM</p>
+            <p><i class="fas fa-hdd"></i> SSD 1TB</p>
+            <p><i class="fas fa-certificate"></i> Quadro RTX 4000</p>
         </div>
+    </div>
+    <div class="product-actions">
+        <a href="#" class="add-to-cart" onclick="addToCart(3); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+    </div>
+</div>
 
-        <div class="product-card" data-id="4" data-category="ultrabook" data-price="799">
-          <div class="product-info">
-            <h3>Ultrabook</h3>
-            <span class="price">799€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Core i7</p>
-              <p><i class="fas fa-memory"></i> 16GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-              <p><i class="fas fa-weight"></i> Solo 1.2kg</p>
-            </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(4); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-          </div>
+<div class="product-card" data-id="4" data-category="ultrabook" data-price="799">
+    <div class="product-image-container">
+        <img class="product-image" src="" alt="Ultrabook">
+    </div>
+    <div class="product-info">
+        <h3>Ultrabook</h3>
+        <span class="price">799€</span>
+        <div class="specs">
+            <p><i class="fas fa-microchip"></i> Intel Core i7</p>
+            <p><i class="fas fa-memory"></i> 16GB RAM</p>
+            <p><i class="fas fa-hdd"></i> SSD 512GB</p>
+            <p><i class="fas fa-weight"></i> Solo 1.2kg</p>
         </div>
+    </div>
+    <div class="product-actions">
+        <a href="#" class="add-to-cart" onclick="addToCart(4); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+    </div>
+</div>
 
-        <div class="product-card" data-id="5" data-category="all-in-one" data-price="1099">
-          <div class="product-info">
-            <h3>All-in-One</h3>
-            <span class="price">1.099€</span>
-            <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Core i5</p>
-              <p><i class="fas fa-memory"></i> 12GB RAM</p>
-              <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-              <p><i class="fas fa-tv"></i> 24" 4K Touch</p>
-            </div>
-          </div>
-          <div class="product-actions">
-            <a href="#" class="add-to-cart" onclick="addToCart(5); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-            <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-          </div>
+<div class="product-card" data-id="5" data-category="all-in-one" data-price="1099">
+    <div class="product-image-container">
+        <img class="product-image" src="" alt="All-in-One">
+    </div>
+    <div class="product-info">
+        <h3>All-in-One</h3>
+        <span class="price">1.099€</span>
+        <div class="specs">
+            <p><i class="fas fa-microchip"></i> Intel Core i5</p>
+            <p><i class="fas fa-memory"></i> 12GB RAM</p>
+            <p><i class="fas fa-hdd"></i> SSD 512GB</p>
+            <p><i class="fas fa-tv"></i> 24" 4K Touch</p>
         </div>
+    </div>
+    <div class="product-actions">
+        <a href="#" class="add-to-cart" onclick="addToCart(5); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
+        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+    </div>
+</div>
+          
       </div>
     </section>
   </div>
