@@ -21,23 +21,27 @@
       <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
     </div>
   </div>
-
-  <div class="container">
+    <div class="container">
     <header>
       <h1>I Nostri Prodotti</h1>
       <p>Scopri la nostra selezione di computer e accessori</p>
     </header>
     <?php
     // Definiamo l'array di tag/categorie
+    $test=0;
+    if ($test=1){
     $tags = [
         'Gaming' => 'gaming',
+        'Nvdia' => 'Nvdia'
+        'AMD' => 'AMD'
+        'Intel' => 'Intel'
         'Laptop' => 'laptop',
         'PC da casa' => 'pc-casa',
         'Leggerissimo' => 'leggero',
         'Video editing' => 'video editing',
         'All-in-Inclusive' => 'all-in-inclusive'
         'Professionele' => 'professionale'
-    ];
+    ];};
     ?>
     <!-- Sezione Filtri -->
     <div class="filters-container">
@@ -87,13 +91,13 @@
       <div class="products-container">
         <div class="product-card" data-id="1" data-category="laptop" data-price="499">
           <div class="product-info">
-            <h3>Notebook da ufficio</h3>
-            <span class="price">499€</span>
+            <h3>Laptop HP</h3>
+            <span class="price">549€</span>
             <div class="specs">
-              <p><i class="fas fa-microchip"></i> Intel Core i5</p>
+              <p><i class="fas fa-microchip"></i> Intel Core i5-1235U</p>
               <p><i class="fas fa-memory"></i> 8GB RAM</p>
               <p><i class="fas fa-hdd"></i> SSD 256GB</p>
-              <p><i class="fas fa-tv"></i> 15.6" Full HD</p>
+              <p><i class="fas fa-tv"></i> 17,3" Full HD IPS Antiriflesso</p>
             </div>
           </div>
           <div class="product-actions">
