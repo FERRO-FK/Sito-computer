@@ -26,7 +26,18 @@
       <h1>I Nostri Prodotti</h1>
       <p>Scopri la nostra selezione di computer e accessori</p>
     </header>
-    
+    <?php
+    // Definiamo l'array di tag/categorie
+    $tags = [
+        'Gaming' => 'gaming',
+        'Laptop' => 'laptop',
+        'PC da casa' => 'pc-casa',
+        'Leggerissimo' => 'leggero',
+        'Video editing' => 'video editing',
+        'All-in-Inclusive' => 'all-in-inclusive'
+        'Professionele' => 'professionale'
+    ];
+    ?>
     <!-- Sezione Filtri -->
     <div class="filters-container">
       <div class="filters-bar">
@@ -34,9 +45,11 @@
           <label for="category-filter"><i class="fas fa-filter"></i> Categoria:</label>
           <select id="category-filter" class="filter-select">
             <option value="all">Tutte le categorie</option>
-            <option value="notebook">Gaming</option>
-            <option value="gaming">Laptop</option>
-            <option value="workstation">PC da casa</option>
+            <?php foreach ($tags as $label => $value): ?>
+                <option value="<?php echo htmlspecialchars($value); ?>">
+                    <?php echo htmlspecialchars($label); ?>
+                </option>
+            <?php endforeach; ?>
           </select>
         </div>
         
@@ -71,7 +84,7 @@
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
-        <div class="product-card" data-id="1" data-category="notebook" data-price="499">
+        <div class="product-card" data-id="1" data-category="laptop" data-price="499">
           <div class="product-info">
             <h3>Notebook da ufficio</h3>
             <span class="price">499€</span>

@@ -105,11 +105,3 @@
 .product-card a:hover {
     background-color: #FF6D00;
 }
-  
-footer {
-    text-align: center;
-    margin-top: 4rem;
-    padding: 2rem;
-    color: #777;
-    font-size: 0.9rem;
-}

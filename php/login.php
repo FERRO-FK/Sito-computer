@@ -43,7 +43,7 @@
 
 <?php
 session_start();
-require '../db.php';
+require '../php/db.php';
 
 if (isset($_SESSION['utente_id'])) {
     header("Location: ../dashboard.php");
