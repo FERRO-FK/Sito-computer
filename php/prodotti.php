@@ -43,47 +43,165 @@
 ?>
     <!-- Sezione Filtri -->
     <div class="filters-container">
-      <div class="filters-bar">
-        <div class="filter-group">
-          <label for="category-filter"><i class="fas fa-filter"></i> Categoria:</label>
-          <select id="category-filter" class="filter-select">
-            <option value="all">Tutte le categorie</option>
-            <?php foreach ($tags as $label => $value): ?>
-                <option value="<?php echo htmlspecialchars($value); ?>">
-                    <?php echo htmlspecialchars($label); ?>
+      <form id="filters-form" method="GET">
+        <div class="filters-bar">
+          <div class="filter-group">
+            <label for="category-filter"><i class="fas fa-filter"></i> Categoria:</label>
+            <select name="categoria" id="category-filter" class="filter-select">
+              <option value="all" <?php if (($_GET['categoria'] ?? '') === 'all') echo 'selected'; ?>>Tutte le categorie</option>
+              <?php foreach ($tags as $label => $value): ?>
+                <option value="<?php echo htmlspecialchars($value); ?>" <?php if (($_GET['categoria'] ?? '') === $value) echo 'selected'; ?>>
+                  <?php echo htmlspecialchars($label); ?>
                 </option>
-            <?php endforeach; ?>
-          </select>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="price-filter"><i class="fas fa-euro-sign"></i> Prezzo:</label>
+            <select name="prezzo" id="price-filter" class="filter-select">
+              <option value="all" <?php if (($_GET['prezzo'] ?? '') === 'all') echo 'selected'; ?>>Tutti i prezzi</option>
+              <option value="0-500" <?php if (($_GET['prezzo'] ?? '') === '0-500') echo 'selected'; ?>>Fino a 500€</option>
+              <option value="500-1000" <?php if (($_GET['prezzo'] ?? '') === '500-1000') echo 'selected'; ?>>500€ - 1000€</option>
+              <option value="1000-1500" <?php if (($_GET['prezzo'] ?? '') === '1000-1500') echo 'selected'; ?>>1000€ - 1500€</option>
+              <option value="1500+" <?php if (($_GET['prezzo'] ?? '') === '1500+') echo 'selected'; ?>>Oltre 1500€</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sort-by"><i class="fas fa-sort"></i> Ordina per:</label>
+            <select name="ordina" id="sort-by" class="filter-select">
+              <option value="default" <?php if (($_GET['ordina'] ?? '') === 'default') echo 'selected'; ?>>Predefinito</option>
+              <option value="price-asc" <?php if (($_GET['ordina'] ?? '') === 'price-asc') echo 'selected'; ?>>Prezzo: crescente</option>
+              <option value="price-desc" <?php if (($_GET['ordina'] ?? '') === 'price-desc') echo 'selected'; ?>>Prezzo: decrescente</option>
+              <option value="name-asc" <?php if (($_GET['ordina'] ?? '') === 'name-asc') echo 'selected'; ?>>Nome: A-Z</option>
+              <option value="name-desc" <?php if (($_GET['ordina'] ?? '') === 'name-desc') echo 'selected'; ?>>Nome: Z-A</option>
+            </select>
+          </div>
+
+          <button type="reset" class="filter-reset" onclick="window.location.href=window.location.pathname">
+            <i class="fas fa-sync-alt"></i> Resetta
+          </button>
         </div>
-        
-        <div class="filter-group">
-          <label for="price-filter"><i class="fas fa-euro-sign"></i> Prezzo:</label>
-          <select id="price-filter" class="filter-select">
-            <option value="all">Tutti i prezzi</option>
-            <option value="0-500">Fino a 500€</option>
-            <option value="500-1000">500€ - 1000€</option>
-            <option value="1000-1500">1000€ - 1500€</option>
-            <option value="1500+">Oltre 1500€</option>
-          </select>
-        </div>
-        
-        <div class="filter-group">
-          <label for="sort-by"><i class="fas fa-sort"></i> Ordina per:</label>
-          <select id="sort-by" class="filter-select">
-            <option value="default">Predefinito</option>
-            <option value="price-asc">Prezzo: crescente</option>
-            <option value="price-desc">Prezzo: decrescente</option>
-            <option value="name-asc">Nome: A-Z</option>
-            <option value="name-desc">Nome: Z-A</option>
-          </select>
-        </div>
-        
-        <button class="filter-reset">
-          <i class="fas fa-sync-alt"></i> Resetta
-        </button>
-      </div>
+      </form>
     </div>
+
+<!-- Script per invio automatico -->
+<script>
+  document.querySelectorAll('#filters-form select').forEach(select => {
+    select.addEventListener('change', () => {
+      document.getElementById('filters-form').submit();
+    });
+  });
+</script>
     
+    <!-- query per cercare i prodotti-->
+    <?php
+    // Connessione al database
+    $conn = mysqli_connect("localhost", "root", "root", "sito");
+
+    // Recupera l'ID del tag selezionato
+    $categoria = $_GET['categoria'] ?? 'all';
+    $tag_id = null;
+
+    if ($categoria !== 'all') {
+        // Recupera l'ID del tag in base al nome (forzando case-insensitivity)
+        $stmt = $conn->prepare("SELECT IdTag FROM tag WHERE LOWER(Nome) = LOWER(?)");
+        $stmt->bind_param("s", $categoria);
+        $stmt->execute();
+        $stmt->bind_result($tag_id);
+        $stmt->fetch();
+        $stmt->close();
+
+        // Stampa di debug per verificare cosa viene passato
+        echo "Tag selezionato: " . htmlspecialchars($categoria) . "<br>";
+        echo "ID Tag recuperato: " . $tag_id . "<br>";
+    }
+
+    // Costruzione della query SQL
+    $sql = "
+        SELECT DISTINCT c.Nome, c.Descrizione, c.Prezzo
+        FROM computer c
+    ";
+
+    // Join per categoria solo se necessario
+    if ($categoria !== 'all') {
+        $sql .= " INNER JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto ";
+    }
+
+    // Clausola WHERE dinamica
+    $sql .= " WHERE 1 = 1 ";
+
+    $params = [];
+    $types = "";
+
+    // Filtro per categoria (tag)
+    if ($categoria !== 'all' && $tag_id !== null) {
+        $sql .= " AND tc.IdTag = ? ";
+        $params[] = $tag_id;
+        $types .= "i";
+    }
+
+    // Filtro per prezzo
+    $prezzo_filtro = $_GET['prezzo'] ?? 'all';
+    if ($prezzo_filtro === '0-500') {
+        $sql .= " AND c.Prezzo <= ? ";
+        $params[] = 500;
+        $types .= "d";
+    } elseif ($prezzo_filtro === '500-1000') {
+        $sql .= " AND c.Prezzo > ? AND c.Prezzo <= ? ";
+        $params[] = 500;
+        $params[] = 1000;
+        $types .= "dd";
+    } elseif ($prezzo_filtro === '1000-1500') {
+        $sql .= " AND c.Prezzo > ? AND c.Prezzo <= ? ";
+        $params[] = 1000;
+        $params[] = 1500;
+        $types .= "dd";
+    } elseif ($prezzo_filtro === '1500+') {
+        $sql .= " AND c.Prezzo > ? ";
+        $params[] = 1500;
+        $types .= "d";
+    }
+
+    // Ordinamento
+    $sort = $_GET['ordina'] ?? 'default';
+    switch ($sort) {
+        case 'price-asc':
+            $sql .= " ORDER BY c.Prezzo ASC ";
+            break;
+        case 'price-desc':
+            $sql .= " ORDER BY c.Prezzo DESC ";
+            break;
+        case 'name-asc':
+            $sql .= " ORDER BY c.Nome ASC ";
+            break;
+        case 'name-desc':
+            $sql .= " ORDER BY c.Nome DESC ";
+            break;
+        default:
+            // Nessun ordinamento
+            break;
+    }
+
+    // Preparazione e esecuzione della query
+    $stmt = $conn->prepare($sql);
+    if (!empty($params)) {
+        $stmt->bind_param($types, ...$params);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $prodotti = $result->fetch_all(MYSQLI_ASSOC);
+
+    // Stampa a scopo di debug
+    echo "<pre>";
+    print_r($prodotti);
+    echo "</pre>";
+    ?>
+
+
+
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
