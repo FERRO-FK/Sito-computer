@@ -1,23 +1,3 @@
-laptop HP 
-          -->549€
-          -->Notebook HP 17" - 549€
-
-Sperimenta la perfetta combinazione tra potenza e portabilità con il nuovo Notebook HP da 17,3 pollici. 
-Progettato per chi desidera alte prestazioni anche in mobilità, integra un processore Intel Core i5 di 12ª generazione, 
-8GB di RAM veloce e un capiente SSD da 512GB per avvii rapidi e gestione fluida delle attività quotidiane. 
-Il display Full HD IPS da 17,3" assicura immagini nitide e colori brillanti, ideale per lavoro creativo, studio o intrattenimento.
-
-Caratteristiche principali:
-- Processore: Intel Core i5-1235U
-- Memoria RAM: 8GB DDR4 3200MHz
-- Storage: SSD PCIe NVMe da 512GB
-- Display: 17,3" Full HD IPS Antiriflesso
-- Sistema Operativo: Windows 11 Home
-
-Affidati a Tecno shop per portare il tuo lavoro e la tua creatività ovunque senza compromessi!
-
-
-
 PC Gaming 
           -->899€
           -->PC Gaming - 899€
@@ -35,27 +15,7 @@ Caratteristiche principali:
 - Scheda Grafica: NVIDIA RTX 3060 12GB
 - Ideale per: Gaming AAA, streaming, editing video
 
-Non lasciare che la tecnologia ti rallenti: porta il tuo gameplay al livello successivo con Tecno shop!
-
-
-
-PC Fisso Intel I5 
-          -->599€
-          -->PC Office ROMAGNA COMPUTER - 599€
-
-Ottimizza la tua produttività con il PC Office di Romagna Computer, pensato per offrire velocità, affidabilità e prestazioni quotidiane senza compromessi. 
-Con il suo potente processore Intel Core i5 di ultima generazione e ben 32GB di RAM DDR4, questo computer garantisce un multitasking fluido, 
-caricamenti rapidi e un'eccellente gestione delle applicazioni d'ufficio. 
-L'SSD M.2 da 1TB assicura spazio e velocità di archiviazione, mentre Windows 11 Pro fornisce un ambiente di lavoro moderno e sicuro.
-
-Caratteristiche principali:
-- Processore: Intel Core i5-14400
-- Memoria RAM: 32GB DDR4
-- Storage: SSD M.2 NVMe da 1TB
-- Scheda Grafica: Intel UHD 730 integrata
-- Sistema Operativo: Windows 11 Pro
-
-Affidati a Tecno shop per migliorare le tue giornate di lavoro con performance superiori e tecnologia affidabile!
+🎮 Non lasciare che la tecnologia ti rallenti: porta il tuo gameplay al livello successivo con Tecno shop! 🚀
 
 
 
@@ -75,7 +35,7 @@ Caratteristiche principali:
 - Scheda Grafica: Nvidia RTX 4060 8GB Ada Lovelace
 - Case: PCS Spectrum II con 3 ventole RGB
 
-Con Tecno shop sei pronto a dominare ogni partita con stile, velocità e potenza!
+🔥💻 Con Tecno shop sei pronto a dominare ogni partita con stile, velocità e potenza! 💻🔥
 
 
 
@@ -97,14 +57,586 @@ Scheda Grafica: NVIDIA RTX 5080 16GB GDDR7
 
 Raffreddamento: Sistema a liquido RGB con 5 ventole
 
-Massime prestazioni, grafica eccezionale, zero compromessi — solo su Tecno shop.
+🔥🎯 Massime prestazioni, grafica eccezionale, zero compromessi — solo su Tecno shop. 🎯🔥
 
+
+PC Gaming rx 6500 xt
+          -->1.145€
+          -->Preparati a dominare ogni sfida con il nostro PC Gaming di nuova generazione.
+Progettato per prestazioni estreme, questo sistema è alimentato da un potente AMD Ryzen 5 7600X, supportato da 32GB di RAM Corsair VENGEANCE a 5600 MHz per un multitasking reattivo e senza interruzioni.
+L’SSD M.2 Samsung 990 EVO PLUS da 2TB assicura avvii fulminei e ampio spazio per giochi e contenuti.
+La scheda madre ASUS® TUF GAMING B850-PLUS WIFI offre stabilità e connettività avanzata, mentre la scheda grafica AMD RADEON™ RX 6500 XT da 4GB garantisce performance solide nei giochi più popolari.
+Tutto questo con Windows 11 Home, per un’esperienza moderna e fluida fin dal primo avvio.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 5 7600X
+
+RAM: 32GB Corsair VENGEANCE 5600 MHz
+
+Scheda Grafica: AMD RADEON™ RX 6500 XT 4GB
+
+Storage: SSD M.2 Samsung 990 EVO PLUS da 2TB
+
+Sistema operativo: Windows 11 Home
+
+🎮⚡ Spingi al massimo le tue performance: scopri la potenza del vero gaming con Tecno shop! ⚡🎮
+
+
+
+PC Gaming rx 7600 
+          -->950€
+          -->Preparati a dominare ogni sfida con un PC pensato per i veri gamer.
+Con il potente Ryzen 5 di ultima generazione e la scheda grafica Radeon RX 7600 da 8GB, questo sistema è perfetto per affrontare i titoli più moderni in full HD e oltre.
+La RAM DDR5 ad alta frequenza e l’SSD Samsung ultraveloce assicurano caricamenti istantanei e multitasking fluido, mentre il case ARGB aggiunge un tocco di stile a ogni setup.
+Perfetto per chi vuole performance e affidabilità senza compromessi.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 5 7500F (6 Core, fino a 5.0 GHz)
+
+RAM: 16GB DDR5 Corsair VENGEANCE 5200 MHz
+
+Scheda grafica: GIGABYTE Radeon RX 7600 8GB
+
+Storage: SSD Samsung 990 EVO PLUS M.2 1TB NVMe
+
+Case: PCS PRISM II ARGB con raffreddamento ad alte prestazioni
+
+Scritta finale:
+
+🔥 Il gaming ad alte prestazioni inizia qui: accendi la potenza con Tecno shop! 🔥
+
+
+PC Gaming rx 9070 xt 
+          -->2.599€
+          -->Spingi il tuo gaming oltre ogni limite con il massimo della tecnologia.
+Questo PC da battaglia è spinto dal nuovo AMD Ryzen 7 9800X3D, supportato da una scheda grafica Radeon RX 9070 XT da 16GB e ben 32GB di RAM DDR5 ultraveloce.
+L’SSD Samsung 990 PRO da 4TB offre velocità estreme e spazio abbondante per giochi e contenuti.
+Il case Fractal Design Torrent RGB completa il tutto con stile, raffreddamento ottimale e illuminazione spettacolare.
+Ideale per gaming 4K, streaming avanzato e creazione di contenuti professionale.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 7 9800X3D (8 Core, fino a 5.2 GHz, 104 MB cache)
+
+Scheda grafica: Radeon RX 9070 XT 16GB
+
+RAM: 32GB DDR5 Corsair VENGEANCE RGB 6000 MHz
+
+Storage: SSD Samsung 990 PRO M.2 4TB NVMe
+
+Case: Fractal Design Torrent RGB con raffreddamento ad alte prestazioni
+
+Scritta finale:
+
+🚀 La potenza senza compromessi esiste: scoprila oggi su Tecno shop! 💥
+
+
+
+PC Gaming rx 7600 xt
+          -->1.299€
+          -->Preparati a un gaming fluido e reattivo con il nostro PC equipaggiato con il Ryzen 5 7600 e la potente Radeon RX 7600 XT da 16GB.
+Grazie ai 16GB di RAM DDR5 ultraveloce e all’SSD Samsung 990 PRO da 1TB, potrai contare su caricamenti lampo e multitasking impeccabile.
+La scheda madre ASUS TUF X870-PLUS con Wi-Fi 7 assicura connettività di ultima generazione e massima stabilità.
+Il case Corsair 3500X ARGB in vetro temperato unisce estetica aggressiva e flusso d’aria ottimale.
+Perfetto per affrontare giochi AAA, streaming e lavoro creativo.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 5 7600 (6 Core, fino a 5.2 GHz, 38 MB cache)
+
+Scheda grafica: Radeon RX 7600 XT 16GB
+
+RAM: 16GB DDR5 Corsair VENGEANCE RGB 6000 MHz
+
+Storage: SSD Samsung 990 PRO M.2 1TB NVMe
+
+Case: Corsair 3500X ARGB in vetro temperato
+
+Scritta finale:
+
+🔥 Dai energia alle tue sessioni di gioco: performance e stile firmati Tecno shop! ⚡
+
+
+PC Gaming rx 5700 xt
+          -->699€
+          -->Preparati a vivere un'esperienza di gioco senza compromessi con il nostro PC Gaming RX 5700 XT.
+Equipaggiato con un potente processore AMD Ryzen 5 7500F, 8GB di RAM DDR5, e un SSD da 512GB NVMe PCIe, questo PC è progettato per offrirti prestazioni incredibili e velocità eccezionale.
+La scheda grafica GIGABYTE RADEON™ RX 5700 XT ti garantisce immagini realistiche e prestazioni ottimali per affrontare i giochi più recenti a dettagli ultra.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 5 7500F
+
+Memoria RAM: 8GB DDR5
+
+Storage: SSD M.2 512GB
+
+Scheda Grafica: GIGABYTE RADEON™ RX 5700 XT
+
+Alimentatore: CORSAIR 650W CX SERIES™ CX-650
+
+Raffreddamento: Dissipatore PCS FrostFlow 100 V3 Series
+
+Scheda Audio: Audio alta definizione integrato 6 canali
+
+Scheda di rete: Porta LAN 2.5Gbe
+
+🚀 Non lasciare che la tecnologia ti rallenti: porta il tuo gameplay al livello successivo con Tecno shop! 🎮
+
+
+PC Gaming 3050 
+          -->799€
+          -->Preparati a vivere un'esperienza di gioco senza compromessi con il nostro PC Gaming con GeForce RTX 3050.
+Equipaggiato con un potente processore AMD Ryzen 5 9600, 16GB di RAM DDR5, e un SSD da 1TB NVMe PCIe, questo PC è progettato per offrirti prestazioni straordinarie e velocità senza pari.
+La scheda grafica PALIT GEFORCE RTX 3050 da 8GB ti garantirà immagini cristalline e un'esperienza di gioco ultra fluida.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 5 9600
+
+Memoria RAM: 16GB DDR5 Corsair VENGEANCE
+
+Storage: SSD M.2 1TB
+
+Scheda Grafica: PALIT GEFORCE RTX 3050 8GB
+
+Alimentatore: CORSAIR 550W CX SERIES™ CX-550
+
+🚀 Non lasciare che la tecnologia ti rallenti: porta il tuo gameplay al livello successivo con Tecno shop! 🎮
+
+
+
+
+PC Gaming 5060 ti
+          -->1.599€
+          -->Preparati a vivere un'esperienza di gioco senza compromessi con il nostro PC Gaming con GeForce RTX 5060 Ti.
+Equipaggiato con un potente processore AMD Ryzen 7 7800X3D, 16GB di RAM DDR5, e un SSD da 1TB NVMe PCIe, questo PC è progettato per offrirti prestazioni straordinarie e velocità senza pari.
+La scheda grafica MSI GeForce RTX 5060 Ti da 8GB ti garantirà immagini realistiche e prestazioni ottimali per affrontare i giochi più recenti a dettagli ultra.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 7 7800X3D (8 Core, 4,2 GHz - 5,0 GHz, 104 MB Cache, AM5)
+
+Memoria RAM: 16GB DDR5 Corsair Vengeance RGB 5200 MHz (1 x 16GB)
+
+Storage: SSD M.2 Samsung 990 EVO Plus 1TB NVMe PCIe 4.0 & 5.0 (fino a 7150 MB/s R, 6300 MB/s W)
+
+Scheda Grafica: MSI GeForce RTX 5060 Ti 8GB VENTUS 2X OC PLUS (HDMI, 3 x DP)
+
+Alimentatore: CORSAIR 750W CX SERIES™ CX-750
+
+🚀 Non lasciare che la tecnologia ti rallenti: porta il tuo gameplay al livello successivo con Tecno shop! 🎮
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 laptop HP 
-          -->
-          -->
+          -->549€
+          -->Notebook HP 17" - 549€
+
+Sperimenta la perfetta combinazione tra potenza e portabilità con il nuovo Notebook HP da 17,3 pollici. 
+Progettato per chi desidera alte prestazioni anche in mobilità, integra un processore Intel Core i5 di 12ª generazione, 
+8GB di RAM veloce e un capiente SSD da 512GB per avvii rapidi e gestione fluida delle attività quotidiane. 
+Il display Full HD IPS da 17,3" assicura immagini nitide e colori brillanti, ideale per lavoro creativo, studio o intrattenimento.
+
+Caratteristiche principali:
+- Processore: Intel Core i5-1235U
+- Memoria RAM: 8GB DDR4 3200MHz
+- Storage: SSD PCIe NVMe da 512GB
+- Display: 17,3" Full HD IPS Antiriflesso
+- Sistema Operativo: Windows 11 Home
+
+💼 Affidati a Tecno shop per portare il tuo lavoro e la tua creatività ovunque senza compromessi! ✨
 
 
-laptop HP 
-          -->
-          -->
+laptop HP i3-1315u
+          -->359€
+          -->Affidati a prestazioni affidabili e portabilità con il notebook HP 15.6" con Intel Core i3 di 13ª generazione.
+Questo laptop è ideale per uso quotidiano, ufficio, studio e intrattenimento leggero. Con un design elegante e compatto, offre fluidità grazie ai 16GB di RAM DDR4 e all'SSD M.2 da 500GB.
+Lo schermo FHD antiriflesso da 15,6", la tastiera italiana con tastierino numerico, la connettività Wi-Fi/Bluetooth e la batteria a lunga durata completano un pacchetto solido e pronto all’uso.
+Windows 11 Professional e LibreOffice sono già installati, con aggiornamenti e driver pronti grazie alla configurazione iniziale dei tecnici HP.
+Perfetto per lavorare ovunque, senza complicazioni.
+
+Caratteristiche principali:
+
+Processore: Intel Core i3-1315U (6 Core, fino a 4.5 GHz in Turbo Boost)
+
+Memoria RAM: 16GB DDR4
+
+Storage: SSD M.2 PCIe NVMe da 500GB
+
+Display: Schermo 15,6" FHD antiriflesso (Anti-Glare)
+
+Sistema Operativo: Windows 11 Professional preinstallato, LibreOffice incluso
+
+💼 Affidati a Tecno shop per portare il tuo lavoro e la tua creatività ovunque senza compromessi! ✨
+
+
+laptop HP Intel i7 13Th Gen
+          -->819€
+          -->Prestazioni avanzate e design leggero con l'HP 250 G10, il notebook ideale per il business e la produttività in mobilità.
+Dotato del potente processore Intel Core i7-1355U di 13ª generazione (fino a 5 GHz), questo portatile garantisce reattività e multitasking fluido. Il display Full HD da 15.6" antiriflesso assicura una visione confortevole in qualsiasi ambiente.
+Con 32GB di RAM DDR4 e un veloce SSD M.2 PCIe NVMe da 1TB, hai spazio e potenza per affrontare qualsiasi progetto.
+La connettività Wi-Fi 6, il Bluetooth 5.3 e una varietà di porte ti permettono di rimanere sempre collegato. Il tutto completato da Windows 11 Pro e software essenziali già installati per essere operativo fin da subito.
+
+Caratteristiche principali:
+
+Processore: Intel Core i7-1355U (fino a 5.0 GHz, base 1.7 GHz)
+
+Memoria RAM: 32GB DDR4
+
+Storage: SSD PCIe NVMe M.2 da 1TB
+
+Display: Schermo 15.6" FHD antiriflesso (1920x1080, 250 nits)
+
+Sistema Operativo: Windows 11 Pro 64 bit, con LibreOffice, VLC, Chrome e Adobe Reader preinstallati
+
+💼 Affidati a Tecno shop per portare il tuo lavoro e la tua creatività ovunque senza compromessi! 🚀
+
+
+laptop HP Intel N4500
+          -->269€
+          -->HP 250 G9: il notebook essenziale per lo studio, il lavoro e l’intrattenimento quotidiano.
+Compatto e funzionale, questo laptop da 15,6" è dotato di un processore Intel Celeron Dual-Core, 8GB di RAM DDR4 e un veloce SSD da 256GB, garantendo reattività nelle operazioni di base.
+La grafica integrata Intel UHD, la connettività Wi-Fi e le porte USB 3.0 e HDMI lo rendono un’ottima scelta per navigazione, gestione documenti e videolezioni.
+Il tutto con Windows preinstallato, in un design elegante e leggero da portare ovunque.
+
+Caratteristiche principali:
+
+Processore: Intel Celeron Dual-Core (1,1 GHz)
+
+Memoria RAM: 8GB DDR4 (espandibile fino a 16GB)
+
+Storage: SSD da 256GB
+
+Display: Schermo HD da 15,6" (1366x768 pixel)
+
+Sistema Operativo: Windows preinstallato
+
+💻 Perfetto per lo studio e le attività quotidiane. Scegli la semplicità e l’affidabilità di Tecno shop! 📦
+
+
+laptop HP Intel i5-1334u
+          -->689€
+          -->HP ProBook 450 G10: produttività, sicurezza e prestazioni per il tuo lavoro quotidiano.
+Dotato di un processore Intel Core i5 di 13ª generazione con 10 core e tecnologia Turbo Boost fino a 4.6 GHz, questo notebook combina potenza e affidabilità in un corpo compatto e resistente.
+Con 16GB di RAM DDR4 espandibili fino a 64GB, un veloce SSD NVMe da 512GB e grafica Intel Iris Xe, offre multitasking fluido, avvio rapido e prestazioni grafiche ottimizzate.
+Pensato per l’ambiente professionale, include lettore di impronte digitali, tastiera resistente a liquidi, Wi-Fi 6E, doppia USB-C con DisplayPort e una dotazione completa di software già installato.
+Il tutto in un design elegante e robusto, pronto all’uso fin dal primo avvio.
+
+Caratteristiche principali:
+
+Processore: Intel Core i5-1334U (10 core, fino a 4.6 GHz)
+
+Memoria RAM: 16GB DDR4 (espandibile fino a 64GB)
+
+Storage: SSD NVMe da 512GB
+
+Display: Schermo IPS Full HD da 15,6"
+
+Connettività: Wi-Fi 6E, Bluetooth 5.3, doppia USB-C con DisplayPort 2.1
+
+💼 Il tuo compagno ideale per la produttività moderna. Con HP ProBook e Tecno shop, sei sempre un passo avanti! 🚀
+
+
+laptop HP AMD Ryzen-5 7520u
+          -->429€
+          -->HP Notebook 17,3” con AMD Ryzen 5 – Performance e Comfort per ogni attività.
+Scopri la potenza e la praticità di un notebook pensato per semplificarti la vita quotidiana. Con Windows 11, potrai affrontare ogni attività in modo facile, veloce e senza interruzioni. Equipaggiato con un AMD Ryzen 5 7520U e 8 GB di RAM LPDDR5, questo laptop è perfetto per studenti, professionisti e per chi cerca una macchina fluida per multitasking e streaming.
+Il display da 17,3” Full HD IPS offre immagini cristalline e colori vividi, con una luminosità di 300 Nits che garantisce una visione chiara anche in ambienti luminosi.
+Con un SSD NVMe da 512 GB, l'avvio del sistema e dei programmi è rapidissimo. E grazie alla tastiera full size con tastierino numerico e un design robusto e sostenibile, ogni battitura sarà confortevole.
+La batteria a lunga durata con HP Fast Charge ti offre autonomia in movimento, mentre il design elegante e funzionale in Natural Silver si adatta a qualsiasi ambiente.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 5 7520U (potenza per multitasking e streaming)
+
+Memoria: 8 GB di RAM LPDDR5 a 5500 MHz
+
+Storage: SSD NVMe da 512 GB (per avvio e prestazioni rapide)
+
+Display: Schermo da 17,3" Full HD con tecnologia IPS (300 Nits, pannello antiriflesso)
+
+Connettività: HDMI 1.4b, 2 USB-A, 1 USB-C, jack audio (ideale per tutti i dispositivi)
+
+🚀 Affronta ogni sfida con un design elegante e prestazioni impeccabili. Con HP, il lavoro diventa più facile!💻
+
+
+laptop HP AMD Ryzen-7 5700u
+          -->549€
+          -->Il laptop HP con processore AMD Ryzen 7 5700U è ideale per chi cerca prestazioni elevate e multitasking senza compromessi. Con 16GB di RAM e un SSD da 512GB, offre velocità e spazio per ogni esigenza, mentre il display Full HD da 15,6" garantisce un'esperienza visiva ottimale.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 7 5700U, fino a 4,3 GHz
+
+Memoria: 16GB DDR4 RAM, 3200MHz (non espandibile)
+
+Storage: SSD PCIe NVMe M.2 da 512GB
+
+Display: 15,6" Full HD, 250 Nits, Antiriflesso
+
+Autonomia: Fino a 9 ore e 30 minuti, ricarica rapida al 50% in 45 minuti
+
+🎮💼 Perfetto per lavoro e svago, sempre pronto a supportarti!
+
+
+laptop HP AMD Ryzen-7 7730u
+          -->699€
+          -->Il notebook HP IdeaPad Slim 3 è leggero (1,62 kg) e sottile (17,9 mm), perfetto per chi cerca portabilità senza sacrificare prestazioni. Il display Full HD da 15" e Dolby Audio offrono un'esperienza multimediale straordinaria, mentre la batteria con tecnologia RapidCharge permette 2 ore di utilizzo con soli 15 minuti di ricarica.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 7
+
+Memoria: 16GB RAM, 3200MHz
+
+Storage: 1TB HDD
+
+Display: 15" Full HD con Dolby Audio
+
+Autonomia: 2 ore con 15 minuti di ricarica, batteria potenziata
+
+🔒💻 Con lettore di impronte e webcam con otturatore per la privacy, ideale per lavoro e intrattenimento!
+
+
+laptop HP AMD Ryzen-7 7840u
+          -->1.049€
+          -->Il notebook HP con Windows 11 Home è progettato per ottimizzare attività creative, come l'editing video e la grafica. Grazie al potente processore AMD Ryzen 7-7840U, il display OLED 2,8K da 14" e una memoria LPDDR5x, è perfetto per un'esperienza di lavoro fluida e di alta qualità. Inoltre, la batteria ad alta autonomia e la ricarica rapida sono ideali per lavorare in mobilità.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 7-7840U fino a 5,1 GHz, 8 core, 16 thread
+
+Memoria: 16GB LPDDR5x, 6400 MHz
+
+Storage: SSD PCIe NVMe M.2 da 1TB
+
+Display: 14" OLED 2,8K, 2880x1800p, 100% DCI-P3
+
+Autonomia: Fino a 12 ore e 30 min, ricarica rapida in 30 min per il 50%
+
+📸💻 Con fotocamera IR 5 MP, microfoni digitali e un design elegante in metallo, ideale per un utilizzo intensivo!
+
+
+laptop HP AMD Ryzen-5 7430u
+          -->1.359€
+          -->Il notebook HP da 17,3" offre una potente combinazione di prestazioni e comfort, con una cerniera ergonomica e un design a cornice stretta per una visione ottimale. Equipaggiato con un processore AMD Ryzen 5 7430U, 32 GB di RAM e un ampio SSD da 1 TB, è perfetto per il multitasking e per gestire attività intense come streaming, videoconferenze e giochi casuali.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 5 7430U fino a 4,3 GHz, 6 core, 12 thread
+
+Memoria: 32GB DDR4 RAM
+
+Storage: SSD PCIe NVMe M.2 da 1TB
+
+Display: 17,3" FHD (1920x1080), IPS, antiriflesso
+
+Autonomia: Fino a 8 ore di batteria
+
+💻🎧 Connettività avanzata, porte USB-C e HDMI, e una webcam con otturatore privacy per sicurezza e praticità!
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+PC Fisso Intel I5-14400 
+          -->599€
+          -->PC Fisso Intel I5-14400  - 599€
+
+Ottimizza la tua produttività con il PC Office di Romagna Computer, pensato per offrire velocità, affidabilità e prestazioni quotidiane senza compromessi. 
+Con il suo potente processore Intel Core i5 di ultima generazione e ben 32GB di RAM DDR4, questo computer garantisce un multitasking fluido, 
+caricamenti rapidi e un'eccellente gestione delle applicazioni d'ufficio. 
+L'SSD M.2 da 1TB assicura spazio e velocità di archiviazione, mentre Windows 11 Pro fornisce un ambiente di lavoro moderno e sicuro.
+
+Caratteristiche principali:
+- Processore: Intel Core i5-14400
+- Memoria RAM: 32GB DDR4
+- Storage: SSD M.2 NVMe da 1TB
+- Scheda Grafica: Intel UHD 730 integrata
+- Sistema Operativo: Windows 11 Pro
+
+💻 Affidati a Tecno shop per migliorare le tue giornate di lavoro con performance superiori e tecnologia affidabile! 🚀🔧
+
+
+PC Fisso Intel i5-8500
+          -->499€
+          -->Potente e pronto all'uso, questo PC è equipaggiato con un processore Intel i5-8500 a 6 core, 16GB di RAM e SSD NVMe da 512GB, offrendo prestazioni veloci per multitasking e applicazioni professionali.
+Il display Full HD da 23,8" e il sistema audio Dolby garantiscono un'esperienza visiva e sonora di qualità, ideale per lavoro e intrattenimento.
+
+Caratteristiche principali:
+
+Processore: Intel i5-8500 a 6 core
+
+Memoria: 16GB RAM
+
+Storage: SSD M.2 NVMe da 512GB
+
+Display: 23,8" Full HD
+
+Autonomia e Connettività: WiFi, Bluetooth, lettore DVD
+
+💻📈 Preinstallato con Windows 11 Pro e Microsoft Office 2021 per essere subito operativo!
+
+
+PC Fisso Intel i5-12450h
+          -->679€
+          -->Perfetto per produttività, intrattenimento e videochiamate, questo All-in-One da 27" offre prestazioni elevate grazie al processore Intel Core i5 di 12ª generazione, 
+8GB di RAM DDR4 e grafica Intel UHD. Design moderno con cornice sottile e webcam integrata con otturatore per la privacy.
+
+Caratteristiche principali:
+
+Processore: Intel Core i5-12450H (12ª generazione)
+
+RAM: 8GB DDR4
+
+Grafica: Intel UHD integrata
+
+Display: 27" IPS FHD con tecnologia Acer BlueLightShield, reclinabile da -5° a 25°
+
+Webcam: 5 MP con microfoni stereo e otturatore per la privacy
+
+Connettività: Wi-Fi 6E, Bluetooth 5.0, USB 3.2 Gen 1/2, USB-C Gen 2
+
+💡 Ideale per chi cerca un PC elegante, funzionale e completo per casa, studio e ufficio.
+
+
+PC Fisso AMD Ryzen-5 7520u
+          -->890€
+          -->Questo All-in-One HP da 27" è progettato per offrire prestazioni fluide, intrattenimento di qualità e un design moderno e sostenibile.
+Perfetto per l'uso quotidiano, combina velocità, ampio spazio di archiviazione e connettività rapida in un unico dispositivo elegante.
+
+Caratteristiche principali:
+
+Processore: Affidabile CPU da 2,8 GHz per un utilizzo reattivo
+
+Memoria: SSD da 1 TB per avvio rapido e ampio spazio per tutti i file
+
+Grafica: Integrata, ideale per video, streaming e attività quotidiane
+
+Display: Schermo IPS da 27" con risoluzione brillante e ampio angolo di visione
+
+Funzioni extra: HP QuickDrop per trasferimenti wireless da PC a smartphone
+
+Design ecologico: realizzato con plastiche riciclate e materiali sostenibili
+
+💡 Ideale per chi cerca un PC all-in-one affidabile, ecologico e pronto per ogni esigenza quotidiana.
+
+
+PC Fisso Intel i3-1315Uh
+          -->599€
+          -->Questo All-in-One da 23,8" unisce eleganza, performance e versatilità in un unico dispositivo perfetto per casa o ufficio. 
+Ottimo per la produttività quotidiana, garantisce fluidità, reattività e uno stile moderno.
+
+Caratteristiche principali:
+
+Display: pannello IPS Full HD da 23,8" con risoluzione 1920x1080, refresh rate a 100Hz e luminosità fino a 250 nits con tecnologia Low Blue Light
+
+Processore: Intel Core i3 di 13a generazione, prestazioni fluide con consumi contenuti
+
+Storage: SSD M.2 2280 PCIe 4.0x4 NVMe da 512GB, rapido e capiente per tutti i tuoi file
+
+RAM: 8GB DDR5-5200 espandibile fino a 16GB, per adattarsi a ogni esigenza operativa
+
+Accessori: tastiera italiana e mouse Wireless EOS Cloud Grey inclusi, design elegante e minimalista
+
+✨ Ideale per chi cerca un All-in-One compatto, performante e pronto per l’uso quotidiano ✨
+
+
+PC Fisso Intel i5 3570
+          -->209€
+          -->Affidabile e conveniente, questo PC VOKOT con Intel Core i5 di terza generazione è perfetto per l’uso personale quotidiano, grazie alla buona combinazione di potenza, connettività e memoria.
+Il case Middle Tower Leshi offre un design compatto e moderno con porte USB 3.0 e 2.0 integrate per un facile accesso.
+Con 16GB di RAM DDR3 e SSD da 500GB, potrai navigare, lavorare e studiare con tempi di caricamento ridotti.
+La scheda madre H61 con Wi-Fi incluso garantisce una connessione stabile e veloce.
+Il sistema operativo Windows 11 Pro a 64 bit e Office 2019 già installati lo rendono pronto all’uso fin da subito.
+
+Perfetto per l’uso personale, attività da ufficio e navigazione web.
+
+Caratteristiche principali:
+
+  Processore: Intel Core i5-3570 (4 Core, fino a 3.8 GHz, 6 MB cache)
+ 
+  Scheda grafica: Intel HD 2000 integrata
+ 
+  RAM: 16GB DDR3 DIMM (2x8GB)
+ 
+  Storage: SSD SATA da 500GB (fino a 540 MB/s)
+ 
+  Case: Middle Tower Leshi Black con alimentatore da 250W e porte USB 3.0/2.0
+ 
+  Sistema operativo: Windows 11 Pro 64 bit + Office 2019
+
+🔥 Lavora, studia e naviga con semplicità: il tuo PC personale firmato Tecno shop! ⚡
+
+
+PC Fisso Intel Core i7-14700
+          -->1099€
+          -->Preparati a superare i limiti della produttività con la Workstation Desktop Lenovo ThinkStation P2, progettata per i professionisti più esigenti. 
+Con la potenza di elaborazione dei processori Intel Core i7-14700, 20 core e frequenza fino a 4,2 GHz, questa workstation offre prestazioni impeccabili per applicazioni 
+tecniche e creative avanzate. La grafica NVIDIA RTX A2000 12GB assicura una resa visiva perfetta per rendering e progettazioni CAD.
+
+Caratteristiche principali:
+
+Processore: Intel Core i7-14700 (fino a 20 core, 4,2 GHz)
+
+Memoria RAM: fino a 128 GB DDR5
+
+Storage: fino a 12 TB (M.2 PCIe NVMe SSD e HDD SATA)
+
+Scheda Grafica: NVIDIA RTX A2000 12GB
+
+Connettività: USB-C, USB-A, HDMI 2.1, DisplayPort 1.4, Ethernet
+
+Sicurezza: TPM 2.0, BIOS auto-riparante, opzioni di blocco fisico
+
+🚀 Potenzia la tua creatività e produttività con Tecno shop! 💼
+
+
+PC Fisso AMD Ryzen-5 5600G
+          -->529€
+          -->Scopri la potenza e la versatilità del Desktop HP con Windows 11 Home, pensato per soddisfare le esigenze di gaming, multitasking, creatività e produttività.
+Equipaggiato con un processore AMD Ryzen 5 5600G, che offre una frequenza fino a 4,4 GHz, e una GPU integrata AMD Radeon, è la soluzione ideale per una performance bilanciata.
+Con 16 GB di RAM DDR4, 512 GB di SSD PCIe NVMe e numerosi slot di espansione, questo PC si adatta perfettamente a ogni esigenza, dal lavoro smart al gaming entry level.
+
+Caratteristiche principali:
+
+Processore: AMD Ryzen 5 5600G (6 Core, 12 thread, fino a 4,4 GHz)
+
+Memoria RAM: 16 GB DDR4 3200 MHz (single channel)
+
+Storage: 512 GB SSD PCIe Express NVMe, 2 M.2 slot di espansione
+
+Scheda Grafica: AMD Radeon integrata
+
+Connettività: LAN GbE, Wi-Fi, Bluetooth 4.2, 8 USB Type-A, HDMI 1.4b, VGA, RJ-45
+
+Design: case in metallo nero, pannello frontale in plastica riciclata, presa d'aria laterale
+
+🚀 Potenzia la tua esperienza digitale con Tecno shop! 🎮💻
+
+
+PC Fisso Intel Core i7-8700
+          -->339€
+          -->Potenzia la tua produttività con il Desktop HP, progettato per offrire prestazioni elevate in ogni contesto, dal lavoro quotidiano all'istruzione.
+Equipaggiato con un processore Intel Core i7-8700 che raggiunge i 4,6 GHz in turbo boost, 32 GB di RAM DDR4 e un SSD da 512 GB, questo PC è ideale per affrontare ogni 
+attività con velocità e affidabilità. Con una varietà di porte USB, DisplayPort, e slot di espansione M.2, offre una connettività completa per le tue esigenze professionali.
+
+Caratteristiche principali:
+
+Sistema Operativo: Windows 11 Pro con Licenza COA
+
+Processore: Intel Core i7-8700 (6 Core, 12 Thread, fino a 4,6 GHz in turbo boost)
+
+Memoria RAM: 32 GB DDR4
+
+Storage: 512 GB SSD SATA III
+
+Connettività: 6 x USB 3.2 Gen1, 2 x USB 2.0, 2 x DisplayPort, 2 x M.2 NVMe, 2 x PCI-Express x16, 2 x PCI-Express x4
+
+Grafica: Intel UHD Graphics 630 (integrata)
+
+⚡ Ottieni il massimo dal tuo lavoro con Tecno shop! 💼
