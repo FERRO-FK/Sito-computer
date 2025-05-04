@@ -9,11 +9,11 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 // Database dei prodotti
 $prodotti = [
-    1 => ["id" => 1, "nome" => "Notebook da ufficio", "prezzo" => 499.00],
+    1 => ["id" => 1, "nome" => "laptop HP", "prezzo" => 549.00],
     2 => ["id" => 2, "nome" => "PC Gaming", "prezzo" => 899.00],
-    3 => ["id" => 3, "nome" => "Workstation", "prezzo" => 1299.00],
-    4 => ["id" => 4, "nome" => "Ultrabook", "prezzo" => 799.00],
-    5 => ["id" => 5, "nome" => "All-in-One", "prezzo" => 1099.00],
+    3 => ["id" => 3, "nome" => "PC Gaming 4060", "prezzo" => 929.00],
+    4 => ["id" => 4, "nome" => "PC Gaming 5080", "prezzo" => 2499.00],
+    5 => ["id" => 5, "nome" => "PC Fisso Intel I5", "prezzo" => 599.00],
 ];
 
 // Inizializza il carrello se non esiste

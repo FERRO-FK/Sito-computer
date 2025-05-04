@@ -47,7 +47,7 @@ if (isset($_SESSION['utente_id'])) {
         
       </form>
       <a href="../php/registrazione.php">
-      
+      <br>
    <button class="login-button" >Clicca qui se non sei ancora registrato</button>
     </a>
     </div>

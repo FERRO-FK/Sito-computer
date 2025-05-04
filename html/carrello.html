@@ -33,11 +33,6 @@
       <div class="cart-items">
         <!-- Prodotto 1 -->
         <div class="cart-item">
-          <img src="https://via.placeholder.com/80" alt="Notebook da ufficio">
-          <div class="item-details">
-            <h3>Notebook da ufficio</h3>
-            <span class="item-price">499€</span>
-          </div>
           <div class="quantity-controls">
             <button>-</button>
             <span>1</span>
@@ -50,8 +45,6 @@
         <div class="cart-item">
           <img src="https://via.placeholder.com/80" alt="PC Gaming">
           <div class="item-details">
-            <h3>PC Gaming</h3>
-            <span class="item-price">899€</span>
           </div>
           <div class="quantity-controls">
             <button>-</button>
@@ -73,7 +66,7 @@
         </div>
         <div class="summary-row total">
           <span>Totale</span>
-          <span>1.398€</span>
+          <span></span>
         </div>
 
         <a href="#" class="checkout-btn">Procedi all'acquisto</a>
@@ -123,7 +116,7 @@
         itemElement.className = 'cart-item';
         itemElement.dataset.id = item.id;
         itemElement.innerHTML = `
-          <img src= "../${item.nome}.jpg" alt="${item.nome}">
+          <img src= "../immagini/${item.nome}.jpg" alt="${item.nome}">
           <div class="item-details">
             <h3>${item.nome}</h3>
             <span class="item-price">${item.prezzo.toFixed(2)}€</span>

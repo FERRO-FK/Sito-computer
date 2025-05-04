@@ -91,7 +91,7 @@
 
         <div class="product-card">
           <div class="product-image-container">
-            <img class="product-image" src="../PC Gaming.jpg" alt="PC Gaming">
+            <img class="product-image" src="../immagini/PC Gaming.jpg" alt="PC Gaming">
           </div>
           <div class="product-info">
             <h3>PC Gaming</h3>
