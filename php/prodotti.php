@@ -128,7 +128,7 @@
 
     // Costruzione della query SQL
     $sql = "
-        SELECT DISTINCT c.Nome, c.Descrizione, c.Prezzo
+        SELECT DISTINCT c.IDProdotto, c.Nome, c.Descrizione, c.Prezzo
         FROM computer c
     ";
 
@@ -204,6 +204,34 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $prodotti = $result->fetch_all(MYSQLI_ASSOC);
+
+    // Ora per ogni prodotto, otteniamo i tag associati
+    foreach ($prodotti as &$prodotto) {
+        $id_prodotto = $prodotto['IDProdotto'];
+        
+        // Query per ottenere i tag associati a questo prodotto
+        $tag_sql = "
+            SELECT t.Nome
+            FROM tag t
+            INNER JOIN tagComputer tc ON t.IdTag = tc.IdTag
+            WHERE tc.IDProdotto = ?
+        ";
+        
+        $stmt_tag = $conn->prepare($tag_sql);
+        $stmt_tag->bind_param("i", $id_prodotto);
+        $stmt_tag->execute();
+        $result_tag = $stmt_tag->get_result();
+        
+        // Salviamo tutti i tag associati al prodotto
+        $tags = [];
+        while ($row = $result_tag->fetch_assoc()) {
+            $tags[] = $row['Nome'];
+        }
+        
+        // Aggiungiamo l'elenco dei tag al prodotto
+        $prodotto['tags'] = $tags;
+        $stmt_tag->close();
+    }
 
     // Stampa a scopo di debug
     echo "<pre>";
