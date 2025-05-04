@@ -89,7 +89,7 @@
       <div class="products-container">
       <div class="product-card" data-id="1" data-category="laptop" data-price="499">
     <div class="product-image-container">
-        <img class="product-image" src="" alt="Laptop HP">
+        <img class="product-image" src="../immagini/laptop HP.jpg" alt="Laptop HP">
     </div>
     <div class="product-info">
         <h3>Laptop HP</h3>
@@ -111,7 +111,7 @@
 
 <div class="product-card" data-id="2" data-category="gaming" data-price="899">
     <div class="product-image-container">
-        <img class="product-image" src="../PC Gaming.jpg" alt="PC Gaming">
+        <img class="product-image" src="../immagini/PC Gaming.jpg" alt="PC Gaming">
     </div>
     <div class="product-info">
         <h3>PC Gaming</h3>
@@ -131,16 +131,16 @@
 
 <div class="product-card" data-id="3" data-category="workstation" data-price="1299">
     <div class="product-image-container">
-        <img class="product-image" src="" alt="Workstation">
+        <img class="product-image" src="../immagini/PC Gaming 4060.jpg" alt="Workstation">
     </div>
     <div class="product-info">
-        <h3>Workstation</h3>
-        <span class="price">1.299€</span>
+        <h3>PC Gaming 4060</h3>
+        <span class="price">929€</span>
         <div class="specs">
-            <p><i class="fas fa-microchip"></i> Intel Xeon</p>
-            <p><i class="fas fa-memory"></i> 32GB RAM</p>
+            <p><i class="fas fa-microchip"></i> Intel i5-12400F</p>
+            <p><i class="fas fa-memory"></i> 16GB RAM</p>
             <p><i class="fas fa-hdd"></i> SSD 1TB</p>
-            <p><i class="fas fa-certificate"></i> Quadro RTX 4000</p>
+            <p><i class="fas fa-fan"></i> NVIDIA RTX 4060</p>
         </div>
     </div>
     <div class="product-actions">
@@ -151,16 +151,16 @@
 
 <div class="product-card" data-id="4" data-category="ultrabook" data-price="799">
     <div class="product-image-container">
-        <img class="product-image" src="" alt="Ultrabook">
+        <img class="product-image" src="../immagini/PC Gaming 5080.jpg" alt="Ultrabook">
     </div>
     <div class="product-info">
-        <h3>Ultrabook</h3>
-        <span class="price">799€</span>
+        <h3>PC Gaming 5080</h3>
+        <span class="price">2.499€</span>
         <div class="specs">
-            <p><i class="fas fa-microchip"></i> Intel Core i7</p>
-            <p><i class="fas fa-memory"></i> 16GB RAM</p>
-            <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-            <p><i class="fas fa-weight"></i> Solo 1.2kg</p>
+            <p><i class="fas fa-microchip"></i> Intel Core i9-12900KF</p>
+            <p><i class="fas fa-memory"></i> 32GB RAM DDR5</p>
+            <p><i class="fas fa-hdd"></i> SSD 1TB</p>
+            <p><i class="fas fa-fan"></i> NVIDIA RTX 5080</p>
         </div>
     </div>
     <div class="product-actions">
@@ -171,16 +171,16 @@
 
 <div class="product-card" data-id="5" data-category="all-in-one" data-price="1099">
     <div class="product-image-container">
-        <img class="product-image" src="" alt="All-in-One">
+        <img class="product-image" src="../immagini/PC Fisso Intel I5.jpg" alt="All-in-One">
     </div>
     <div class="product-info">
-        <h3>All-in-One</h3>
-        <span class="price">1.099€</span>
+        <h3>PC Fisso Intel I5 </h3>
+        <span class="price">599€</span>
         <div class="specs">
-            <p><i class="fas fa-microchip"></i> Intel Core i5</p>
-            <p><i class="fas fa-memory"></i> 12GB RAM</p>
-            <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-            <p><i class="fas fa-tv"></i> 24" 4K Touch</p>
+            <p><i class="fas fa-microchip"></i> Intel Core i5-14400</p>
+            <p><i class="fas fa-memory"></i> 32GB RAM DDR4</p>
+            <p><i class="fas fa-hdd"></i> SSD 1TB</p>
+            <p><i class="fas fa-fan"></i> Intel UHD 730 integrata</p>
         </div>
     </div>
     <div class="product-actions">
