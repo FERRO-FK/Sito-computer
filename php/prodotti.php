@@ -27,18 +27,26 @@
       <p>Scopri la nostra selezione di computer e accessori</p>
     </header>
     <?php
-// Definiamo l'array di tag/categorie         
+    // Definiamo l'array di tag/categorie         
     $tags = [
         'Gaming' => 'gaming',
-        'Nvdia' => 'Nvdia',
-        'AMD' => 'AMD',
+        //'Nvdia' => 'Nvdia',
+        'Nvdia Serie 3000' => 'Nvidia 3000',
+        'Nvdia Serie 4000' => 'Nvidia 4000',
+        'Nvdia Serie 5000' => 'Nvidia 5000',
+        //'AMD RX' => 'AMD RX',
+        'AMD RX 5000' => 'AMD RX 5000',
+        'AMD RX 6000' => 'AMD RX 6000',
+        'AMD RX 7000' => 'AMD RX 7000',
+        'AMD RX 9000' => 'AMD RX 9000',
+        'AMD Ryzen' => 'AMD Ryzen',
         'Intel' => 'Intel',
         'Laptop' => 'laptop',
         'PC da casa' => 'pc-casa',
         'Leggerissimo' => 'leggero',
         'Video editing' => 'video editing',
-        'All-in-Inclusive' => 'all-in-inclusive',
-        'Professionele' => 'professionale'
+        'All-in-One' => 'all-in-one',
+        'Professionale' => 'professionale'
     ];
 ?>
     <!-- Sezione Filtri -->
@@ -126,7 +134,10 @@
 
     // Join per categoria solo se necessario
     if ($categoria !== 'all') {
-        $sql .= " INNER JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto ";
+        $sql .= "
+            INNER JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto
+            INNER JOIN tag t ON tc.IdTag = t.IdTag
+        ";
     }
 
     // Clausola WHERE dinamica
