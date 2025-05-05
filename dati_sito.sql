@@ -62,8 +62,8 @@ INSERT INTO `tagcomputer` (`IDProdotto`, `IdTag`) VALUES
 	(1, 4);
 
 -- Dump dei dati della tabella sito.utente: ~1 rows (circa)
-INSERT INTO `utente` (`ID`, `Nome`, `Cognome`, `mail`, `IDIndirizzo`, `pass`, `banned`) VALUES
-	(1, 'Mario', 'Rossi', 'mario.rossi@gmail.com', 1, NULL, 0);
+INSERT INTO `utente` (`ID`, `Nome`, `mail`, `IDIndirizzo`, `pass`, `banned`) VALUES
+	(1, 'Mario', 'mario.rossi@gmail.com', 1, $12$yGAx.zenZOerT8By5GH.R.Pwy8zh8Li8TAJln3pe31h8VBnQ3V.4y, 0); --campo password="ciao"
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

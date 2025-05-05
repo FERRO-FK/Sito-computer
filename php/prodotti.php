@@ -372,5 +372,24 @@
     // Inizializza il contatore del carrello al caricamento
     document.addEventListener('DOMContentLoaded', updateCartCounter);
   </script>
+
+      <!--FOOTER-->
+      <div class="footer-divider"></div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="contact-info">
+          <p><i class="fas fa-envelope"></i> Email: info@tecnoshop.com</p>
+          <p><i class="fas fa-phone"></i> Telefono: +39 0123 456789</p>
+          <p><i class="fas fa-map-marker-alt"></i> Indirizzo: Via Esempio 123, Milano, Italia</p>
+        </div>
+        <div class="social-icons">
+          <a href="" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </footer>
+    
 </body>
 </html>
