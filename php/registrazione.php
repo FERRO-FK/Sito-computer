@@ -1,6 +1,14 @@
 <?php
 require '../php/db.php';
 
+session_start();
+require '../php/db.php';
+
+if (isset($_SESSION['utente_id'])) {
+    header("Location: ../php/dashboard.php");
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $mail = $_POST['mail'];
@@ -20,8 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Salva utente
     $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, pass, IDindirizzo) VALUES (?, ?, ?, ?)");
     $stmt->execute([$nome, $mail, $hash, $id_indirizzo]);
-
-    header("Location: registrazione_successo.php");
+    $_SESSION['utente_id'] = $user['ID'];
+    $_SESSION['nome'] = $user['Nome'];
+    header("Location: index.php");
     exit;
 }
 ?>
