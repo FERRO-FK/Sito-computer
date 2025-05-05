@@ -32,7 +32,7 @@
     </header>
 
     <?php
-      $conn = mysqli_connect("localhost", "root", "root", "sito");
+      $conn = mysqli_connect("localhost", "root", "vc-mob2-12", "sito");
 
       $idUtente = 1; // <-- Cambia questo con l'ID utente reale
 
