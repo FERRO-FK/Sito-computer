@@ -239,7 +239,52 @@
     echo "</pre>";
     ?>
 
+    <script>
+      const prodotti = <?php echo json_encode($prodotti, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?>;
+    </script>
 
+    <script>
+      // Funzione per creare e renderizzare dinamicamente le product card
+      function renderProducts() {
+        const container = document.querySelector(".products-container");
+        container.innerHTML = ""; // Pulisce eventuali contenuti statici
+
+        prodotti.forEach(product => {
+          const card = document.createElement("div");
+          card.className = "product-card";
+          card.setAttribute("data-id", product.IDProdotto);
+          card.setAttribute("data-category", product.tags?.[0] || "none"); // Usa il primo tag, se esiste
+          card.setAttribute("data-price", product.Prezzo);
+
+          // Percorso dell'immagine - fallback se non esiste
+          const imagePath = `../immagini/${product.Nome}.jpg`;
+
+          card.innerHTML = `
+            <div class="product-image-container">
+                <img class="product-image" src="${imagePath}" alt="${product.Nome}">
+            </div>
+            <div class="product-info">
+                <h3>${product.Nome}</h3>
+                <span class="price">${parseFloat(product.Prezzo).toFixed(2)}€</span>
+                <div class="specs">
+                    <p><i class="fas fa-microchip"></i> Specifiche non disponibili</p>
+                </div>
+            </div>
+            <div class="product-actions">
+                <a href="#" class="add-to-cart" onclick="addToCart(${product.IDProdotto}); return false;">
+                    <i class="fas fa-cart-plus"></i> Aggiungi
+                </a>
+                <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+            </div>
+          `;
+
+          container.appendChild(card);
+        });
+      }
+
+      // Esegui la funzione dopo il caricamento
+      document.addEventListener("DOMContentLoaded", renderProducts);
+    </script>
 
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
