@@ -1,3 +1,25 @@
+<?php
+session_start();
+require '../php/db.php';
+$username = "Login";
+
+if (isset($_SESSION['utente_id'])) {
+  $utente_id = $_SESSION['utente_id'];
+$stmt = $pdo->prepare("SELECT utente.nome, mail, indirizzo.via, indirizzo.numerocivico, indirizzo.citta
+                       FROM utente 
+                       JOIN indirizzo ON utente.IDindirizzo = indirizzo.IDindirizzo
+                       WHERE utente.id = ?");
+$stmt->execute([$utente_id]);
+$user = $stmt->fetch();
+$username = $user['nome'];
+
+}
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -32,31 +54,32 @@
     </header>
 
     <?php
-      $conn = mysqli_connect("localhost", "root", "vc-mob2-12", "sito");
+     
 
-      $idUtente = 1; // <-- Cambia questo con l'ID utente reale
+      $idUtente = $_SESSION['utente_id']; // <-- Cambia questo con l'ID utente reale
 
       $sql = "
-          SELECT c.Nome, c.Descrizione, c.Prezzo
-          FROM computer c, tagComputer tc, interessiUtente iu
-          WHERE c.IDProdotto = tc.IDProdotto
-          AND tc.IdTag = iu.IdTag
-          AND iu.IdUtente = ?
-          ORDER BY iu.Punteggio DESC
-          LIMIT 1;
-      ";
+      SELECT c.Nome, c.Descrizione, c.Prezzo
+      FROM computer c
+      JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto
+      JOIN interessiUtente iu ON tc.IdTag = iu.IdTag
+      WHERE iu.IdUtente = ?
+      ORDER BY iu.Punteggio DESC
+      LIMIT 1
+       ";
 
-      $stmt = mysqli_prepare($conn, $sql);
-      mysqli_stmt_bind_param($stmt, "i", $idUtente);
-      mysqli_stmt_execute($stmt);
-      $result = mysqli_stmt_get_result($stmt);
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([$idUtente]);
+      
 
+     
       // Inizializza l'array dei risultati
-      $prodotti = [];
+      $prodotti = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      while ($row = mysqli_fetch_assoc($result)) {
-          $prodotti[] = $row;
-      }
+     
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $prodotti[] = $row;
+    }
 
       // Stampa l'array risultante
       echo "<pre>";
@@ -64,8 +87,7 @@
       echo "</pre>";
 
       // Cleanup
-      mysqli_stmt_close($stmt);
-      mysqli_close($conn);
+      
     ?>
 
     <section class="products-section">
