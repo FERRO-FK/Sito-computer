@@ -106,7 +106,7 @@
     <!-- query per cercare i prodotti-->
     <?php
     // Connessione al database
-    $conn = mysqli_connect("localhost", "root", "root", "sito");
+    $conn = mysqli_connect("localhost", "root", "vc-mob2-12", "sito");
 
     // Recupera l'ID del tag selezionato
     $categoria = $_GET['categoria'] ?? 'all';
@@ -122,8 +122,8 @@
         $stmt->close();
 
         // Stampa di debug per verificare cosa viene passato
-        echo "Tag selezionato: " . htmlspecialchars($categoria) . "<br>";
-        echo "ID Tag recuperato: " . $tag_id . "<br>";
+        //echo "Tag selezionato: " . htmlspecialchars($categoria) . "<br>";
+        //echo "ID Tag recuperato: " . $tag_id . "<br>";
     }
 
     // Costruzione della query SQL
@@ -234,136 +234,64 @@
     }
 
     // Stampa a scopo di debug
-    echo "<pre>";
-    print_r($prodotti);
-    echo "</pre>";
+    //echo "<pre>";
+    //print_r($prodotti);
+    //echo "</pre>";
     ?>
+
+    <script>
+      const prodotti = <?php echo json_encode($prodotti, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT); ?>;
+    </script>
 
 
 
     <section class="products-section">
       <h2>Articoli che potrebbero interessarti</h2>
       <div class="products-container">
-      <div class="product-card" data-id="1" data-category="laptop" data-price="499">
-    <div class="product-image-container">
-        <img class="product-image" src="../immagini/laptop HP.jpg" alt="Laptop HP">
-    </div>
-    <div class="product-info">
-        <h3>Laptop HP</h3>
-        <span class="price">549€</span>
-        <div class="specs">
-            <p><i class="fas fa-microchip"></i> Intel Core i5-1235U</p>
-            <p><i class="fas fa-memory"></i> 8GB RAM</p>
-            <p><i class="fas fa-hdd"></i> SSD 256GB</p>
-            <p><i class="fas fa-tv"></i> 17,3" Full HD IPS Antiriflesso</p>
-        </div>
-    </div>
-    <div class="product-actions">
-        <a href="#" class="add-to-cart" onclick="addToCart(1); return false;">
-            <i class="fas fa-cart-plus"></i> Aggiungi
-        </a>
-        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-    </div>
-</div>
+      <script>
+      // Funzione per creare e renderizzare dinamicamente le product card
+      function renderProducts() {
+        const container = document.querySelector(".products-container");
+        container.innerHTML = ""; // Pulisce eventuali contenuti statici
 
-<div class="product-card" data-id="2" data-category="gaming" data-price="899">
-    <div class="product-image-container">
-        <img class="product-image" src="../immagini/PC Gaming.jpg" alt="PC Gaming">
-    </div>
-    <div class="product-info">
-        <h3>PC Gaming</h3>
-        <span class="price">899€</span>
-        <div class="specs">
-            <p><i class="fas fa-microchip"></i> AMD Ryzen 7</p>
-            <p><i class="fas fa-memory"></i> 16GB RAM</p>
-            <p><i class="fas fa-hdd"></i> SSD 512GB</p>
-            <p><i class="fas fa-fan"></i> NVIDIA RTX 3060</p>
-        </div>
-    </div>
-    <div class="product-actions">
-        <a href="#" class="add-to-cart" onclick="addToCart(2); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-    </div>
-</div>
+        prodotti.forEach(product => {
+          const card = document.createElement("div");
+          card.className = "product-card";
+          card.setAttribute("data-id", product.IDProdotto);
+          card.setAttribute("data-category", product.tags?.[0] || "none"); // Usa il primo tag, se esiste
+          card.setAttribute("data-price", product.Prezzo);
 
-<div class="product-card" data-id="3" data-category="workstation" data-price="1299">
-    <div class="product-image-container">
-        <img class="product-image" src="../immagini/PC Gaming 4060.jpg" alt="Workstation">
-    </div>
-    <div class="product-info">
-        <h3>PC Gaming 4060</h3>
-        <span class="price">929€</span>
-        <div class="specs">
-            <p><i class="fas fa-microchip"></i> Intel i5-12400F</p>
-            <p><i class="fas fa-memory"></i> 16GB RAM</p>
-            <p><i class="fas fa-hdd"></i> SSD 1TB</p>
-            <p><i class="fas fa-fan"></i> NVIDIA RTX 4060</p>
-        </div>
-    </div>
-    <div class="product-actions">
-        <a href="#" class="add-to-cart" onclick="addToCart(3); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-    </div>
-</div>
+          // Percorso dell'immagine - fallback se non esiste
+          const imagePath = `../immagini/${product.Nome}.jpg`;
 
-<div class="product-card" data-id="4" data-category="ultrabook" data-price="799">
-    <div class="product-image-container">
-        <img class="product-image" src="../immagini/PC Gaming 5080.jpg" alt="Ultrabook">
-    </div>
-    <div class="product-info">
-        <h3>PC Gaming 5080</h3>
-        <span class="price">2.499€</span>
-        <div class="specs">
-            <p><i class="fas fa-microchip"></i> Intel Core i9-12900KF</p>
-            <p><i class="fas fa-memory"></i> 32GB RAM DDR5</p>
-            <p><i class="fas fa-hdd"></i> SSD 1TB</p>
-            <p><i class="fas fa-fan"></i> NVIDIA RTX 5080</p>
-        </div>
-    </div>
-    <div class="product-actions">
-        <a href="#" class="add-to-cart" onclick="addToCart(4); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-    </div>
-</div>
-
-<div class="product-card" data-id="5" data-category="all-in-one" data-price="1099">
-    <div class="product-image-container">
-        <img class="product-image" src="../immagini/PC Fisso Intel I5.jpg" alt="All-in-One">
-    </div>
-    <div class="product-info">
-        <h3>PC Fisso Intel I5 </h3>
-        <span class="price">599€</span>
-        <div class="specs">
-            <p><i class="fas fa-microchip"></i> Intel Core i5-14400</p>
-            <p><i class="fas fa-memory"></i> 32GB RAM DDR4</p>
-            <p><i class="fas fa-hdd"></i> SSD 1TB</p>
-            <p><i class="fas fa-fan"></i> Intel UHD 730 integrata</p>
-        </div>
-    </div>
-    <div class="product-actions">
-        <a href="#" class="add-to-cart" onclick="addToCart(5); return false;"><i class="fas fa-cart-plus"></i> Aggiungi</a>
-        <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
-    </div>
-</div>
-          
+          card.innerHTML = `
+            <div class="product-image-container">
+                <img class="product-image" src="${imagePath}" alt="${product.Nome}">
+            </div>
+              <div class="product-info">
+      <h3>${product.Nome}</h3>
+      <span class="price">${parseFloat(product.Prezzo).toFixed(2)}€</span>
+      <!-- Ciclo su tutti i tag del prodotto e li visualizzo con icona -->
+      <div class="product-tags">
+          ${product.tags?.map(tag => `<span class="tag"><i class="fas fa-tag"></i> ${tag}</span>`).join(" ") || ""}
       </div>
-    </section>
+
   </div>
+  <div class="product-actions">
+      <a href="#" class="add-to-cart" onclick="addToCart(${product.IDProdotto}); return false;">
+          <i class="fas fa-cart-plus"></i> Aggiungi
+      </a>
+      <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+  </div>
+          `;
 
-  <!--FOOTER-->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="contact-info">
-        <p><i class="fas fa-envelope"></i> Email: info@tecnoshop.com</p>
-        <p><i class="fas fa-phone"></i> Telefono: +39 0123 456789</p>
-        <p><i class="fas fa-map-marker-alt"></i> Indirizzo: Via Esempio 123, Milano, Italia</p>
-      </div>
-      <div class="social-icons">
-        <a href="" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      </div>
+          container.appendChild(card);
+        });
+      }
+
+      // Esegui la funzione dopo il caricamento
+      document.addEventListener("DOMContentLoaded", renderProducts);
+    </script>
     </div>
   </footer>
 
