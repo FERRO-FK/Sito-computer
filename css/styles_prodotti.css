@@ -326,6 +326,25 @@
       padding: 0 20px; /* Aggiunge un po' di padding laterale */
     }
 
+    .filter-input {
+      padding: 8px 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fff;
+      color: #333;
+      width: 100%;
+      max-width: 200px;
+      box-sizing: border-box;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .filter-input:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+      outline: none;
+    }
+    
 .product-card {
   width: 300px; /* Aumentato da 280px a 300px */
   background: #fff;
