@@ -67,11 +67,60 @@
           } else {
               echo "<p>Nessuna recensione per questo prodotto.</p>";
           }
+
+          // Ora otteniamo i tag del prodotto attuale
+          $stmtTags = $pdo->prepare("SELECT t.IdTag FROM tag t
+                                    JOIN tagComputer tc ON t.IdTag = tc.IdTag
+                                    WHERE tc.IDProdotto = :id");
+
+          $stmtTags->bindValue(':id', $id, PDO::PARAM_INT);
+          $stmtTags->execute();
+          $tagsProdotto = $stmtTags->fetchAll(PDO::FETCH_ASSOC);
+
+          // Estrai solo gli ID dei tag
+          $tagIds = array_column($tagsProdotto, 'IdTag');
+
+          if (count($tagIds) > 0) {
+              // Creiamo la query per trovare i prodotti con tag simili
+              //crea una lista di segnaposto (?) per la query SQL con IN (...), della stessa lunghezza dell’array $tagIds, ovvero il numero di tag associati al prodotto.
+              $placeholders = implode(',', array_fill(0, count($tagIds), '?')); 
+              $stmtProdottiSimili = $pdo->prepare(
+                  "SELECT c.IDProdotto, c.Nome, c.Descrizione, c.Prezzo, COUNT(tc.IdTag) AS TagMatch
+                  FROM computer c
+                  JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto
+                  WHERE tc.IdTag IN ($placeholders) AND c.IDProdotto != ?
+                  GROUP BY c.IDProdotto
+                  ORDER BY TagMatch DESC, c.Prezzo ASC"
+              );
+
+              // Associa i tag alla query
+              $stmtProdottiSimili->execute(array_merge($tagIds, [$id]));
+
+              // Recupera i prodotti simili
+              $prodottiSimili = $stmtProdottiSimili->fetchAll(PDO::FETCH_ASSOC);
+
+              if ($prodottiSimili) {
+                  echo "<h3>Prodotti Simili:</h3>";
+                  foreach ($prodottiSimili as $prodottoSimile) {
+                      echo "<div class='prodotto-simile'>";
+                      echo "<h4><a href='dettaglio_prodotti.php?id={$prodottoSimile['IDProdotto']}'>{$prodottoSimile['Nome']}</a></h4>";
+                      echo "<p>{$prodottoSimile['Descrizione']}</p>";
+                      echo "<p>Prezzo: {$prodottoSimile['Prezzo']}€</p>";
+                      echo "</div>";
+                  }
+              } else {
+                  echo "<p>Non ci sono prodotti simili.</p>";
+              }
+
+          } else {
+              echo "<p>Questo prodotto non ha tag associati.</p>";
+          }
+
       } else {
-          echo "Prodotto non trovato.";
+          echo "<p>Prodotto non trovato.</p>";
       }
   } else {
-      echo "ID non specificato.";
+      echo "<p>ID prodotto non specificato.</p>";
   }
   ?>
 
