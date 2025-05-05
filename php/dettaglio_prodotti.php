@@ -25,36 +25,56 @@
     </div>
   </div>
 
-    <?php
-    session_start();
-    require '../php/db.php';
-    
-    $id = $_GET['id'] ?? null;
-    
-    if ($id) {
-        // Usa PDO per preparare e eseguire la query
-        $stmt = $pdo->prepare("SELECT * FROM computer WHERE IDProdotto = :id");
-        
-        // Usa bindValue o bindParam per associare i parametri
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-    
-        $stmt->execute();
-    
-        // Recupera il risultato come array associativo
-        $prodotto = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-        if ($prodotto) {
-            echo "<h1>{$prodotto['Nome']}</h1>";
-            echo "<p>{$prodotto['Descrizione']}</p>";
-            echo "<p>Prezzo: {$prodotto['Prezzo']}€</p>";
-        } else {
-            echo "Prodotto non trovato.";
-        }
-    } else {
-        echo "ID non specificato.";
-    }
-    
-    ?>
+  <?php
+  session_start();
+  require '../php/db.php';
+
+  $id = $_GET['id'] ?? null;
+
+  if ($id) {
+      // Query per ottenere i dettagli del prodotto
+      $stmt = $pdo->prepare("SELECT * FROM computer WHERE IDProdotto = :id");
+      $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+      $stmt->execute();
+      $prodotto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if ($prodotto) {
+          // Mostra i dettagli del prodotto
+          echo "<h1>{$prodotto['Nome']}</h1>";
+          echo "<p>{$prodotto['Descrizione']}</p>";
+          echo "<p>Prezzo: {$prodotto['Prezzo']}€</p>";
+
+          // Query per ottenere le recensioni del prodotto
+          $stmtRecensioni = $pdo->prepare("SELECT r.Punteggio, r.Descrizione, u.Nome AS NomeUtente 
+                                          FROM recensione r 
+                                          JOIN utente u ON r.IDUtente = u.ID
+                                          WHERE r.IDProdotto = :id");
+
+          $stmtRecensioni->bindValue(':id', $id, PDO::PARAM_INT);
+          $stmtRecensioni->execute();
+          
+          // Recupera tutte le recensioni
+          $recensioni = $stmtRecensioni->fetchAll(PDO::FETCH_ASSOC);
+
+          if ($recensioni) {
+              echo "<h3>Recensioni:</h3>";
+              foreach ($recensioni as $recensione) {
+                  echo "<div class='recensione'>";
+                  echo "<p><strong>{$recensione['NomeUtente']}</strong> - Punteggio: {$recensione['Punteggio']}</p>";
+                  echo "<p>{$recensione['Descrizione']}</p>";
+                  echo "</div>";
+              }
+          } else {
+              echo "<p>Nessuna recensione per questo prodotto.</p>";
+          }
+      } else {
+          echo "Prodotto non trovato.";
+      }
+  } else {
+      echo "ID non specificato.";
+  }
+  ?>
+
   
   
   <!--FOOTER-->
