@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="../css/styles_navbar.css">
   <link rel="stylesheet" href="../css/styles_prodotti.css">
-  <link rel = "stylesheet" href="../css/styles_footer.css">
+  <link rel="stylesheet" href="../css/styles_footer.css">
 </head>
 <body>
   <div class="top-bar">
@@ -90,6 +90,17 @@
           <button type="reset" class="filter-reset" onclick="window.location.href=window.location.pathname">
             <i class="fas fa-sync-alt"></i> Resetta
           </button>
+          <div class="filter-group">
+            <label for="search-filter"><i class="fas fa-search"></i> Cerca:</label>
+            <input 
+              type="text" 
+              name="query" 
+              id="search-filter" 
+              class="filter-input" 
+              placeholder="Cerca prodotti..." 
+              value="<?php echo htmlspecialchars($_GET['query'] ?? ''); ?>">
+          </div>
+
         </div>
       </form>
     </div>
@@ -106,7 +117,7 @@
     <!-- query per cercare i prodotti-->
     <?php
     // Connessione al database
-    $conn = mysqli_connect("localhost", "root", "vc-mob2-12", "sito");
+    $conn = mysqli_connect("localhost", "root", "root", "sito");
 
     // Recupera l'ID del tag selezionato
     $categoria = $_GET['categoria'] ?? 'all';
@@ -173,6 +184,14 @@
         $sql .= " AND c.Prezzo > ? ";
         $params[] = 1500;
         $types .= "d";
+    }
+
+    // Filtro per ricerca testuale
+    $query = $_GET['query'] ?? '';
+    if (!empty($query)) {
+        $sql .= " AND c.Nome LIKE ? ";
+        $params[] = '%' . $query . '%';
+        $types .= "s";
     }
 
     // Ordinamento
@@ -293,7 +312,6 @@
       document.addEventListener("DOMContentLoaded", renderProducts);
     </script>
     </div>
-  </footer>
 
   <script>
     // Funzione per aggiungere al carrello
