@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `computer` (
 -- Dump della struttura di tabella sito.indirizzo
 CREATE TABLE IF NOT EXISTS `indirizzo` (
   `IDIndirizzo` INT AUTO_INCREMENT PRIMARY KEY,
+  
   `Via` varchar(255) DEFAULT NULL,
   `NumeroCivico` varchar(10) DEFAULT NULL,
   `Citta` varchar(100) DEFAULT NULL
@@ -68,7 +69,6 @@ CREATE TABLE IF NOT EXISTS `recensione` (
 CREATE TABLE IF NOT EXISTS `utente` (
   `ID` INT AUTO_INCREMENT PRIMARY KEY,
   `Nome` varchar(100) DEFAULT NULL,
-  `Cognome` varchar(100) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
   `IDIndirizzo` int(11) DEFAULT NULL,
   `pass` varchar(100) DEFAULT NULL,
