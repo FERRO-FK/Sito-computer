@@ -300,7 +300,7 @@
       <a href="#" class="add-to-cart" onclick="addToCart(${product.IDProdotto}); return false;">
           <i class="fas fa-cart-plus"></i> Aggiungi
       </a>
-      <a href="#"><i class="fas fa-info-circle"></i> Dettagli</a>
+      <a href="dettaglio_prodotti.php?id=${product.IDProdotto}"><i class="fas fa-info-circle"></i> Dettagli</a>
   </div>
           `;
 
