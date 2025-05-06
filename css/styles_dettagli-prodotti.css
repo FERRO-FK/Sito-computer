@@ -1,0 +1,118 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .contenitore-prodotto {
+    max-width: 1200px;
+    margin: 30px;
+    padding: 20px;
+  }
+  
+  .sezione-superiore {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .immagine-prodotto {
+    flex: 1 1 300px;
+    padding: 10px;
+    max-width: 300px;
+  }
+  
+  .immagine-prodotto img {
+    width: 115%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+  }
+  
+  .dettagli-prodotto {
+    flex: 2 1 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .dettagli-prodotto .prezzo {
+    font-size: 28px;
+    font-weight: bold;
+    color: orange;
+    margin-bottom: 10px;
+    text-align: right;
+  }
+  
+  .dettagli-prodotto .descrizione {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* 🔘 Pulsante Compra */
+  .bottone-compra {
+    display: inline-block;
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    width: fit-content;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bottone-compra:hover {
+    background-color: darkorange;
+  }
+  
+  /* Consigliati */
+  .consigliati {
+    margin-top: 50px;
+  }
+  
+  .consigliati h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .prodotti-simili {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .prodotto-simile {
+    width: 120px;
+    border: 2px solid orange;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .prodotto-simile h4 {
+    font-size: 14px;
+    color: #000;
+    margin: 5px 0;
+  }
+  
+  .prodotto-simile p {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .recensioni {
+    margin-top: 40px;
+  }
+  
+  .recensione {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
