@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `computer` (
 -- Dump della struttura di tabella sito.indirizzo
 CREATE TABLE IF NOT EXISTS `indirizzo` (
   `IDIndirizzo` INT AUTO_INCREMENT PRIMARY KEY,
+  
   `Via` varchar(255) DEFAULT NULL,
   `NumeroCivico` varchar(10) DEFAULT NULL,
   `Citta` varchar(100) DEFAULT NULL
@@ -58,8 +59,11 @@ CREATE TABLE IF NOT EXISTS `recensione` (
   `Punteggio` int(11) DEFAULT NULL CHECK (`Punteggio` between 1 and 5),
   `Descrizione` text DEFAULT NULL,
   `IDUtente` int(11) DEFAULT NULL,
+  `IDProdotto` int(11) DEFAULT NULL,
   KEY `IDUtente` (`IDUtente`),
-  CONSTRAINT `recensione_ibfk_1` FOREIGN KEY (`IDUtente`) REFERENCES `utente` (`ID`)
+  KEY `IDProdotto` (`IDProdotto`),
+  CONSTRAINT `recensione_ibfk_1` FOREIGN KEY (`IDUtente`) REFERENCES `utente` (`ID`),
+  CONSTRAINT `recensione_ibfk_2` FOREIGN KEY (`IDProdotto`) REFERENCES `computer` (`IDProdotto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- L’esportazione dei dati non era selezionata.
@@ -68,7 +72,6 @@ CREATE TABLE IF NOT EXISTS `recensione` (
 CREATE TABLE IF NOT EXISTS `utente` (
   `ID` INT AUTO_INCREMENT PRIMARY KEY,
   `Nome` varchar(100) DEFAULT NULL,
-  `Cognome` varchar(100) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
   `IDIndirizzo` int(11) DEFAULT NULL,
   `pass` varchar(100) DEFAULT NULL,

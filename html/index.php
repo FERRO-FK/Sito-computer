@@ -182,7 +182,8 @@ $username = $user['nome'];
       </div>
     </section> 
   </div>
-
+  
+  <!--FOOTER-->
   <div class="footer-divider"></div>
   <footer class="footer">
     <div class="footer-content">
