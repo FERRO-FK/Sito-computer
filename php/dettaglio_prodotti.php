@@ -18,7 +18,7 @@
   <div class="top-bar">
     <div class="logo">Tecno shop</div>
     <div class="nav-links">
-      <a href="#"><i class="fas fa-home"></i> Home</a>
+      <a href="../html/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
       <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="#"><i class="fas fa-envelope"></i> Contatti</a>
@@ -48,9 +48,10 @@ if ($id) {
         echo '</div>';
         
         echo '<div class="dettagli-prodotto">';
+        echo '<h1 class="titolo">'. $prodotto['Nome']  . '</h1>';
         echo '<h1 class="prezzo">' . $prodotto['Prezzo'] . '€</h1>';
-        echo '<p class="descrizione">' . $prodotto['Descrizione'] . '</p>';
         echo '<button class="bottone-compra">Compra</button>';
+        echo '<p class="descrizione">' . $prodotto['Descrizione'] . '</p>';
         echo '</div>';
         
         echo '</div>'; // sezione-superiore
@@ -67,13 +68,25 @@ if ($id) {
         $recensioni = $stmtRecensioni->fetchAll(PDO::FETCH_ASSOC);
 
         if ($recensioni) {
-            echo '<div class="recensioni">';
-            echo '<h3>Recensioni:</h3>';
-            foreach ($recensioni as $recensione) {
-                echo '<div class="recensione">';
-                echo '<p><strong>' . $recensione['NomeUtente'] . '</strong> - Punteggio: ' . $recensione['Punteggio'] . '</p>';
-                echo '<p>' . $recensione['Descrizione'] . '</p>';
-                echo '</div>';
+          echo '<div class="recensioni">';
+          echo '<h3>Recensioni:</h3>';
+          foreach ($recensioni as $recensione) {
+              echo '<div class="recensione">';
+              echo '<p class="recensione-utente"><strong>' . $recensione['NomeUtente'] . '</strong> - Punteggio: ';
+
+              $stellePiene = intval($recensione['Punteggio']);
+              $stelleVuote = 5 - $stellePiene;
+
+              for ($i = 0; $i < $stellePiene; $i++) {
+                  echo '<i class="fa-solid fa-star" style="color:#ff6d00;"></i>';
+              }
+              for ($i = 0; $i < $stelleVuote; $i++) {
+                  echo '<i class="fa-regular fa-star" style="color: #ff6d00;"></i>';
+              }
+
+              echo '</p>';
+              echo '<p class="recensione-testo">' . $recensione['Descrizione'] . '</p>';
+              echo '</div>';
             }
             echo '</div>';
         } else {
@@ -103,29 +116,26 @@ if ($id) {
             $prodottiSimili = $stmtProdottiSimili->fetchAll(PDO::FETCH_ASSOC);
 
             if ($prodottiSimili) {
-                echo '<div class="consigliati">';
-                echo '<h3>Articoli che potrebbero interessarti</h3>';
-                echo '<div class="prodotti-simili">';
-                foreach ($prodottiSimili as $prodottoSimile) {
-                    echo '<div class="prodotto-simile">';
-                    echo '<h4><a href="dettaglio_prodotti.php?id=' . $prodottoSimile['IDProdotto'] . '">' . $prodottoSimile['Nome'] . '</a></h4>';
-                    echo '<p>' . $prodottoSimile['Descrizione'] . '</p>';
-                    echo '<p>Prezzo: ' . $prodottoSimile['Prezzo'] . '€</p>';
-                    echo '</div>';
-                }
-                echo '</div></div>';
-            } else {
-                echo '<p>Non ci sono prodotti simili.</p>';
-            }
-        } else {
-            echo '<p>Questo prodotto non ha tag associati.</p>';
+              echo '<div class="consigliati">';
+              echo '<h3 class="titolo-simili">Articoli che potrebbero interessarti</h3>';
+              echo '<div class="prodotti-simili">';
+              foreach ($prodottiSimili as $prodottoSimile) {
+                  echo '<div class="prodotto-simile">';
+                  echo '<img src="../immagini/' . $prodottoSimile['Nome'] . '.jpg" alt="'. $prodottoSimile['Nome'] . '" class="immagine-simile">';
+                  echo '</a>';
+                  echo '<h4>' . htmlspecialchars($prodottoSimile['Nome']) . '</h4>';
+                  echo '<p class="descrizione-simile">' . htmlspecialchars(substr($prodottoSimile['Descrizione'], 0, 80)) . '...</p>';
+                  echo '<p class="prezzo-simile">' . number_format($prodottoSimile['Prezzo'], 2) . '€</p>';
+                  echo '<a class="bottone-vedi" href="dettaglio_prodotti.php?id=' . $prodottoSimile['IDProdotto'] . '">Vedi</a>';
+                  echo '</div>';
+              }
+              echo '</div></div>';
+          } else {
+              echo '<p>Non ci sono prodotti simili.</p>';
+          }
         }
-    } else {
-        echo '<p>Prodotto non trovato.</p>';
+      }
     }
-} else {
-    echo '<p>ID prodotto non specificato.</p>';
-}
 ?>
 
 

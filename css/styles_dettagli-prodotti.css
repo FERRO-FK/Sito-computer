@@ -1,118 +1,310 @@
+/* Stili base */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .contenitore-prodotto {
-    max-width: 1200px;
-    margin: 30px;
-    padding: 20px;
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff9f2;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Contenitore principale */
+.contenitore-prodotto {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(255, 105, 0, 0.1);
+  border: 1px solid rgba(255, 105, 0, 0.2);
+}
+
+/* Sezione superiore */
+.sezione-superiore {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
   .sezione-superiore {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-  
-  .immagine-prodotto {
-    flex: 1 1 300px;
-    padding: 10px;
-    max-width: 300px;
-  }
-  
-  .immagine-prodotto img {
-    width: 115%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 15px;
-    display: block;
-  }
-  
-  .dettagli-prodotto {
-    flex: 2 1 400px;
-    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    gap: 30px;
   }
-  
-  .dettagli-prodotto .prezzo {
-    font-size: 28px;
-    font-weight: bold;
-    color: orange;
-    margin-bottom: 10px;
-    text-align: right;
-  }
-  
-  .dettagli-prodotto .descrizione {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* 🔘 Pulsante Compra */
-  .bottone-compra {
-    display: inline-block;
-    background-color: orange;
-    color: white;
-    padding: 10px 20px;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    width: fit-content;
-    transition: background-color 0.3s ease;
-  }
-  
-  .bottone-compra:hover {
-    background-color: darkorange;
-  }
-  
-  /* Consigliati */
-  .consigliati {
-    margin-top: 50px;
-  }
-  
-  .consigliati h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  
-  .prodotti-simili {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .prodotto-simile {
-    width: 120px;
-    border: 2px solid orange;
-    padding: 5px;
-    text-align: center;
-  }
-  
-  .prodotto-simile h4 {
-    font-size: 14px;
-    color: #000;
-    margin: 5px 0;
-  }
-  
-  .prodotto-simile p {
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .recensioni {
-    margin-top: 40px;
-  }
-  
-  .recensione {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-  }
-  
+}
+
+/* Immagine prodotto */
+.immagine-prodotto {
+  flex: 0 1 45%;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
+  transition: transform 0.3s ease;
+}
+
+.immagine-prodotto:hover {
+  transform: translateY(-5px);
+}
+
+.immagine-prodotto img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Dettagli prodotto */
+.dettagli-prodotto {
+  flex: 0 1 50%;
+}
+
+.nome-prodotto {
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.prezzo {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff6d00;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.descrizione {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+/* Bottone */
+.bottone-compra {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff6d00, #ff9100);
+  color: white;
+  padding: 14px 32px;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 109, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bottone-compra:hover {
+  background: linear-gradient(135deg, #ff9100, #ff6d00);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 109, 0, 0.4);
+}
+
+.bottone-compra:active {
+  transform: translateY(0);
+}
+
+/* Sezione recensioni */
+.recensioni {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.recensioni h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recensioni h2::before {
+  content: "★";
+  color: #ffc107;
+}
+
+.recensione {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  border-left: 3px solid #ff6d00;
+}
+
+.recensione-utente {
+  font-weight: 600;
+  color: #ff6d00;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.recensione-testo {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Prodotti simili */
+.consigliati {
+  margin-left: 40px;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.consigliati h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.prodotti-simili {
+  display: flex;
+  gap: 25px;
+  padding-bottom: 15px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ff6d00 #f5f5f5;
+}
+
+/* Stile scrollbar per Chrome */
+.prodotti-simili::-webkit-scrollbar {
+  height: 6px;
+}
+
+.prodotti-simili::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.prodotti-simili::-webkit-scrollbar-thumb {
+  background-color: #ff6d00;
+  border-radius: 10px;
+}
+
+.prodotto-simile {
+  flex: 0 0 180px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.prodotto-simile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-color: #ff6d00;
+}
+
+.prodotto-simile h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 10px 0 5px;
+}
+
+.prodotto-simile .prezzo {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #ff6d00;
+}
+
+.titolo{
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+/* Etichette aggiuntive */
+.etichetta {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: #ff6d00;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/* Animazioni */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contenitore-prodotto {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.titolo-simili {
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prodotto-simile img.immagine-simile {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+}
+
+.descrizione-simile {
+  font-size: 14px;
+  color: #666;
+  margin: 8px 0 10px;
+  line-height: 1.5;
+}
+
+.prezzo-simile {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ff6d00;
+  margin-bottom: 10px;
+}
+
+.bottone-vedi {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #ff6d00;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.bottone-vedi:hover {
+  background-color: #e65c00;
+}
