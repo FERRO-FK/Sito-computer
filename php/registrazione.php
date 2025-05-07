@@ -1,5 +1,5 @@
 <?php
-require '../php/db.php';
+
 
 session_start();
 require '../php/db.php';
@@ -28,9 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Salva utente
     $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, pass, IDindirizzo) VALUES (?, ?, ?, ?)");
     $stmt->execute([$nome, $mail, $hash, $id_indirizzo]);
+    $stmt = $pdo->prepare("SELECT * FROM utente WHERE mail = ?");
+    $stmt->execute([$mail]);
+    $user = $stmt->fetch();
     $_SESSION['utente_id'] = $user['ID'];
     $_SESSION['nome'] = $user['Nome'];
-    header("Location: index.php");
+    header("Location:html/index.php");
     exit;
 }
 ?>
