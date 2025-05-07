@@ -1,60 +1,169 @@
+/* Dashboard Styling - Orange Tech Theme */
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  color: #3a3a3a;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: linear-gradient(to right, #fff8f1, #ffefe0) !important; /* Nuovo gradiente orizzontale */
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+  padding: 2rem;
+  background: transparent !important; /* Rimuove il gradiente precedente */
+}
+
+.profile-box {
+  background: rgba(255, 255, 255, 0.92); /* Bianco con leggera trasparenza */
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(255, 109, 0, 0.1); /* Ombra arancione */
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  border: 1px solid rgba(255, 109, 0, 0.15); /* Bordo arancione sottile */
+}
+
+.profile-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(255, 109, 0, 0.15);
+}
+
+.profile-box h2 {
+  color: #FF6D00;
+  margin-bottom: 1.8rem;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.profile-box h2 i {
+  color: #FF6D00;
+  font-size: 1.6rem;
+}
+
+.profile-box p {
+  font-size: 1.1rem;
+  margin: 1.2rem 0;
+  padding: 1rem;
+  background-color: rgba(255, 109, 0, 0.08); /* Sfondo arancione molto tenue */
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  border-left: 4px solid #FF6D00;
+  transition: all 0.3s ease;
+}
+
+.profile-box p:hover {
+  background-color: rgba(255, 109, 0, 0.12); /* Arancione leggermente più intenso al hover */
+}
+
+.profile-box p strong {
+  color: #FF6D00;
+  margin-right: 0.8rem;
+  min-width: 90px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.profile-box p i {
+  margin-right: 12px;
+  color: #FF6D00;
+  font-size: 1.1rem;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2.2rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.9rem 1.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(255, 109, 0, 0.1);
+}
+
+.btn.logout {
+  background-color: #e53e3e;
+  color: white;
+  border: 2px solid #e53e3e;
+}
+
+.btn.logout:hover {
+  background-color: #d12b2b;
+  border-color: #d12b2b;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
+.btn.home {
+  background-color: #FF6D00;
+  color: white;
+  border: 2px solid #FF6D00;
+}
+
+.btn.home:hover {
+  background-color: #e05e00;
+  border-color: #e05e00;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 109, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 100px;
+      padding: 1.5rem;
+      background: #fff5f0; /* Sfondo piatto su mobile */
   }
   
   .profile-box {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    max-width: 400px;
-    text-align: center;
+      padding: 1.8rem;
   }
   
   .profile-box h2 {
-    margin-bottom: 20px;
-    color: #333;
+      font-size: 1.6rem;
   }
   
   .profile-box p {
-    font-size: 16px;
-    color: #555;
-    margin: 10px 0;
+      font-size: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0.8rem;
+  }
+  
+  .profile-box p strong {
+      margin-bottom: 0.4rem;
+      min-width: auto;
   }
   
   .profile-buttons {
-    margin-top: 20px;
+      flex-direction: column;
+      gap: 1rem;
   }
   
   .btn {
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin: 5px;
-    font-weight: 600;
-    display: inline-block;
+      width: 100%;
+      justify-content: center;
+      padding: 0.8rem;
   }
-  
-  .btn.logout {
-    background-color: #d9534f;
-    color: #fff;
-  }
-  
-  .btn.home {
-    background-color: #0275d8;
-    color: #fff;
-  }
-  
-  .btn:hover {
-    opacity: 0.9;
-  }
-  
+}

@@ -117,7 +117,7 @@
     <!-- query per cercare i prodotti-->
     <?php
     // Connessione al database
-    $conn = mysqli_connect("localhost", "root", "root", "sito");
+    $conn = mysqli_connect("localhost", "root", "vc-mob2-12", "sito");
 
     // Recupera l'ID del tag selezionato
     $categoria = $_GET['categoria'] ?? 'all';
