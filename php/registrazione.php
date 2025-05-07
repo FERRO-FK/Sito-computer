@@ -1,14 +1,12 @@
 <?php
-require '../php/db.php';
+
 
 session_start();
 require '../php/db.php';
-
 if (isset($_SESSION['utente_id'])) {
     header("Location: ../php/dashboard.php");
     exit;
 }
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $mail = $_POST['mail'];
@@ -16,21 +14,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $citta = $_POST['citta'];
     $via = $_POST['via'];
     $numerocivico = $_POST['numerocivico'];
-
     // Hash password
     $hash = password_hash($password, PASSWORD_DEFAULT);
-
     // Salva indirizzo
     $stmt = $pdo->prepare("INSERT INTO indirizzo (numerocivico, citta, via) VALUES (?, ?, ?)");
     $stmt->execute([$numerocivico, $citta, $via]);
     $id_indirizzo = $pdo->lastInsertId();
-
     // Salva utente
     $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, pass, IDindirizzo) VALUES (?, ?, ?, ?)");
     $stmt->execute([$nome, $mail, $hash, $id_indirizzo]);
+    $stmt = $pdo->prepare("SELECT * FROM utente WHERE mail = ?");
+    $stmt->execute([$mail]);
+    $user = $stmt->fetch();
     $_SESSION['utente_id'] = $user['ID'];
     $_SESSION['nome'] = $user['Nome'];
-    header("Location: index.php");
+    header("Location:html/index.php");
     exit;
 }
 ?>
@@ -54,57 +52,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="#"><i class="fas fa-envelope"></i> Contatti</a>
       <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
-    </div>
-  </div>
-
-  <div class="registration-container">
-    <div class="registration-card">
-      <h2><i class="fas fa-user-plus"></i> Crea il tuo account</h2>
-      
-      <form method="post" class="registration-form">
-        <div class="form-group">
-          <label for="nome"><i class="fas fa-user"></i> Nome completo</label>
-          <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="mail"><i class="fas fa-envelope"></i> Email</label>
-          <input type="email" id="mail" name="mail" placeholder="tu@email.com" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="password"><i class="fas fa-lock"></i> Password</label>
-          <input type="password" id="password" name="password" placeholder="••••••••" required>
-        </div>
-        
-        <div class="address-section">
-          <h3><i class="fas fa-map-marker-alt"></i> Indirizzo</h3>
-          
-          <div class="form-group">
-            <label for="via">Via</label>
-            <input type="text" id="via" name="via" placeholder="Via Roma" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="numerocivico">Numero Civico</label>
-            <input type="text" id="numerocivico" name="numerocivico" placeholder="123" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="citta">Città</label>
-            <input type="text" id="citta" name="citta" placeholder="Milano" required>
-          </div>
-        </div>
-        
-        <button type="submit" class="register-btn">
-          <i class="fas fa-user-plus"></i> Registrati
-        </button>
-      </form>
-      
-      <div class="login-link">
-        Hai già un account? <a href="../php/login.php">Accedi qui</a>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
