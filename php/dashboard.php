@@ -35,10 +35,9 @@ $user = $stmt->fetch();
   <div class="top-bar">
     <div class="logo" onclick="window.location.href='../html/index.php'">Tecno Shop</div>
     <div class="nav-links">
-      <a href="../html/index.php"><i class="fas fa-home"></i> Home</a>
+      <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
       <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
-      <a href="#"><i class="fas fa-envelope"></i> Contatti</a>
       <a href="../html/login.php"><i class="fas fa-user"></i> Login</a>
     </div>
   </div>
