@@ -47,10 +47,19 @@ if ($id) {
         echo '</div>';
         
         echo '<div class="dettagli-prodotto">';
-        echo '<h1 class="titolo">'. $prodotto['Nome']  . '</h1>';
-        echo '<h1 class="prezzo">' . $prodotto['Prezzo'] . '€</h1>';
+        echo '<h1 class="titolo">'. htmlspecialchars($prodotto['Nome']) . '</h1>';
+        echo '<h1 class="prezzo">' . number_format($prodotto['Prezzo'], 2) . '€</h1>';
         echo '<button class="bottone-compra">Compra</button>';
-        echo '<p class="descrizione">' . $prodotto['Descrizione'] . '</p>';
+        echo '<p class="descrizione">' . htmlspecialchars($prodotto['Descrizione']) . '</p>';
+        if (!empty($tagsProdotto)) {
+          echo '<div class="product-tags" style="margin: 20px auto; max-width: 800px;">';
+          echo '<h3>Tag:</h3>';
+          foreach ($tagsProdotto as $tag) {
+              echo '<span class="tag"><i class="fas fa-tag"></i> ' . htmlspecialchars($tag['Nome']) . '</span>';
+          }
+          echo '</div>';
+      }
+
         echo '</div>';
         
         echo '</div>'; // sezione-superiore
@@ -71,7 +80,7 @@ if ($id) {
           echo '<h3>Recensioni:</h3>';
           foreach ($recensioni as $recensione) {
               echo '<div class="recensione">';
-              echo '<p class="recensione-utente"><strong>' . $recensione['NomeUtente'] . '</strong> - Punteggio: ';
+              echo '<p class="recensione-utente"><strong>' . htmlspecialchars($recensione['NomeUtente']) . '</strong> - Punteggio: ';
 
               $stellePiene = intval($recensione['Punteggio']);
               $stelleVuote = 5 - $stellePiene;
@@ -84,7 +93,7 @@ if ($id) {
               }
 
               echo '</p>';
-              echo '<p class="recensione-testo">' . $recensione['Descrizione'] . '</p>';
+              echo '<p class="recensione-testo">' . htmlspecialchars($recensione['Descrizione']) . '</p>';
               echo '</div>';
             }
             echo '</div>';
@@ -93,48 +102,69 @@ if ($id) {
         }
 
         // TAGS e PRODOTTI SIMILI
-        $stmtTags = $pdo->prepare("SELECT t.IdTag FROM tag t
+        $stmtTags = $pdo->prepare("SELECT t.IdTag, t.Nome FROM tag t
                                   JOIN tagComputer tc ON t.IdTag = tc.IdTag
                                   WHERE tc.IDProdotto = :id");
         $stmtTags->bindValue(':id', $id, PDO::PARAM_INT);
         $stmtTags->execute();
         $tagsProdotto = $stmtTags->fetchAll(PDO::FETCH_ASSOC);
+
+        
         $tagIds = array_column($tagsProdotto, 'IdTag');
 
         if (count($tagIds) > 0) {
             $placeholders = implode(',', array_fill(0, count($tagIds), '?')); 
             $stmtProdottiSimili = $pdo->prepare(
-                "SELECT c.IDProdotto, c.Nome, c.Descrizione, c.Prezzo, COUNT(tc.IdTag) AS TagMatch
-                FROM computer c
-                JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto
-                WHERE tc.IdTag IN ($placeholders) AND c.IDProdotto != ?
-                GROUP BY c.IDProdotto
-                ORDER BY TagMatch DESC, c.Prezzo ASC"
+                "SELECT DISTINCT c.IDProdotto, c.Nome, c.Descrizione, c.Prezzo
+                 FROM computer c
+                 JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto
+                 WHERE tc.IdTag IN ($placeholders)
+                 AND c.IDProdotto != ?
+                 LIMIT 4"
             );
             $stmtProdottiSimili->execute(array_merge($tagIds, [$id]));
             $prodottiSimili = $stmtProdottiSimili->fetchAll(PDO::FETCH_ASSOC);
 
             if ($prodottiSimili) {
-              echo '<div class="consigliati">';
-              echo '<h3 class="titolo-simili">Articoli che potrebbero interessarti</h3>';
-              echo '<div class="prodotti-simili">';
-              foreach ($prodottiSimili as $prodottoSimile) {
-                  echo '<div class="prodotto-simile">';
-                  echo '<img src="../immagini/' . $prodottoSimile['Nome'] . '.jpg" alt="'. $prodottoSimile['Nome'] . '" class="immagine-simile">';
-                  echo '</a>';
-                  echo '<h4>' . htmlspecialchars($prodottoSimile['Nome']) . '</h4>';
-                  echo '<p class="descrizione-simile">' . htmlspecialchars(substr($prodottoSimile['Descrizione'], 0, 80)) . '...</p>';
-                  echo '<p class="prezzo-simile">' . number_format($prodottoSimile['Prezzo'], 2) . '€</p>';
-                  echo '<a class="bottone-vedi" href="dettaglio_prodotti.php?id=' . $prodottoSimile['IDProdotto'] . '">Vedi</a>';
-                  echo '</div>';
-              }
-              echo '</div></div>';
-          } else {
-              echo '<p>Non ci sono prodotti simili.</p>';
-          }
+                // Per ogni prodotto simile, otteniamo i suoi tag
+                foreach ($prodottiSimili as &$prodottoSimile) {
+                    $stmtTagsSimile = $pdo->prepare("SELECT t.Nome FROM tag t
+                                                    JOIN tagComputer tc ON t.IdTag = tc.IdTag
+                                                    WHERE tc.IDProdotto = ?");
+                    $stmtTagsSimile->execute([$prodottoSimile['IDProdotto']]);
+                    $prodottoSimile['tags'] = $stmtTagsSimile->fetchAll(PDO::FETCH_ASSOC);
+                }
+                unset($prodottoSimile); // Break the reference
+
+                echo '<div class="consigliati">';
+                echo '<h3 class="titolo-simili">Articoli che potrebbero interessarti</h3>';
+                echo '<div class="prodotti-simili">';
+                foreach ($prodottiSimili as $prodottoSimile) {
+                    echo '<div class="prodotto-simile">';
+                    echo '<img src="../immagini/' . htmlspecialchars($prodottoSimile['Nome']) . '.jpg" alt="'. htmlspecialchars($prodottoSimile['Nome']) . '" class="immagine-simile">';
+                    echo '<h4>' . htmlspecialchars($prodottoSimile['Nome']) . '</h4>';
+                    echo '<p class="descrizione-simile">' . htmlspecialchars(substr($prodottoSimile['Descrizione'], 0, 80)) . '...</p>';
+                    
+                    // Aggiunta dei tag del prodotto simile
+                    if (!empty($prodottoSimile['tags'])) {
+                        echo '<div class="product-tags">';
+                        foreach ($prodottoSimile['tags'] as $tag) {
+                            echo '<span class="tag"><i class="fas fa-tag"></i> ' . htmlspecialchars($tag['Nome']) . '</span>';
+                        }
+                        echo '</div>';
+                    }
+                    
+                    echo '<p class="prezzo-simile">' . number_format($prodottoSimile['Prezzo'], 2) . '€</p>';
+                    echo '<a class="bottone-vedi" href="dettaglio_prodotti.php?id=' . $prodottoSimile['IDProdotto'] . '">Vedi</a>';
+                    echo '</div>';
+                }
+                echo '</div></div>';
+            } else {
+                echo '<p>Non ci sono prodotti simili.</p>';
+            }
         }
-      }
     }
+}
 ?>
 
 
