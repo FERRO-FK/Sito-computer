@@ -70,7 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && password_verify($password, $user['pass'])) {
         $_SESSION['utente_id'] = $user['ID'];
         $_SESSION['nome'] = $user['Nome'];
+        if ($_SESSION['nome'] == "admin"){
 
+          $_SESSION['admin'] = True;
+          header("Location: ../php/admin.php");
+          exit();
+        }
         header("Location: ../php/dashboard.php");
         
     } else {

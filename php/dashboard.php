@@ -6,6 +6,10 @@ if (!isset($_SESSION['utente_id'])) {
     header("Location: ../php/login.php");
     exit;
 }
+if (isset($_SESSION['admin'])) {
+    header("Location: ../php/admin.php");
+    exit;
+}
 
 $utente_id = $_SESSION['utente_id'];
 
