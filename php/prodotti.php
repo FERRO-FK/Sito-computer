@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../css/styles_navbar.css">
   <link rel="stylesheet" href="../css/styles_prodotti.css">
   <link rel="stylesheet" href="../css/styles_footer.css">
+  <link rel="icon" type="image/png" href="../immagini/favicon.png">
 </head>
 <body>
   <div class="top-bar">
