@@ -105,7 +105,7 @@ if (isset($_SESSION['utente_id'])) {
             <i class="far fa-credit-card"></i> Carta di credito
           </div>
           <div class="payment-method" data-method="paypal">
-            <i class="fab fa-paypal"></i> PayPal
+            <i class="fab fa-paypal"></i> PayPal        
           </div>
         </div>
         
@@ -135,7 +135,8 @@ if (isset($_SESSION['utente_id'])) {
         
         <div class="payment-details" id="paypal-details" style="display: none;">
           <p>Sarai reindirizzato a PayPal per completare il pagamento</p>
-          <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal">
+          <a href="https://www.paypal.com/pool/9eM0UbGYoC?sr=accr"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal"></a>
+          
         </div>
       </section>
       
