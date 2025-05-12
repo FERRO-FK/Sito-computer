@@ -49,7 +49,7 @@ $user = $stmt->fetch();
       <p><strong>Indirizzo:</strong> <?= htmlspecialchars($user['via']) . " " . htmlspecialchars($user['numerocivico']) . ", " . htmlspecialchars($user['citta']) ?></p>
       <div class="profile-buttons">
         <a href="../php/logout.php" class="btn logout">Logout</a>
-        <a href="../html/index.php" class="btn home">Torna alla Home</a>
+        <a href="../php/index.php" class="btn home">Torna alla Home</a>
       </div>
     </div>
   </div>

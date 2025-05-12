@@ -176,12 +176,18 @@ body {
   color: #ffc107;
 }
 
+.recensioni h3 {
+  margin-left: 40px;
+}
+
 .recensione {
   padding: 20px;
   margin-bottom: 20px;
   background-color: #fafafa;
   border-radius: 8px;
   border-left: 3px solid #ff6d00;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .recensione-utente {
