@@ -31,7 +31,7 @@ $username = $user['nome'];
   <link rel="stylesheet" href="../css/styles_navbar.css">
   <link rel="stylesheet" href="../css/styles_index.css">
   <link rel="stylesheet" href="../css/styles_footer.css">
-  <link rel="icon" type="image/png" href="../immagini/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="../immagini/favicon.png">
 
   
 </head>
