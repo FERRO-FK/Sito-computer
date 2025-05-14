@@ -1,0 +1,192 @@
+/* Admin Dashboard Styling - Orange Tech Theme */
+body.admin-dashboard {
+  font-family: 'Poppins', sans-serif;
+  color: #3a3a3a;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: linear-gradient(to right, #fff8f1, #ffefe0);
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.admin-title {
+  color: #FF6D00;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Stile per la tabella utenti */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 8px 32px rgba(255, 109, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  margin-bottom: 3rem;
+}
+
+.users-table th {
+  background-color: #FF6D00;
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 500;
+}
+
+.users-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255, 109, 0, 0.1);
+}
+
+.users-table tr:hover {
+  background-color: rgba(255, 109, 0, 0.05);
+}
+
+/* Stile per il form di aggiunta prodotto */
+.product-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(255, 109, 0, 0.1);
+  border: 1px solid rgba(255, 109, 0, 0.15);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #FF6D00;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 109, 0, 0.3);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #FF6D00;
+  box-shadow: 0 0 0 3px rgba(255, 109, 0, 0.2);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 109, 0, 0.3);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+}
+
+.form-button {
+  background-color: #FF6D00;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(255, 109, 0, 0.1);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.form-button:hover {
+  background-color: #e05e00;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 109, 0, 0.3);
+}
+
+/* Messaggi di stato */
+.message {
+  display: block;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  background-color: rgba(255, 109, 0, 0.1);
+  border-left: 4px solid #FF6D00;
+}
+
+.message.success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border-left-color: #28a745;
+}
+
+.message.error {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-left-color: #dc3545;
+}
+
+/* Stile per la preview immagine */
+.image-preview {
+  margin: 1rem 0;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 8px;
+  border: 2px dashed rgba(255, 109, 0, 0.3);
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding-top: 60px;
+  }
+  
+  .admin-container {
+    padding: 1rem;
+  }
+  
+  .users-table {
+    font-size: 0.9rem;
+  }
+  
+  .users-table th, 
+  .users-table td {
+    padding: 0.6rem;
+  }
+  
+  .product-form {
+    padding: 1.5rem;
+  }
+}
