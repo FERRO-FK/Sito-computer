@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['pass'])) {
-        $_SESSION['utente_id'] = $user['ID'];
+        $_SESSION['utentne_id'] = $user['ID'];
         $_SESSION['nome'] = $user['Nome'];
         if ($_SESSION['nome'] == "admin"){
 

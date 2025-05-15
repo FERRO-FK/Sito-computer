@@ -30,7 +30,7 @@ $utenti = $pdo->query("SELECT * FROM utente")->fetchAll();
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
       <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
-      <a href="../php/logout.php" class="btn logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="../php/logout.php" class="btn lotgout"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     </div>
   </div>
