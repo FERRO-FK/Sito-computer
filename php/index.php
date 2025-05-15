@@ -5,20 +5,35 @@ $username = "Login";
 
 if (isset($_SESSION['utente_id'])) {
   $utente_id = $_SESSION['utente_id'];
-$stmt = $pdo->prepare("SELECT utente.nome, mail, indirizzo.via, indirizzo.numerocivico, indirizzo.citta
+  $stmt = $pdo->prepare("SELECT utente.nome, mail, indirizzo.via, indirizzo.numerocivico, indirizzo.citta
                        FROM utente 
                        JOIN indirizzo ON utente.IDindirizzo = indirizzo.IDindirizzo
                        WHERE utente.id = ?");
-$stmt->execute([$utente_id]);
-$user = $stmt->fetch();
-$username = $user['nome'];
-
+  $stmt->execute([$utente_id]);
+  $user = $stmt->fetch();
+  $username = $user['nome'];
 }
 
-
-
+// Definiamo l'array di tag/categorie         
+$tags = [
+    'Gaming' => 'gaming',
+    'Nvdia Serie 3000' => 'Nvidia 3000',
+    'Nvdia Serie 4000' => 'Nvidia 4000',
+    'Nvdia Serie 5000' => 'Nvidia 5000',
+    'AMD RX 5000' => 'AMD RX 5000',
+    'AMD RX 6000' => 'AMD RX 6000',
+    'AMD RX 7000' => 'AMD RX 7000',
+    'AMD RX 9000' => 'AMD RX 9000',
+    'AMD Ryzen' => 'AMD Ryzen',
+    'Intel' => 'Intel',
+    'Laptop' => 'laptop',
+    'PC da casa' => 'pc-casa',
+    'Leggerissimo' => 'leggero',
+    'Video editing' => 'video editing',
+    'All-in-One' => 'all-in-one',
+    'Professionale' => 'professionale'
+];
 ?>
-
 
 <!DOCTYPE html>
 <html lang="it">
@@ -32,8 +47,9 @@ $username = $user['nome'];
   <link rel="stylesheet" href="../css/styles_index.css">
   <link rel="stylesheet" href="../css/styles_footer.css">
   <link rel="icon" type="image/png" href="../immagini/favicon.png">
+  <style>
 
-  
+  </style>
 </head>
 <body>
 
@@ -55,40 +71,34 @@ $username = $user['nome'];
     </header>
 
     <?php
-     
+      if (isset($_SESSION['utente_id'])) {
+        $idUtente = $_SESSION['utente_id'];
 
-      $idUtente = $_SESSION['utente_id']; // <-- Cambia questo con l'ID utente reale
+        $sql = "
+        SELECT c.Nome, c.Descrizione, c.Prezzo
+        FROM computer c
+        JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto
+        JOIN interessiUtente iu ON tc.IdTag = iu.IdTag
+        WHERE iu.IdUtente = ?
+        ORDER BY iu.Punteggio DESC
+        LIMIT 1
+        ";
 
-      $sql = "
-      SELECT c.Nome, c.Descrizione, c.Prezzo
-      FROM computer c
-      JOIN tagComputer tc ON c.IDProdotto = tc.IDProdotto
-      JOIN interessiUtente iu ON tc.IdTag = iu.IdTag
-      WHERE iu.IdUtente = ?
-      ORDER BY iu.Punteggio DESC
-      LIMIT 1
-       ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$idUtente]);
+        
+        // Inizializza l'array dei risultati
+        $prodotti = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      $stmt = $pdo->prepare($sql);
-      $stmt->execute([$idUtente]);
-      
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+          $prodotti[] = $row;
+        }
 
-     
-      // Inizializza l'array dei risultati
-      $prodotti = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-     
-      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $prodotti[] = $row;
-    }
-
-      // Stampa l'array risultante
-      echo "<pre>";
-      print_r($prodotti);
-      echo "</pre>";
-
-      // Cleanup
-      
+        // Stampa l'array risultante
+        echo "<pre>";
+        print_r($prodotti);
+        echo "</pre>";
+      }
     ?>
 
     <section class="products-section">
@@ -181,7 +191,19 @@ $username = $user['nome'];
         </div>
 
       </div>
-    </section> 
+    </section>
+    
+    <!-- Nuova sezione per le categorie -->
+    <section class="categories-section">
+      <h2 class="categories-title">Esplora le nostre categorie</h2>
+      <div class="categories-container">
+        <?php foreach ($tags as $label => $value): ?>
+          <a href="../php/prodotti.php?categoria=<?= urlencode($value) ?>" class="category-btn">
+            <?= htmlspecialchars($label) ?>
+          </a>
+        <?php endforeach; ?>
+      </div>
+    </section>
   </div>
   
   <!--FOOTER-->
