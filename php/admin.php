@@ -73,7 +73,7 @@ $utenti = $pdo->query("SELECT * FROM utente")->fetchAll();
         $targetDir = __DIR__ . '/../immagini/';
         $filename = basename($_FILES["immagine"]["name"]);
         $imageFileType = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $allowed = ['jpg'];
 
         if (!in_array($imageFileType, $allowed)) {
             $messaggio = "Formato immagine non valido.";

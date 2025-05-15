@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           exit();
     header("Location:../php/index.php");
     exit;
-}
+}}
 ?>
 <!DOCTYPE html>
 <html lang="it">
