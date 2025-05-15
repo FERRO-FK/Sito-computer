@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -17,8 +18,18 @@
     <div class="nav-links">
       <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
-      <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
+      <a href="../html/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <?php
+      session_start();
+    // Assicurati che sia chiamato SOLO una volta per pagina
+    if (isset($_SESSION['nome'])) {
+        // Utente loggato
+        echo '<a href="../php/dashboard.php"><i class="fas fa-user"></i> ' . htmlspecialchars($_SESSION['nome']) . '</a>';
+    } else {
+        // Utente non loggato
+        echo '<a href="../php/login.php"><i class="fas fa-user"></i> Login</a>';
+    }
+    ?>
     </div>
   </div>
     <div class="container">
@@ -117,7 +128,7 @@
     <!-- query per cercare i prodotti-->
     <?php
     // Connessione al database
-    $conn = mysqli_connect("localhost", "root", "root", "sito");
+    $conn = mysqli_connect("localhost", "root", "vc-mob2-21", "sito");
 
     // Recupera l'ID del tag selezionato
     $categoria = $_GET['categoria'] ?? 'all';

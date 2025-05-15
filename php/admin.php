@@ -28,9 +28,9 @@ $utenti = $pdo->query("SELECT * FROM utente")->fetchAll();
     <div class="nav-links">
       <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <a href="../html/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
-      <a href="../php/logout.php" class="btn logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="../php/logout.php" class="btn lotgout"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
     </div>
   </div>
@@ -73,7 +73,7 @@ $utenti = $pdo->query("SELECT * FROM utente")->fetchAll();
         $targetDir = __DIR__ . '/../immagini/';
         $filename = basename($_FILES["immagine"]["name"]);
         $imageFileType = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $allowed = ['jpg'];
 
         if (!in_array($imageFileType, $allowed)) {
             $messaggio = "Formato immagine non valido.";

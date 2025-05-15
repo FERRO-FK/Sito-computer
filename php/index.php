@@ -55,14 +55,24 @@ $tags = [
 
   <!--NAVBAR-->
   <div class="top-bar">
-    <div class="logo">Tecno shop</div>
-    <div class="nav-links">
-      <a href="#"><i class="fas fa-home"></i> Home</a>
-      <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="../html/carrello.html"><i class="fas fa-shopping-cart"></i> Carrello</a>
-      <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
-    </div>
+  <div class="logo">Tecno shop</div>
+  <div class="nav-links">
+    <a href="#"><i class="fas fa-home"></i> Home</a>
+    <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
+    <a href="../html/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+
+    <?php
+    // Assicurati che sia chiamato SOLO una volta per pagina
+    if (isset($_SESSION['nome'])) {
+        // Utente loggato
+        echo '<a href="../php/dashboard.php"><i class="fas fa-user"></i> ' . htmlspecialchars($_SESSION['nome']) . '</a>';
+    } else {
+        // Utente non loggato
+        echo '<a href="../php/login.php"><i class="fas fa-user"></i> Login</a>';
+    }
+    ?>
   </div>
+</div>
 
   <div class="container">
     <header>
