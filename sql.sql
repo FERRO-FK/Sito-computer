@@ -46,9 +46,9 @@ CREATE TABLE IF NOT EXISTS `ordine` (
   `Stato` varchar(50) DEFAULT NULL,
   `Totale` decimal(10,2) DEFAULT NULL,
   `Data` date DEFAULT NULL,
-  `IDSpedizione` int(11) DEFAULT NULL,
-  KEY `IDSpedizione` (`IDSpedizione`),
-  CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`IDSpedizione`) REFERENCES `indirizzo` (`IDIndirizzo`)
+  `IDUtente` int(11) DEFAULT NULL,
+  KEY `IDUtente` (`IDUtente`),
+  CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`IDUtente`) REFERENCES `utente` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- L’esportazione dei dati non era selezionata.
