@@ -1,6 +1,6 @@
     /* Stili per le immagini prodotto */
     .product-image-container {
-        height: 180px;
+        height: 220px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -15,6 +15,23 @@
         max-height: 100%;
         object-fit: contain;
       }  
+
+
+
+    .product-tags {
+      margin-top: 8px;
+    }
+    
+    .product-tags .tag {
+      display: inline-block;
+      background-color: #eee;
+      color: #333;
+      margin-top: 8px;
+      border-radius: 12px;
+      padding: 4px 8px;
+      margin-right: 5px;
+      font-size: 0.85rem;
+    }  
 .products-section {
     max-width: 100%;
     margin: 0 auto;
