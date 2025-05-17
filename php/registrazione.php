@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 require '../php/db.php';
 
@@ -33,14 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $stmt->fetch();
     $_SESSION['utente_id'] = $user['ID'];
     $_SESSION['nome'] = $user['Nome'];
-    if ($_SESSION['nome'] == "admin"){
-
-          $_SESSION['admin'] = True;
-          header("Location: ../php/admin.php");
-          exit();
-    header("Location:../php/index.php");
-    exit;
-}}
+    
+    if ($_SESSION['nome'] == "admin") {
+        $_SESSION['admin'] = true;
+        header("Location: ../php/admin.php");
+    } else {
+        header("Location: ../php/dashboard.php");
+    }
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -105,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         
         <button type="submit" class="register-btn">
-        <i class="fas fa-user-plus"></i> Registrati                  
+            <i class="fas fa-user-plus"></i> Registrati
         </button>
       </form>
       

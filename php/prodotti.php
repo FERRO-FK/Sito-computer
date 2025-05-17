@@ -290,12 +290,10 @@
           card.setAttribute("data-id", product.IDProdotto);
           card.setAttribute("data-category", product.tags?.[0] || "none"); // Usa il primo tag, se esiste
           card.setAttribute("data-price", product.Prezzo);
-
           let nomeprodottocorretto = product.Nome.replace(/\s+/g, '');
 
           // Percorso dell'immagine - fallback se non esiste
           const imagePath = `../immagini/${nomeprodottocorretto}.jpg`;
-
 
 
           card.innerHTML = `
