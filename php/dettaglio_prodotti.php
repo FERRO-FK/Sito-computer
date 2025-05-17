@@ -51,9 +51,9 @@ if ($id) {
         // Dettagli prodotto con struttura aggiornata
         echo '<div class="contenitore-prodotto">';
         echo '<div class="sezione-superiore">';
-        
+        $nomeProdottoCorretto = str_replace(' ', '', $prodotto['Nome']);
         echo '<div class="immagine-prodotto">';
-        echo '<img src="../immagini/' . $prodotto['Nome'] . '.jpg" alt="' . htmlspecialchars($prodotto['Nome']) . '">';
+        echo '<img src="../immagini/' . $nomeProdottoCorretto . '.jpg" alt="' . htmlspecialchars($prodotto['Nome']) . '">';
         echo '</div>';
         
         echo '<div class="dettagli-prodotto">';
@@ -151,7 +151,8 @@ if ($id) {
                 echo '<div class="prodotti-simili">';
                 foreach ($prodottiSimili as $prodottoSimile) {
                     echo '<div class="prodotto-simile">';
-                    echo '<img src="../immagini/' . htmlspecialchars($prodottoSimile['Nome']) . '.jpg" alt="'. htmlspecialchars($prodottoSimile['Nome']) . '" class="immagine-simile">';
+                    $nomeProdottoCorretto = str_replace(' ', '', $prodottoSimile['Nome']);
+                    echo '<img src="../immagini/' . htmlspecialchars($nomeProdottoCorretto) . '.jpg" alt="'. htmlspecialchars($prodottoSimile['Nome']) . '" class="immagine-simile">';
                     echo '<h4>' . htmlspecialchars($prodottoSimile['Nome']) . '</h4>';
                     echo '<p class="descrizione-simile">' . htmlspecialchars(substr($prodottoSimile['Descrizione'], 0, 80)) . '...</p>';
                     

@@ -170,7 +170,8 @@ unset($prodotto); // Rompe il riferimento dell'ultimo elemento
         <?php foreach ($prodotti as $prodotto): ?>
           <div class="product-card">
             <div class="product-image-container">
-              <img class="product-image" src="../immagini/<?= htmlspecialchars($prodotto['Nome']) ?>.jpg" alt="<?= htmlspecialchars($prodotto['Nome']) ?>">
+              <?php $nomeProdottoCorretto = str_replace(' ', '', $prodotto['Nome']);?>
+              <img class="product-image" src="../immagini/<?= htmlspecialchars($nomeProdottoCorretto) ?>.jpg" alt="<?= htmlspecialchars($prodotto['Nome']) ?>">
             </div>
             <div class="product-info">
               <h3><?= htmlspecialchars($prodotto['Nome']) ?></h3>
