@@ -80,7 +80,7 @@ $tags = [
       <p>I migliori computer a prezzi imbattibili</p>
     </header>
 
-<?php
+    <?php
 // Recupera i prodotti consigliati o casuali
 $prodotti = []; // Inizializza l'array prodotti
 
@@ -101,36 +101,48 @@ if (isset($_SESSION['utente_id'])) {
     $stmt = $pdo->prepare($sqlConsigliati);
     $stmt->execute([$idUtente]);
     $prodotti = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    // Se non ci sono prodotti consigliati, mostra prodotti casuali
-    if (count($prodotti)==5) {
-        $sqlCasuali = "
-        SELECT IDProdotto, Nome, Descrizione, Prezzo
-        FROM computer
-        ORDER BY RAND()
-        LIMIT 5
-        ";
-        $prodotti = $pdo->query($sqlCasuali)->fetchAll(PDO::FETCH_ASSOC);
-   } else {
-    $contatore = 5 - count($prodotti);
 
-    $sqlCasuali = "
-    SELECT IDProdotto, Nome, Descrizione, Prezzo
-    FROM computer
-    ORDER BY RAND()
-    LIMIT ?
-    ";
+    // Se ci sono meno di 5 prodotti consigliati, completa con prodotti casuali
+    if (count($prodotti) < 5) {
+        $contatore = 5 - count($prodotti);
+        $idEsclusi = array_column($prodotti, 'IDProdotto');
 
-    $stmt = $pdo->prepare($sqlCasuali);
-    $stmt->bindValue(1, $contatore, PDO::PARAM_INT); // IMPORTANTE: specificare che è un intero
-    $stmt->execute();
-    $prodottiCasuali = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($idEsclusi)) {
+            $placeholders = implode(',', array_fill(0, count($idEsclusi), '?'));
 
-    $prodotti = array_merge($prodotti, $prodottiCasuali);
-}
-}   
-else {
-    // Se l'utente non è loggato, mostra prodotti casuali
+            $sqlCasuali = "
+            SELECT IDProdotto, Nome, Descrizione, Prezzo
+            FROM computer
+            WHERE IDProdotto NOT IN ($placeholders)
+            ORDER BY RAND()
+            LIMIT ?
+            ";
+
+            $stmt = $pdo->prepare($sqlCasuali);
+            foreach ($idEsclusi as $index => $id) {
+                $stmt->bindValue($index + 1, $id, PDO::PARAM_INT);
+            }
+            $stmt->bindValue(count($idEsclusi) + 1, $contatore, PDO::PARAM_INT);
+        } else {
+            // Nessun prodotto da escludere
+            $sqlCasuali = "
+            SELECT IDProdotto, Nome, Descrizione, Prezzo
+            FROM computer
+            ORDER BY RAND()
+            LIMIT ?
+            ";
+
+            $stmt = $pdo->prepare($sqlCasuali);
+            $stmt->bindValue(1, $contatore, PDO::PARAM_INT);
+        }
+
+        $stmt->execute();
+        $prodottiCasuali = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $prodotti = array_merge($prodotti, $prodottiCasuali);
+    }
+
+} else {
+    // Se l'utente non è loggato, mostra 5 prodotti casuali
     $sqlCasuali = "
     SELECT IDProdotto, Nome, Descrizione, Prezzo
     FROM computer
