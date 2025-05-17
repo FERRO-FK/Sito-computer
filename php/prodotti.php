@@ -385,7 +385,7 @@
     // Inizializza il contatore del carrello al caricamento
     document.addEventListener('DOMContentLoaded', updateCartCounter);
   </script>
-
+</div>
       <!--FOOTER-->
       <div class="footer-divider"></div>
     <footer class="footer">
