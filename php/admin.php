@@ -85,15 +85,15 @@ $utenti = $pdo->query("SELECT * FROM utente")->fetchAll();
             $uploadOk = false;
         }
 
-        $nomeSanificato = preg_replace('/[^a-zA-Z0-9_-]/', '-', strtolower($nome));
+        $nomeSanificato = preg_replace('/[^a-zA-Z0-9_-]/', '', strtolower($nome));
         $uniqueName = $nomeSanificato . '.' . $imageFileType;
         $percorsoRelativo = "../immagini/" . $uniqueName;
         $percorsoAssoluto = $targetDir . $uniqueName;
 
         if ($uploadOk && move_uploaded_file($_FILES["immagine"]["tmp_name"], $percorsoAssoluto)) {
             try {
-                $stmt = $pdo->prepare("INSERT INTO computer (percorsoimmagine, Descrizione, Prezzo, Nome) VALUES (?, ?, ?, ?)");
-                $stmt->execute([$percorsoRelativo, $descrizione, $prezzo, $nome]);
+                $stmt = $pdo->prepare("INSERT INTO computer (Descrizione, Prezzo, Nome) VALUES (?, ?, ?)");
+                $stmt->execute([ $descrizione, $prezzo, $nome]);
                 $idProdotto = $pdo->lastInsertId();
 
                 $stmt = $pdo->prepare("INSERT INTO tagcomputer (IDprodotto, idtag) VALUES (?, ?)");

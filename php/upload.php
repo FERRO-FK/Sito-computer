@@ -11,9 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
     // Controlli base
-    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+    $allowed = ['jpg', ];
     if (!in_array($imageFileType, $allowed)) {
-        die("Esrrore: solo file JPG, JPEG, PNG, GIF sono ammessi.");
+        die("Esrrore: solo file JPG sono ammessi.");
     }
 
     if ($file["size"] > 5 * 1024 * 1024) { // 5MB max
