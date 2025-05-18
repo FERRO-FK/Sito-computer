@@ -18,7 +18,7 @@
     <div class="nav-links">
       <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="../html/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <a href="../php/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <?php
       session_start();
     // Assicurati che sia chiamato SOLO una volta per pagina
@@ -263,10 +263,7 @@
         $stmt_tag->close();
     }
 
-    // Stampa a scopo di debug
-    //echo "<pre>";
-    //print_r($prodotti);
-    //echo "</pre>";
+   
     ?>
 
     <script>
@@ -359,7 +356,7 @@
 
     // Aggiorna il contatore del carrello
     async function updateCartCounter() {
-      const cartCounter = document.querySelector('.nav-links a[href="../html/carrello.html"]');
+      const cartCounter = document.querySelector('.nav-links a[href="../php/carrello.php"]');
       if(cartCounter) {
         try {
           const response = await fetch('../php/backend_carrello.php?action=getCount');

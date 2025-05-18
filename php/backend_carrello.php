@@ -7,19 +7,36 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
-// Database dei prodotti
-$prodotti = [
-    1 => ["id" => 1, "nome" => "laptop HP", "prezzo" => 549.00],
-    2 => ["id" => 2, "nome" => "PC Gaming", "prezzo" => 899.00],
-    3 => ["id" => 3, "nome" => "PC Gaming 4060", "prezzo" => 929.00],
-    4 => ["id" => 4, "nome" => "PC Gaming 5080", "prezzo" => 2499.00],
-    5 => ["id" => 5, "nome" => "PC Fisso Intel I5", "prezzo" => 599.00],
-];
+
+
+// Connessione al database
+require_once 'db.php';
+
 
 // Inizializza il carrello se non esiste
 if (!isset($_SESSION['carrello'])) {
     $_SESSION['carrello'] = [];
 }
+
+$carrello = $_SESSION['carrello'];
+$prodotti = [];
+
+
+$stmt = $pdo->query("SELECT idprodotto AS id, nome, prezzo FROM computer");
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($result as $r) {
+    $prodotti[$r['id']] = [
+        'id' => $r['id'],
+        'nome' => $r['nome'],
+        'prezzo' => (float) $r['prezzo']
+    ];
+}
+
+
+
+
+
 
 $action = $_GET['action'] ?? '';
 
