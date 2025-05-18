@@ -343,6 +343,32 @@ body {
     background-color: #ff6d00;
 }
 
+.notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      border-radius: 5px;
+      color: white;
+      font-weight: 600;
+      animation: slideIn 0.3s ease-out;
+      z-index: 1000;
+    }
+
+    .success {
+      background-color: #4CAF50;
+    }
+
+    .error {
+      background-color: #F44336;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+
 /* Stile per il messaggio "già recensito" */
 .gia-recensito {
     margin-top: 20px;
