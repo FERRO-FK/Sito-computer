@@ -21,7 +21,7 @@
     <div class="nav-links">
       <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="../html/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <a href="../php/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <?php
     // Assicurati che sia chiamato SOLO una volta per pagina
     if (isset($_SESSION['nome'])) {
@@ -90,7 +90,7 @@ if ($id) {
         echo '<div class="dettagli-prodotto">';
         echo '<h1 class="titolo">'. htmlspecialchars($prodotto['Nome']) . '</h1>';
         echo '<h1 class="prezzo">' . number_format($prodotto['Prezzo'], 2) . '€</h1>';
-        echo '<button class="bottone-compra">Compra</button>';
+        echo '<button class="bottone-compra" onclick="addToCart(' . $prodotto['IDProdotto'] . '); return false;">Compra</button>';
         echo '<p class="descrizione">' . htmlspecialchars($prodotto['Descrizione']) . '</p>';
         if (!empty($tagsProdotto)) {
           echo '<div class="product-tags" style="margin: 20px auto; max-width: 800px;">';
@@ -257,7 +257,65 @@ if ($id) {
     }
 }
 ?>
+<script>
+    // Funzione per aggiungere al carrello
+    async function addToCart(productId) {
+      try {
+        const response = await fetch('../php/backend_carrello.php?action=addToCart&id=' + productId);
+        const data = await response.json();
 
+        if(data.success) {
+          showNotification('Prodotto aggiunto al carrello!');
+          updateCartCounter();
+        } else {
+          showNotification('Errore: ' + data.message, 'error');
+        }
+      } catch (error) {
+        console.error('Errore:', error);
+        showNotification('Errore di connessione', 'error');
+      }
+    } 
+
+    // Mostra una notifica temporanea
+    function showNotification(message, type = 'success') {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type}`;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+
+    // Aggiorna il contatore del carrello
+    async function updateCartCounter() {
+      const cartCounter = document.querySelector('.nav-links a[href="../php/carrello.php"]');
+      if(cartCounter) {
+        try {
+          const response = await fetch('../php/backend_carrello.php?action=getCount');
+          const data = await response.json();
+
+          if(data.success) {
+            const existingCounter = cartCounter.querySelector('.cart-counter');
+            if(existingCounter) existingCounter.remove();
+
+            if(data.count > 0) {
+              const counter = document.createElement('span');
+              counter.className = 'cart-counter';
+              counter.textContent = data.count;
+              cartCounter.appendChild(counter);
+            }
+          }
+        } catch (error) {
+          console.error('Errore nel contatore:', error);
+        }
+      }
+    }
+
+    // Inizializza il contatore del carrello al caricamento
+    document.addEventListener('DOMContentLoaded', updateCartCounter);
+  </script>
 
   
   
