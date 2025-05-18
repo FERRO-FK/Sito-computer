@@ -85,7 +85,7 @@ function getOrderProducts($pdo, $order_id) {
         <?php if (count($orders) > 0): ?>
           <?php foreach ($orders as $order): ?>
             <div class="order">
-              <p><strong>Ordine #<?= $order['id'] ?></strong> - <?= date('d/m/Y H:i', strtotime($order['data'])) ?> - Totale: €<?= number_format($order['totale'], 2) ?></p>
+              <p><strong>Ordine - <?= date('d/m/Y H:i', strtotime($order['data'])) ?> - Totale: €<?= number_format($order['totale'], 2) ?></p>
               <ul>
                 <?php 
                 $products = getOrderProducts($pdo, $order['id']);
