@@ -264,14 +264,15 @@ body.admin-dashboard {
 }
 
 .btn.cancel {
-    background-color: #95a5a6;
+    background-color: #FF6D00;
     color: white;
-    border: 1px solid #7f8c8d;
-    margin-left: 10px;
+    border: 1px solid #FF6D00;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .btn.cancel:hover {
-    background-color: #7f8c8d;
+    background-color: #FF6D00;
 }
 
 /* Messaggi di stato */
