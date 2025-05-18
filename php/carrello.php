@@ -79,7 +79,7 @@
           <span></span>
         </div>
 
-        <a href="#" class="checkout-btn">Procedi all'acquisto</a>
+        <a href="../php/checkout.php" class="checkout-btn">Procedi all'acquisto</a>
         <a href="../html/index.php" class="continue-shopping"><i class="fas fa-arrow-left"></i> Continua lo shopping</a>
       </div>
     </div>

@@ -7,6 +7,8 @@ if (isset($_SESSION['utente_id'])) {
     exit;
 }
 
+$errore = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $mail = $_POST['mail'];
@@ -15,32 +17,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $via = $_POST['via'];
     $numerocivico = $_POST['numerocivico'];
 
-    // Hash password
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-
-    // Salva indirizzo
-    $stmt = $pdo->prepare("INSERT INTO indirizzo (numerocivico, citta, via) VALUES (?, ?, ?)");
-    $stmt->execute([$numerocivico, $citta, $via]);
-    $id_indirizzo = $pdo->lastInsertId();
-
-    // Salva utente
-    $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, pass, IDindirizzo) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$nome, $mail, $hash, $id_indirizzo]);
+    // Controllo se la mail è già registrata
     $stmt = $pdo->prepare("SELECT * FROM utente WHERE mail = ?");
     $stmt->execute([$mail]);
-    $user = $stmt->fetch();
-    $_SESSION['utente_id'] = $user['ID'];
-    $_SESSION['nome'] = $user['Nome'];
-    
-    if ($_SESSION['nome'] == "admin") {
-        $_SESSION['admin'] = true;
-        header("Location: ../php/admin.php");
+    if ($stmt->fetch()) {
+        // Email già registrata
+        $errore = "Email già registrata. Per favore, usa un'altra email.";
     } else {
-        header("Location: ../php/dashboard.php");
+        // Hash password
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        // Salva indirizzo
+        $stmt = $pdo->prepare("INSERT INTO indirizzo (numerocivico, citta, via) VALUES (?, ?, ?)");
+        $stmt->execute([$numerocivico, $citta, $via]);
+        $id_indirizzo = $pdo->lastInsertId();
+
+        // Salva utente
+        $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, pass, IDindirizzo) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$nome, $mail, $hash, $id_indirizzo]);
+
+        // Recupera utente per sessione
+        $stmt = $pdo->prepare("SELECT * FROM utente WHERE mail = ?");
+        $stmt->execute([$mail]);
+        $user = $stmt->fetch();
+        $_SESSION['utente_id'] = $user['ID'];
+        $_SESSION['nome'] = $user['Nome'];
+        
+        if ($_SESSION['nome'] == "admin") {
+            $_SESSION['admin'] = true;
+            header("Location: ../php/admin.php");
+        } else {
+            header("Location: ../php/dashboard.php");
+        }
+        exit();
     }
-    exit();
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -107,7 +121,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <i class="fas fa-user-plus"></i> Registrati
         </button>
       </form>
-      
+         <?php if (!empty($errore)): ?>
+        <p style="color: red;"><?php echo htmlspecialchars($errore); ?></p>
+      <?php endif; ?>
       <div class="login-link">
         Hai già un account? <a href="../php/login.php">Accedi qui</a>
       </div>

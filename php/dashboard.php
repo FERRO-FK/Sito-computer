@@ -38,7 +38,7 @@ $user = $stmt->fetch();
 <body>
 
   <div class="top-bar">
-    <div class="logo" onclick="window.location.href='../html/index.php'">Tecno Shop</div>
+    <div class="logo" onclick="window.location.href='../php/index.php'">Tecno Shop</div>
     <div class="nav-links">
       <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
