@@ -21,11 +21,19 @@ if (!empty($carrello)) {
     }
 
     $totaleFinale = $totale + $spedizione;
+    
+    $stmt = $pdo->prepare("SELECT IDindirizzo FROM indirizzo WHERE idutente = ? LIMIT 1 ");
+    $stmt->execute([$idUtente]);
+    $dati = $stmt->fetch();
 
     // Inserisce ordine in tabella ordini
-    $stmtOrdine = $pdo->prepare("INSERT INTO ordini (id_utente, totale) VALUES (?, ?)");
-$stmtOrdine->execute([$idUtente, $totaleFinale]);
+    $stmtOrdine = $pdo->prepare("INSERT INTO ordini (id_utente, totale, idindirizzo) VALUES (?, ?, ?)");
+$stmtOrdine->execute([$idUtente, $totaleFinale,$dati["IDindirizzo"]]);
     $idOrdine = $pdo->lastInsertId();
+
+    
+     
+
 
     // Inserisce ogni prodotto in ordini_prodotti
     $stmtProdotto = $pdo->prepare("INSERT INTO ordini_prodotti (id_ordine, id_prodotto, quantita) VALUES (?, ?, ?)");

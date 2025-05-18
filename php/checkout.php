@@ -18,7 +18,7 @@ if (isset($_SESSION['utente_id'])) {
   $utente_id = $_SESSION['utente_id'];
   $stmt = $pdo->prepare("SELECT utente.nome, mail, indirizzo.via, indirizzo.numerocivico, indirizzo.citta
                          FROM utente 
-                         JOIN indirizzo ON utente.IDindirizzo = indirizzo.IDindirizzo
+                         JOIN indirizzo ON utente.ID = indirizzo.idutente
                          WHERE utente.id = ?");
   $stmt->execute([$utente_id]);
   $user = $stmt->fetch();
