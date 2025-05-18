@@ -121,12 +121,12 @@
       cartItems.forEach(item => {
         const itemTotal = item.prezzo * item.quantita;
         subtotal += itemTotal;
-  
+        let nomeprodottocorretto = item.nome.replace(/\s+/g, '');
         const itemElement = document.createElement('div');
         itemElement.className = 'cart-item';
         itemElement.dataset.id = item.id;
         itemElement.innerHTML = `
-          <img src= "../immagini/${item.nome}.jpg" alt="${item.nome}">
+          <img src= "../immagini/${nomeprodottocorretto}.jpg" alt="${item.nome}">
           <div class="item-details">
             <h3>${item.nome}</h3>
             <span class="item-price">${item.prezzo.toFixed(2)}€</span>
