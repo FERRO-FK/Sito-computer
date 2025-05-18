@@ -39,6 +39,37 @@
 session_start();
 require '../php/db.php';
 
+// Processa l'invio di una nuova recensione
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_review'])) {
+    if (isset($_SESSION['utente_id'])) {
+        $punteggio = $_POST['punteggio'] ?? 0;
+        $descrizione = $_POST['descrizione'] ?? '';
+        $id_prodotto = $_POST['id_prodotto'] ?? 0;
+        $utente_id = $_SESSION['utente_id'];
+        
+        // Verifica se l'utente ha già recensito questo prodotto
+        $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM recensione WHERE IDUtente = ? AND IDProdotto = ?");
+        $stmtCheck->execute([$utente_id, $id_prodotto]);
+        $alreadyReviewed = $stmtCheck->fetchColumn();
+        
+        // Validazione dei dati
+        if ($punteggio >= 1 && $punteggio <= 5 && !empty($descrizione)) {
+            if ($alreadyReviewed == 0) {
+                $stmt = $pdo->prepare("INSERT INTO recensione (Punteggio, Descrizione, IDUtente, IDProdotto) VALUES (?, ?, ?, ?)");
+                $stmt->execute([$punteggio, $descrizione, $utente_id, $id_prodotto]);
+                
+                // Reindirizza per evitare il resubmit del form
+                header("Location: dettaglio_prodotti.php?id=" . $id_prodotto);
+                exit();
+            } else {
+                $error_message = "Hai già recensito questo prodotto.";
+            }
+        } else {
+            $error_message = "Per favore inserisci una valutazione e una descrizione valida.";
+        }
+    }
+}
+
 $id = $_GET['id'] ?? null;
 
 if ($id) {
@@ -73,6 +104,53 @@ if ($id) {
         echo '</div>';
         
         echo '</div>'; // sezione-superiore
+        
+        // Form per aggiungere recensione (solo per utenti loggati)
+        if (isset($_SESSION['utente_id'])) {
+            // Verifica se l'utente ha già recensito questo prodotto
+            $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM recensione WHERE IDUtente = ? AND IDProdotto = ?");
+            $stmtCheck->execute([$_SESSION['utente_id'], $id]);
+            $alreadyReviewed = $stmtCheck->fetchColumn();
+            
+            if ($alreadyReviewed == 0) {
+                echo '<div class="aggiungi-recensione">';
+                echo '<h3>Aggiungi una recensione</h3>';
+                
+                // Mostra eventuali messaggi di errore
+                if (isset($error_message)) {
+                    echo '<div class="error-message">' . htmlspecialchars($error_message) . '</div>';
+                }
+                
+                echo '<form method="POST" action="">';
+                echo '<input type="hidden" name="id_prodotto" value="' . $id . '">';
+                
+                echo '<div class="valutazione-stelle">';
+                echo '<label>Valutazione:</label>';
+                echo '<select name="punteggio" required>';
+                echo '<option value="">Seleziona...</option>';
+                echo '<option value="1">1 Stella</option>';
+                echo '<option value="2">2 Stelle</option>';
+                echo '<option value="3">3 Stelle</option>';
+                echo '<option value="4">4 Stelle</option>';
+                echo '<option value="5">5 Stelle</option>';
+                echo '</select>';
+                echo '</div>';
+                
+                echo '<div class="testo-recensione">';
+                echo '<label>Recensione:</label>';
+                echo '<textarea name="descrizione" required placeholder="Scrivi la tua recensione qui..."></textarea>';
+                echo '</div>';
+                
+                echo '<button type="submit" name="submit_review" class="bottone-invia-recensione">Invia Recensione</button>';
+                echo '</form>';
+                echo '</div>';
+            } else {
+                echo '<div class="gia-recensito">';
+                echo '<p>Hai già recensito questo prodotto.</p>';
+                echo '</div>';
+            }
+        }
+        
         echo '</div>'; // contenitore-prodotto
 
         // RECENSIONI
