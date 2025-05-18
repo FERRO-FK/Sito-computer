@@ -8,11 +8,9 @@ if (!isset($_SESSION['utente_id'])) {
     exit;
 }
 
-
 if ($_SESSION['carrello'] == []){
   header("Location: ../php/carrello.php");
 }
-
 
 if (isset($_SESSION['utente_id'])) {
   $utente_id = $_SESSION['utente_id'];
@@ -48,7 +46,16 @@ if (isset($_SESSION['utente_id'])) {
       <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
       <a href="../php/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
-      <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
+      <?php
+    // Assicurati che sia chiamato SOLO una volta per pagina
+    if (isset($_SESSION['nome'])) {
+        // Utente loggato
+        echo '<a href="../php/dashboard.php"><i class="fas fa-user"></i> ' . htmlspecialchars($_SESSION['nome']) . '</a>';
+    } else {
+        // Utente non loggato
+        echo '<a href="../php/login.php"><i class="fas fa-user"></i> Login</a>';
+    }
+    ?>
     </div>
   </div>
 
@@ -264,16 +271,38 @@ if (!empty($carrello)) {
     });
     
 
-      function processPayment() {
+    function processPayment() {
+        // Prima verifica i campi di spedizione
+        if (!validateShippingInfo()) {
+            return;
+        }
+        
         const method = document.querySelector('input[name="payment-method"]:checked').value;
         
         if (method === 'credit' && !validateCreditCard()) {
           return; // Blocca se la carta non è "valida"
         }
         
-          window.location.href = "../php/grazie_per_acquisto.php"
-      }
+        window.location.href = "../php/grazie_per_acquisto.php"
+    }
     
+    function validateShippingInfo() {
+        const shippingFields = [
+            {id: 'cap', name: 'CAP'},
+            {id: 'provincia', name: 'Provincia'},
+            {id: 'telefono', name: 'Telefono'}
+        ];
+
+        for (let field of shippingFields) {
+            const value = document.getElementById(field.id).value.trim();
+            if (value === '') {
+                alert(`Il campo ${field.name} è obbligatorio`);
+                return false;
+            }
+        }
+
+        return true;
+    }
     
     function validateCreditCard() {
       const fields = [
@@ -296,3 +325,5 @@ if (!empty($carrello)) {
   </script>
 </body>
 </html>
+message.txt
+13 KB
