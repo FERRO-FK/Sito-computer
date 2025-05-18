@@ -34,7 +34,7 @@ if (isset($_SESSION['utente_id'])) {
   <div class="top-bar">
     <div class="logo">Tecno shop</div>
     <div class="nav-links">
-      <a href="#"><i class="fas fa-home"></i> Home</a>
+      <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
       <a href="../html/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
@@ -100,43 +100,51 @@ if (isset($_SESSION['utente_id'])) {
       <section class="checkout-section">
         <h2><i class="fas fa-credit-card"></i> Metodo di pagamento</h2>
         
-        <div class="payment-methods">
-          <div class="payment-method active" data-method="credit">
-            <i class="far fa-credit-card"></i> Carta di credito
-          </div>
-          <div class="payment-method" data-method="paypal">
-            <i class="fab fa-paypal"></i> PayPal        
-          </div>
-        </div>
-        
-        <div class="payment-details" id="credit-card-details">
-          <div class="form-group">
-            <label for="card-number">Numero carta</label>
-            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" pattern="[\d ]{16,19}" required>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label for="card-expiry">Scadenza</label>
-              <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/AA" pattern="\d{2}/\d{2}" required>
+        <div class="payment-options">
+          <label class="payment-option selected">
+            <div class="payment-option-header">
+              <input type="radio" name="payment-method" value="credit" checked>
+              <i class="far fa-credit-card"></i>
+              <h3>Carta di credito</h3>
             </div>
             
-            <div class="form-group">
-              <label for="card-cvv">CVV</label>
-              <input type="text" id="card-cvv" name="card-cvv" placeholder="123" pattern="\d{3}" required>
+            <div class="payment-details">
+              <div class="form-group">
+                <label for="card-number">Numero carta</label>
+                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" pattern="[\d ]{16,19}" required>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="card-expiry">Scadenza</label>
+                  <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/AA" pattern="\d{2}/\d{2}" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="card-cvv">CVV</label>
+                  <input type="text" id="card-cvv" name="card-cvv" placeholder="123" pattern="\d{3}" required>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="card-name">Nome sulla carta</label>
+                <input type="text" id="card-name" name="card-name" required>
+              </div>
             </div>
-          </div>
+          </label>
           
-          <div class="form-group">
-            <label for="card-name">Nome sulla carta</label>
-            <input type="text" id="card-name" name="card-name" required>
-          </div>
-        </div>
-        
-        <div class="payment-details" id="paypal-details" style="display: none;">
-          <p>Sarai reindirizzato a PayPal per completare il pagamento</p>
-          <a href="https://www.paypal.com/pool/9eM0UbGYoC?sr=accr"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal"></a>
-          
+          <label class="payment-option">
+            <div class="payment-option-header">
+              <input type="radio" name="payment-method" value="paypal">
+              <i class="fab fa-paypal"></i>
+              <h3>PayPal</h3>
+            </div>
+            
+            <div class="payment-details">
+              <p>Sarai reindirizzato a PayPal per completare il pagamento</p>
+              <a href="https://www.paypal.com/pool/9eM0UbGYoC?sr=accr"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal"></a>
+            </div>
+          </label>
         </div>
       </section>
       
@@ -176,11 +184,7 @@ if (isset($_SESSION['utente_id'])) {
             <span>€1.407,99</span>
           </div>
         </div>
-        
-        <div class="coupon-form">
-          <input type="text" placeholder="Codice sconto">
-          <button class="apply-btn">Applica</button>
-        </div>
+
         
         <button class="checkout-btn" onclick="processPayment()">
           <i class="fas fa-lock"></i> Completa l'ordine
@@ -212,58 +216,57 @@ if (isset($_SESSION['utente_id'])) {
   </footer>
 
   <script>
-    // Cambio metodo di pagamento
-    document.querySelectorAll('.payment-method').forEach(method => {
-      method.addEventListener('click', function() {
-        document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
-        this.classList.add('active');
-        
-        document.querySelectorAll('.payment-details').forEach(d => d.style.display = 'none');
-        document.getElementById(this.dataset.method + '-details').style.display = 'block';
-      });
-    });
-    
-    // Formattazione numero carta
-    document.getElementById('card-number').addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\s+/g, '');
-      if (value.length > 0) {
-        value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
-      }
-      e.target.value = value;
-    });
-    
-    // Formattazione data scadenza
-    document.getElementById('card-expiry').addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 2) {
-        value = value.substring(0, 2) + '/' + value.substring(2, 4);
-      }
-      e.target.value = value;
-    });
-    
-    function processPayment() {
-      // Validazione del form
-      const forms = document.querySelectorAll('form');
-      let isValid = true;
+    // Minimale JavaScript per la selezione del metodo di pagamento
+    document.addEventListener('DOMContentLoaded', function() {
+      const paymentOptions = document.querySelectorAll('.payment-option');
       
-      forms.forEach(form => {
-        const inputs = form.querySelectorAll('input[required]');
-        inputs.forEach(input => {
-          if (!input.value) {
-            input.classList.add('error');
-            isValid = false;
-          } else {
-            input.classList.remove('error');
-          }
+      paymentOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Rimuovi la classe selected da tutte le opzioni
+          paymentOptions.forEach(opt => opt.classList.remove('selected'));
+          
+          // Aggiungi la classe selected all'opzione cliccata
+          this.classList.add('selected');
+          
+          // Seleziona il radio button corrispondente
+          const radio = this.querySelector('input[type="radio"]');
+          radio.checked = true;
         });
       });
-      
-      if (isValid) {
-        alert('Pagamento elaborato con successo! Grazie per il tuo acquisto.');
-        // Qui andrebbe il codice per inviare i dati al server
-      } else {
-        alert('Per favore completa tutti i campi obbligatori.');
+    });
+    
+
+      function processPayment() {
+        const method = document.querySelector('input[name="payment-method"]:checked').value;
+        
+        if (method === 'credit' && !validateCreditCard()) {
+          return; // Blocca se la carta non è "valida"
+        }
+        
+        // Procedi con il pagamento...
+        alert(method === 'credit' 
+          ? "Pagamento con carta simulato!" 
+          : "Reindirizzamento a PayPal...");
       }
+    
+    
+    function validateCreditCard() {
+      const fields = [
+        {id: 'card-number', name: 'Numero carta', min: 16},
+        {id: 'card-expiry', name: 'Scadenza', min: 5}, // MM/AA
+        {id: 'card-cvv', name: 'CVV', min: 3},
+        {id: 'card-name', name: 'Nome titolare', min: 2}
+      ];
+
+      for (let field of fields) {
+        const value = document.getElementById(field.id).value.trim();
+        if (value.length < field.min) {
+          alert(`${field.name} non valido`);
+          return false;
+        }
+      }
+
+      return true; // Tutti i campi sono pieni
     }
   </script>
 </body>
