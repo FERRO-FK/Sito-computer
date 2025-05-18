@@ -73,21 +73,17 @@ $stmtOrdine->execute([$idUtente, $totaleFinale]);
 <head>
     <meta charset="UTF-8">
     <title>Grazie per l'acquisto</title>
-    <style>
-        body { font-family: Arial; padding: 40px; background: #f5f5f5; }
-        .thankyou-container { background: white; padding: 30px; border-radius: 8px; max-width: 700px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { color: #27ae60; }
-        .summary-item { display: flex; align-items: center; margin-bottom: 15px; }
-        .summary-item img { width: 80px; margin-right: 15px; border-radius: 6px; }
-        .item-details h3 { margin: 0 0 5px; }
-        .summary-totals { margin-top: 20px; font-weight: bold; }
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles_grazie_per_acquisto.css">
+  <link rel="icon" type="image/png" href="../immagini/favicon.png">
+
 </head>
 <body>
 
 <div class="thankyou-container">
-    <h1>🎉 Grazie per il tuo acquisto!</h1>
-    <p>Il tuo ordine n. <strong>#<?= $idOrdine ?? '—' ?></strong> è stato registrato con successo.</p>
+    <h1>Grazie per il tuo acquisto!</h1>
+    <p>Il tuo ordine è stato registrato con successo.</p>
 
     <div class="summary-items">
         <?php foreach ($prodotti as $prodotto): 
@@ -112,21 +108,10 @@ $stmtOrdine->execute([$idUtente, $totaleFinale]);
         <p><strong>Totale pagato: €<?= number_format($totaleFinale, 2, ',', '.') ?></strong></p>
     </div>
 
-    <p style="margin-top: 30px;">Riceverai una conferma via email. Grazie per aver acquistato da noi!</p>
-    <div style="text-align: center; margin-top: 30px;">
-    <a href="index.php" style="
-        display: inline-block;
-        padding: 12px 24px;
-        background-color: #27ae60;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-        transition: background 0.3s ease;
-    " onmouseover="this.style.backgroundColor='#219150'" onmouseout="this.style.backgroundColor='#27ae60'">
-        ⬅ Torna alla home
-    </a>
-</div>
+    <p class="confirmation-message">Riceverai una conferma via email. Grazie per aver acquistato da noi!</p>
+    <div class="return-home">
+    <a href="index.php" class="btn-home">⬅ Torna alla home</a>
+    </div>
 </div>
 
 </body>
