@@ -8,6 +8,12 @@ if (!isset($_SESSION['utente_id'])) {
     exit;
 }
 
+
+if ($_SESSION['carrello'] == []){
+  header("Location: ../php/carrello.php");
+}
+
+
 if (isset($_SESSION['utente_id'])) {
   $utente_id = $_SESSION['utente_id'];
   $stmt = $pdo->prepare("SELECT utente.nome, mail, indirizzo.via, indirizzo.numerocivico, indirizzo.citta
