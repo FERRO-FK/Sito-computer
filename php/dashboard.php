@@ -38,11 +38,11 @@ $user = $stmt->fetch();
 <body>
 
   <div class="top-bar">
-    <div class="logo" onclick="window.location.href='../html/index.php'">Tecno Shop</div>
+    <div class="logo" onclick="window.location.href='../php/index.php'">Tecno Shop</div>
     <div class="nav-links">
       <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="../html/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <a href="../php/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <?php
     // Assicurati che sia chiamato SOLO una volta per pagina
     if (isset($_SESSION['nome'])) {

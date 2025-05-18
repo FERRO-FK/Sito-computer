@@ -3,6 +3,11 @@ session_start();
 require '../php/db.php';
 $username = "Login";
 
+if (!isset($_SESSION['utente_id'])) {
+    header("Location: ../php/login.php");
+    exit;
+}
+
 if (isset($_SESSION['utente_id'])) {
   $utente_id = $_SESSION['utente_id'];
   $stmt = $pdo->prepare("SELECT utente.nome, mail, indirizzo.via, indirizzo.numerocivico, indirizzo.citta
@@ -149,41 +154,58 @@ if (isset($_SESSION['utente_id'])) {
       </section>
       
       <!-- Sezione Riepilogo Ordine -->
-      <section class="order-summary">
-        <h2><i class="fas fa-receipt"></i> Riepilogo ordine</h2>
-        
-        <div class="summary-items">
-          <div class="summary-item">
-            <img src="../immagini/PC Gaming.jpg" alt="PC Gaming">
-            <div class="item-details">
-              <h3>PC Gaming</h3>
-              <p>1 x €899,00</p>
-            </div>
-          </div>
-          
-          <div class="summary-item">
-            <img src="../immagini/notebook-ufficio.jpg" alt="Notebook Ufficio">
-            <div class="item-details">
-              <h3>Notebook da ufficio</h3>
-              <p>1 x €499,00</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="summary-totals">
-          <div class="summary-row">
-            <span>Subtotale</span>
-            <span>€1.398,00</span>
-          </div>
-          <div class="summary-row">
-            <span>Spedizione</span>
-            <span>€9,99</span>
-          </div>
-          <div class="summary-row total">
-            <span>Totale</span>
-            <span>€1.407,99</span>
-          </div>
-        </div>
+      <?php
+
+require_once 'db.php';
+
+$carrello = $_SESSION['carrello'] ?? [];
+$prodotti = [];
+$totale = 0;
+$spedizione = 9.99;
+
+if (!empty($carrello)) {
+    $placeholders = implode(',', array_fill(0, count($carrello), '?'));
+    $stmt = $pdo->prepare("SELECT idprodotto, nome, prezzo FROM computer WHERE idprodotto IN ($placeholders)");
+    $stmt->execute(array_keys($carrello));
+    $prodotti = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+?>
+
+<section class="order-summary">
+  <h2><i class="fas fa-receipt"></i> Riepilogo ordine</h2>
+
+  <div class="summary-items">
+    <?php foreach ($prodotti as $prodotto): 
+        $id = $prodotto['idprodotto'];
+        $quantita = $carrello[$id];
+        $subtotaleProdotto = $quantita * $prodotto['prezzo'];
+        $totale += $subtotaleProdotto;
+        $imgFile = str_replace(' ', '', $prodotto['nome']) . '.jpg';
+    ?>
+    <div class="summary-item">
+      <img src="../immagini/<?= htmlspecialchars($imgFile) ?>" alt="<?= htmlspecialchars($prodotto['nome']) ?>">
+      <div class="item-details">
+        <h3><?= htmlspecialchars($prodotto['nome']) ?></h3>
+        <p><?= $quantita ?> x €<?= number_format($prodotto['prezzo'], 2, ',', '.') ?></p>
+      </div>
+    </div>
+    <?php endforeach; ?>
+  </div>
+
+  <div class="summary-totals">
+    <div class="summary-row">
+      <span>Subtotale</span>
+      <span>€<?= number_format($totale, 2, ',', '.') ?></span>
+    </div>
+    <div class="summary-row">
+      <span>Spedizione</span>
+      <span>€<?= number_format($spedizione, 2, ',', '.') ?></span>
+    </div>
+    <div class="summary-row total">
+      <span>Totale</span>
+      <span>€<?= number_format($totale + $spedizione, 2, ',', '.') ?></span>
+    </div>
+  </div>
 
         
         <button class="checkout-btn" onclick="processPayment()">
@@ -243,10 +265,7 @@ if (isset($_SESSION['utente_id'])) {
           return; // Blocca se la carta non è "valida"
         }
         
-        // Procedi con il pagamento...
-        alert(method === 'credit' 
-          ? "Pagamento con carta simulato!" 
-          : "Reindirizzamento a PayPal...");
+          window.location.href = "../php/grazie_per_acquisto.php"
       }
     
     
