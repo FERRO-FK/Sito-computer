@@ -170,7 +170,7 @@ $prodotti = $pdo->query("SELECT * FROM computer")->fetchAll();
     <div class="nav-links">
       <a href="../php/index.php"><i class="fas fa-home"></i> Home</a>
       <a href="../php/prodotti.php"><i class="fas fa-laptop"></i> Prodotti</a>
-      <a href="../html/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
+      <a href="../php/carrello.php"><i class="fas fa-shopping-cart"></i> Carrello</a>
       <a href="../php/login.php"><i class="fas fa-user"></i> Login</a>
       <a href="../php/logout.php" class="btn lotgout"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
