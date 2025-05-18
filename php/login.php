@@ -71,6 +71,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($user && password_verify($password, $user['pass'])) {
         $_SESSION['utente_id'] = $user['ID'];
         $_SESSION['nome'] = $user['Nome'];
+
+        if ($_SESSION['carrello'] == []){
+            $_SESSION['carrello'] = json_decode($user['carrello'], true);
+        }
+        
+        
+
+
         if ($_SESSION['nome'] == "admin"){
 
           $_SESSION['admin'] = True;
