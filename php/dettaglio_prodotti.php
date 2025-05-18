@@ -186,7 +186,9 @@ if ($id) {
             }
             echo '</div>';
         } else {
+            echo '<div class="nessuna-recensione">';
             echo '<p>Nessuna recensione per questo prodotto.</p>';
+            echo '</div>';
         }
 
         // TAGS e PRODOTTI SIMILI
