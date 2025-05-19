@@ -27,14 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Hash password
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Salva indirizzo
-        $stmt = $pdo->prepare("INSERT INTO indirizzo (numerocivico, citta, via) VALUES (?, ?, ?)");
-        $stmt->execute([$numerocivico, $citta, $via]);
-        $id_indirizzo = $pdo->lastInsertId();
+        $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, pass) VALUES (?, ?, ?)");
+        $stmt->execute([$nome, $mail, $hash ]);
+        $id_utente = $pdo->lastInsertId();
 
-        // Salva utente
-        $stmt = $pdo->prepare("INSERT INTO utente (nome, mail, pass, IDindirizzo) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$nome, $mail, $hash, $id_indirizzo]);
+        // Salva indirizzo
+        $stmt = $pdo->prepare("INSERT INTO indirizzo (numerocivico, citta, via, idutente) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$numerocivico, $citta, $via , $id_utente]);
+       
 
         // Recupera utente per sessione
         $stmt = $pdo->prepare("SELECT * FROM utente WHERE mail = ?");

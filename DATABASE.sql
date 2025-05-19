@@ -16,7 +16,7 @@
 
 
 -- Dump della struttura del database sito
-CREATE DATABASE IF NOT EXISTS `sito` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+CREATE DATABASE IF NOT EXISTS `sito` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci */;
 USE `sito`;
 
 -- Dump della struttura di tabella sito.computer
@@ -67,17 +67,14 @@ CREATE TABLE IF NOT EXISTS `indirizzo` (
   `Via` varchar(255) DEFAULT NULL,
   `NumeroCivico` varchar(10) DEFAULT NULL,
   `Citta` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`IDIndirizzo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `idutente` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDIndirizzo`),
+  KEY `idutente` (`idutente`),
+  CONSTRAINT `idutente` FOREIGN KEY (`idutente`) REFERENCES `utente` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.indirizzo: ~5 rows (circa)
+-- Dump dei dati della tabella sito.indirizzo: ~0 rows (circa)
 DELETE FROM `indirizzo`;
-INSERT INTO `indirizzo` (`IDIndirizzo`, `Via`, `NumeroCivico`, `Citta`) VALUES
-	(1, 'Alphonse Elric', '33', 'Milano'),
-	(2, 'via tanesini', '35', 'faenza'),
-	(3, 'via ma', '123', 'milano'),
-	(4, 'via s', '123', 'cia'),
-	(5, 'cavvfdssd', '4', 'wef');
 
 -- Dump della struttura di tabella sito.interessiutente
 CREATE TABLE IF NOT EXISTS `interessiutente` (
@@ -90,27 +87,39 @@ CREATE TABLE IF NOT EXISTS `interessiutente` (
   CONSTRAINT `fk_interessiutente_utente` FOREIGN KEY (`IdUtente`) REFERENCES `utente` (`ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.interessiutente: ~3 rows (circa)
+-- Dump dei dati della tabella sito.interessiutente: ~0 rows (circa)
 DELETE FROM `interessiutente`;
-INSERT INTO `interessiutente` (`IdUtente`, `IdTag`, `Punteggio`) VALUES
-	(1, 4, 0),
-	(3, 6, 1),
-	(3, 7, 1);
 
--- Dump della struttura di tabella sito.ordine
-CREATE TABLE IF NOT EXISTS `ordine` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Stato` varchar(50) DEFAULT NULL,
-  `Totale` decimal(10,2) DEFAULT NULL,
-  `Data` date DEFAULT NULL,
-  `IDSpedizione` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `IDSpedizione` (`IDSpedizione`),
-  CONSTRAINT `ordine_ibfk_1` FOREIGN KEY (`IDSpedizione`) REFERENCES `indirizzo` (`IDIndirizzo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Dump della struttura di tabella sito.ordini
+CREATE TABLE IF NOT EXISTS `ordini` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_utente` int(11) NOT NULL,
+  `totale` decimal(10,2) NOT NULL,
+  `data` timestamp NULL DEFAULT current_timestamp(),
+  `idindirizzo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_utente` (`id_utente`),
+  KEY `idindirizzo` (`idindirizzo`),
+  CONSTRAINT `idindirizzo` FOREIGN KEY (`idindirizzo`) REFERENCES `indirizzo` (`IDIndirizzo`),
+  CONSTRAINT `ordini_ibfk_1` FOREIGN KEY (`id_utente`) REFERENCES `utente` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
--- Dump dei dati della tabella sito.ordine: ~0 rows (circa)
-DELETE FROM `ordine`;
+-- Dump dei dati della tabella sito.ordini: ~0 rows (circa)
+DELETE FROM `ordini`;
+
+-- Dump della struttura di tabella sito.ordini_prodotti
+CREATE TABLE IF NOT EXISTS `ordini_prodotti` (
+  `id_ordine` int(11) NOT NULL,
+  `id_prodotto` int(11) NOT NULL,
+  `quantita` int(11) NOT NULL,
+  KEY `id_ordine` (`id_ordine`),
+  KEY `id_prodotto` (`id_prodotto`),
+  CONSTRAINT `ordini_prodotti_ibfk_1` FOREIGN KEY (`id_ordine`) REFERENCES `ordini` (`id`),
+  CONSTRAINT `ordini_prodotti_ibfk_2` FOREIGN KEY (`id_prodotto`) REFERENCES `computer` (`IDProdotto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+-- Dump dei dati della tabella sito.ordini_prodotti: ~0 rows (circa)
+DELETE FROM `ordini_prodotti`;
 
 -- Dump della struttura di tabella sito.recensione
 CREATE TABLE IF NOT EXISTS `recensione` (
@@ -124,12 +133,10 @@ CREATE TABLE IF NOT EXISTS `recensione` (
   KEY `IDProdotto` (`IDProdotto`),
   CONSTRAINT `recensione_ibfk_1` FOREIGN KEY (`IDUtente`) REFERENCES `utente` (`ID`),
   CONSTRAINT `recensione_ibfk_2` FOREIGN KEY (`IDProdotto`) REFERENCES `computer` (`IDProdotto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.recensione: ~1 rows (circa)
+-- Dump dei dati della tabella sito.recensione: ~0 rows (circa)
 DELETE FROM `recensione`;
-INSERT INTO `recensione` (`IDRecensione`, `Punteggio`, `Descrizione`, `IDUtente`, `IDProdotto`) VALUES
-	(1, 4, 'bello', 2, 2);
 
 -- Dump della struttura di tabella sito.tag
 CREATE TABLE IF NOT EXISTS `tag` (
@@ -168,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `tagcomputer` (
   CONSTRAINT `fk_tagcomputer_tag` FOREIGN KEY (`IdTag`) REFERENCES `tag` (`IdTag`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.tagcomputer: ~101 rows (circa)
+-- Dump dei dati della tabella sito.tagcomputer: ~102 rows (circa)
 DELETE FROM `tagcomputer`;
 INSERT INTO `tagcomputer` (`IDProdotto`, `IdTag`) VALUES
 	(1, 1),
@@ -279,25 +286,11 @@ CREATE TABLE IF NOT EXISTS `utente` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(100) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
-  `IDIndirizzo` int(11) DEFAULT NULL,
   `pass` varchar(100) DEFAULT NULL,
-  `banned` tinyint(4) DEFAULT 0,
-  PRIMARY KEY (`ID`),
-  KEY `IDIndirizzo` (`IDIndirizzo`),
-  CONSTRAINT `utente_ibfk_1` FOREIGN KEY (`IDIndirizzo`) REFERENCES `indirizzo` (`IDIndirizzo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `carrello` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dump dei dati della tabella sito.utente: ~5 rows (circa)
+-- Dump dei dati della tabella sito.utente: ~0 rows (circa)
 DELETE FROM `utente`;
-INSERT INTO `utente` (`ID`, `Nome`, `mail`, `IDIndirizzo`, `pass`, `banned`) VALUES
-	(1, 'Mario', 'mario.rossi@gmail.com', 1, '$12$yGAx.zenZOerT8By5GH.R.Pwy8zh8Li8TAJln3pe31h8VBnQ3V.4y', 0),
-	(2, 'matteo', 'example@gmail.com', 2, '$2y$12$8u51AxF9Qx1yGRyudfU7P.KG19CWeYvp.i9cPckGok9K/7XTKjdpG', 0),
-	(3, 'ma', 'ma@ma', 3, '$2y$12$xb5IwE4hdZD6EMk6rNMPY.94xvhPXfUuewpuH/skPSBbVwfM7oqh.', 0),
-	(4, 'admin', 'ciao@ciao', 4, '$2y$12$3BteNxQ/SB6B3UPW3LME7.9qjAVOVX61m1Aqqqu6CsmJ2m0K74NxS', 0),
-	(5, 'admin', 'dsa@jj', 5, '$2y$12$9gWZRBq9rAcibcpCB3Tb0uKbUhelQMioWQ0PK02vQtUg7cHZ7nOKC', 0);
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
